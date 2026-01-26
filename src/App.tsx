@@ -16,6 +16,14 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import NotFound from "./pages/NotFound";
 
+// Individual booth pages
+import LcdSlimlinePod from "./pages/booths/LcdSlimlinePod";
+import MagicMirror from "./pages/booths/MagicMirror";
+import RetroBox from "./pages/booths/RetroBox";
+import EnchantedMirror from "./pages/booths/EnchantedMirror";
+import InflatableBooth from "./pages/booths/InflatableBooth";
+import WoodenTripod from "./pages/booths/WoodenTripod";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -30,7 +38,12 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/book-now" element={<BookNow />} />
           <Route path="/hire-photobooth" element={<HirePhotobooth />} />
-          <Route path="/hire-photobooth/:boothId" element={<HirePhotobooth />} />
+          <Route path="/hire-photobooth/lcd-slimline-pod" element={<LcdSlimlinePod />} />
+          <Route path="/hire-photobooth/magic-mirror" element={<MagicMirror />} />
+          <Route path="/hire-photobooth/retro-box" element={<RetroBox />} />
+          <Route path="/hire-photobooth/enchanted-mirror" element={<EnchantedMirror />} />
+          <Route path="/hire-photobooth/inflatable-booth" element={<InflatableBooth />} />
+          <Route path="/hire-photobooth/wooden-tripod" element={<WoodenTripod />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/events" element={<Events />} />
