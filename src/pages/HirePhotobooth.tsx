@@ -2,55 +2,79 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, Users, Maximize, Tag } from 'lucide-react';
 
 const booths = [
   {
     id: 'lcd-slimline-pod',
     name: 'LCD Screen Slimline Pod',
+    tagline: 'Modern & Versatile',
     description: 'Our most popular booth! Sleek, modern design with a stunning LCD touchscreen interface. Perfect for any venue and event type.',
     image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop',
     features: ['Touchscreen interface', 'Instant prints', 'Digital sharing', 'Custom overlays'],
+    specs: { footprint: '1m x 1m', height: '2m', guests: '1-8 people' },
+    idealFor: ['Weddings', 'Corporate Events', 'Birthdays'],
+    startingPrice: '£299',
     popular: true,
   },
   {
     id: 'magic-mirror',
     name: 'Magic Mirror',
+    tagline: 'Interactive Experience',
     description: 'Interactive full-length mirror with animated graphics, voice guidance, and touchscreen technology. A truly magical experience!',
     image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop',
     features: ['Full-length mirror', 'Voice guidance', 'Animations', 'Signature capture'],
+    specs: { footprint: '1.2m x 0.8m', height: '2.1m', guests: '1-6 people' },
+    idealFor: ['Weddings', 'Proms', 'Gala Events'],
+    startingPrice: '£349',
     popular: true,
   },
   {
     id: 'retro-box',
     name: 'Retro Box',
+    tagline: 'Vintage Charm',
     description: 'Classic vintage-style photo booth bringing nostalgic charm to your celebration. Features authentic retro styling with modern technology inside.',
     image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=800&auto=format&fit=crop',
     features: ['Vintage design', 'Strip photos', 'Props included', 'Classic flash'],
+    specs: { footprint: '1.5m x 1.5m', height: '2.2m', guests: '1-4 people' },
+    idealFor: ['Themed Parties', 'Weddings', 'Festivals'],
+    startingPrice: '£279',
     popular: false,
   },
   {
     id: 'enchanted-mirror',
     name: 'Enchanted Mirror X Selfie',
+    tagline: 'Premium Luxury',
     description: 'Our premium mirror booth with voice guidance, stunning visual effects, and elegant design. Perfect for luxury weddings and upscale events.',
     image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop',
     features: ['Premium finish', 'Emoji stamps', 'Green screen', 'GIF creation'],
+    specs: { footprint: '1m x 0.6m', height: '2m', guests: '1-6 people' },
+    idealFor: ['Luxury Weddings', 'VIP Events', 'Brand Activations'],
+    startingPrice: '£399',
     popular: false,
   },
   {
     id: 'inflatable-booth',
     name: 'Inflatable Enclosed Booth',
+    tagline: 'Party Favorite',
     description: 'Fun enclosed inflatable booth creating a private photo experience. Great for parties and festivals where you want that classic booth feel.',
     image: 'https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=800&auto=format&fit=crop',
     features: ['Enclosed design', 'LED lighting', 'Privacy curtain', 'Festival ready'],
+    specs: { footprint: '2.5m x 2.5m', height: '2.4m', guests: '1-8 people' },
+    idealFor: ['Festivals', 'Outdoor Events', 'House Parties'],
+    startingPrice: '£249',
     popular: false,
   },
   {
     id: 'wooden-tripod',
     name: 'Wooden Vintage Tripod',
+    tagline: 'Rustic Elegance',
     description: 'Elegant rustic wooden tripod booth ideal for weddings and upscale events. Beautiful craftsmanship meets modern photo technology.',
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop',
     features: ['Handcrafted wood', 'DSLR camera', 'Rustic props', 'Compact setup'],
+    specs: { footprint: '0.8m x 0.8m', height: '1.8m', guests: '1-10 people' },
+    idealFor: ['Rustic Weddings', 'Garden Parties', 'Intimate Events'],
+    startingPrice: '£329',
     popular: false,
   },
 ];
@@ -86,7 +110,7 @@ const HirePhotobooth = () => {
         {/* Booths Grid */}
         <section className="py-20 md:py-28 bg-background">
           <div className="section-container">
-            <div className="space-y-16">
+            <div className="space-y-20">
               {booths.map((booth, index) => (
                 <div 
                   key={booth.id}
@@ -97,34 +121,68 @@ const HirePhotobooth = () => {
                   {/* Image */}
                   <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     {booth.popular && (
-                      <div className="absolute top-4 left-4 z-10 px-4 py-2 rounded-full bg-gradient-primary text-white text-sm font-semibold">
+                      <div className="absolute top-4 left-4 z-10 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
                         Most Popular
                       </div>
                     )}
+                    <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-bold">
+                      From {booth.startingPrice}
+                    </div>
                     <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
                       <img
                         src={booth.image}
                         alt={booth.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                    <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
+                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+                      {booth.tagline}
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-3">
                       {booth.name}
                     </h2>
                     <p className="text-muted-foreground leading-relaxed mb-6">
                       {booth.description}
                     </p>
                     
+                    {/* Specifications */}
+                    <div className="flex flex-wrap gap-4 mb-6 text-sm">
+                      <div className="flex items-center gap-2 text-foreground">
+                        <Maximize className="w-4 h-4 text-primary" />
+                        <span>{booth.specs.footprint}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-foreground">
+                        <Users className="w-4 h-4 text-primary" />
+                        <span>{booth.specs.guests}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-foreground">
+                        <Tag className="w-4 h-4 text-primary" />
+                        <span>From {booth.startingPrice}</span>
+                      </div>
+                    </div>
+
+                    {/* Ideal For */}
+                    <div className="mb-6">
+                      <p className="text-sm font-semibold text-foreground mb-2">Ideal for:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {booth.idealFor.map((event) => (
+                          <span key={event} className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-medium">
+                            {event}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
                     {/* Features */}
                     <div className="grid grid-cols-2 gap-3 mb-8">
                       {booth.features.map((feature) => (
                         <div key={feature} className="flex items-center gap-2">
-                          <div className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center">
-                            <Check className="w-3 h-3 text-accent" />
+                          <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Check className="w-3 h-3 text-primary" />
                           </div>
                           <span className="text-sm text-foreground">{feature}</span>
                         </div>
@@ -132,7 +190,7 @@ const HirePhotobooth = () => {
                     </div>
 
                     <div className="flex flex-wrap gap-4">
-                      <Button variant="accent" asChild>
+                      <Button asChild>
                         <Link to={`/hire-photobooth/${booth.id}`}>
                           Learn More
                           <ArrowRight className="w-4 h-4" />
