@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, Mic, Sparkles, Pen, Video } from 'lucide-react';
+import { Check, ArrowLeft, Mic, Sparkles, Pen, Video, Users, Star, Heart, Briefcase, GraduationCap, PartyPopper, Wand2, MessageSquare } from 'lucide-react';
 
 const features = [
-  { icon: Mic, title: 'Voice Guidance', description: 'Interactive voice prompts guide guests' },
-  { icon: Sparkles, title: 'Animations', description: 'Stunning visual effects and animations' },
-  { icon: Pen, title: 'Signature Capture', description: 'Digital signatures on photos' },
-  { icon: Video, title: 'Video Messages', description: 'Record personal video messages' },
+  { icon: Mic, title: 'Voice Guidance', description: 'Interactive voice prompts guide guests through the entire experience, making it easy and fun for everyone' },
+  { icon: Sparkles, title: 'Stunning Animations', description: 'Beautiful visual effects and animations displayed on the mirror surface create a truly magical atmosphere' },
+  { icon: Pen, title: 'Signature Capture', description: 'Guests can sign directly on the mirror screen and have their signature printed on their photos' },
+  { icon: Video, title: 'Video Messages', description: 'Record personal video messages for the happy couple or birthday person to treasure forever' },
 ];
 
 const includes = [
@@ -20,6 +20,25 @@ const includes = [
   'Digital gallery',
   'Props collection',
   'Professional attendant',
+  'Custom animations',
+  'Emoji stamps',
+  'Social media sharing',
+  'Video message recording',
+];
+
+const specifications = [
+  { label: 'Footprint', value: '1.5m x 1.5m' },
+  { label: 'Height', value: '2m' },
+  { label: 'Guest Capacity', value: '1-6 guests' },
+  { label: 'Setup Time', value: '60 minutes' },
+  { label: 'Power Required', value: 'Standard 13A socket' },
+];
+
+const idealEvents = [
+  { icon: Heart, name: 'Weddings' },
+  { icon: PartyPopper, name: 'Celebrations' },
+  { icon: Briefcase, name: 'Brand Launches' },
+  { icon: GraduationCap, name: 'Proms' },
 ];
 
 const MagicMirror = () => {
@@ -38,17 +57,89 @@ const MagicMirror = () => {
               <ArrowLeft className="w-4 h-4" />
               Back to All Booths
             </Link>
+            <div className="inline-block px-4 py-2 rounded-full bg-white/20 text-white text-sm font-semibold mb-4">
+              ✨ Premium Experience
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
               Magic Mirror
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed max-w-2xl">
-              Interactive full-length mirror with animated graphics, voice guidance, and touchscreen technology. A truly magical experience!
+            <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">
+              Interactive full-length mirror with animated graphics, voice guidance, and touchscreen technology. Create truly magical moments with this showstopping centrepiece.
             </p>
+            <div className="flex flex-wrap gap-4">
+              <Button variant="secondary" size="lg" asChild>
+                <Link to="/book-now">Book This Booth</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10" asChild>
+                <Link to="/contact">Get a Quote</Link>
+              </Button>
+            </div>
           </div>
         </section>
 
-        {/* Main Content */}
-        <section className="py-20 md:py-28 bg-background">
+        {/* Detailed Description */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  Mirror, Mirror on the Wall...
+                </h2>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Step into a world of enchantment with our Magic Mirror photo booth. This isn't just a photo booth – it's an interactive experience that captivates guests from the moment they approach its gleaming surface.
+                  </p>
+                  <p>
+                    The Magic Mirror features a stunning full-length mirror design that conceals cutting-edge technology within its elegant frame. When activated, the mirror comes alive with beautiful animations, playful prompts, and voice guidance that leads guests through an unforgettable photo experience.
+                  </p>
+                  <p>
+                    What makes the Magic Mirror truly special is its ability to engage guests in ways traditional booths cannot. From the moment they touch the screen to sign their name, add emoji stamps, or record a video message, your guests become part of the magic. It's interactive entertainment that creates lasting memories.
+                  </p>
+                  <p>
+                    Perfect for weddings, proms, corporate galas, and any event where you want to create that 'wow' factor. The Magic Mirror isn't just a photo booth – it's a conversation starter and a centrepiece that elevates any celebration.
+                  </p>
+                </div>
+              </div>
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+                <img
+                  src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop"
+                  alt="Magic Mirror Booth"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* The Magic Experience */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
+              The Magic Experience
+            </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Watch your guests' faces light up as they discover the magic within the mirror
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { icon: Wand2, title: 'Attract & Engage', description: 'Eye-catching animations and a friendly greeting draw guests to the mirror. The sleeper mode displays beautiful patterns that catch attention from across the room.' },
+                { icon: MessageSquare, title: 'Interact & Play', description: 'Touch the screen to wake the mirror, then follow voice prompts to pose, add digital props, sign your name, or record a video message. The interactive experience delights guests of all ages.' },
+                { icon: Sparkles, title: 'Capture & Share', description: 'The hidden camera captures stunning photos with professional lighting. Prints emerge in seconds, and digital copies can be shared instantly via email or social media.' },
+              ].map((item) => (
+                <div key={item.title} className="bg-card rounded-xl p-8 shadow-card text-center">
+                  <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                    <item.icon className="w-8 h-8 text-accent" />
+                  </div>
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* What's Included */}
+        <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Image Gallery */}
@@ -76,12 +167,16 @@ const MagicMirror = () => {
               {/* Details */}
               <div>
                 <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-                  Premium Experience
+                  All-Inclusive Package
                 </div>
                 
                 <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
                   What's Included
                 </h2>
+                
+                <p className="text-muted-foreground mb-6">
+                  Every Magic Mirror hire includes our complete package with all the features that make this booth so special. Everything is included in the price – no hidden extras.
+                </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                   {includes.map((item) => (
@@ -108,11 +203,14 @@ const MagicMirror = () => {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 bg-secondary/30">
+        <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-12">
-              Key Features
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
+              Magical Features
             </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Discover the enchanting features that make the Magic Mirror a guest favourite
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature) => (
                 <div key={feature.title} className="bg-card rounded-xl p-6 shadow-card text-center">
@@ -127,14 +225,103 @@ const MagicMirror = () => {
           </div>
         </section>
 
+        {/* Specifications & Ideal Events */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Specifications */}
+              <div>
+                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+                  Technical Specifications
+                </h2>
+                <div className="bg-card rounded-xl p-6 shadow-card">
+                  {specifications.map((spec, index) => (
+                    <div key={spec.label} className={`flex justify-between py-3 ${index !== specifications.length - 1 ? 'border-b border-border' : ''}`}>
+                      <span className="text-muted-foreground">{spec.label}</span>
+                      <span className="font-semibold text-foreground">{spec.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Ideal Events */}
+              <div>
+                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+                  Perfect For
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  The Magic Mirror creates an unforgettable impression at premium events:
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {idealEvents.map((event) => (
+                    <div key={event.name} className="bg-card rounded-xl p-4 shadow-card flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+                        <event.icon className="w-5 h-5 text-accent" />
+                      </div>
+                      <span className="font-semibold text-foreground">{event.name}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mt-6 text-sm">
+                  The Magic Mirror is particularly popular for weddings where the signature feature allows guests to sign directly on the mirror – creating a unique digital guestbook!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="flex justify-center mb-4">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-6 h-6 text-gold fill-gold" />
+                ))}
+              </div>
+              <blockquote className="text-xl md:text-2xl text-foreground italic mb-6">
+                "The Magic Mirror was absolutely incredible! Our guests couldn't stop talking about it. The voice guidance made it so easy for everyone, and the signature feature was a beautiful touch. The video messages from our guests made us cry!"
+              </blockquote>
+              <p className="font-semibold text-foreground">Emma & David</p>
+              <p className="text-muted-foreground text-sm">Wedding at Thornton Manor, Wirral</p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Everything you need to know about the Magic Mirror
+            </p>
+            <div className="max-w-3xl mx-auto space-y-6">
+              {[
+                { q: 'How does the signature feature work?', a: 'Guests touch the mirror screen and use their finger to sign their name or write a message. This signature is then printed directly onto their photo strip as a unique keepsake.' },
+                { q: 'Can guests record video messages?', a: 'Yes! Guests can record personal video messages up to 30 seconds long. These are compiled and delivered to you after the event on a USB drive or via cloud link.' },
+                { q: 'Is it suitable for outdoor events?', a: 'The Magic Mirror is designed for indoor use. For outdoor events, we can set it up under a marquee or covered area to protect the equipment from the elements.' },
+                { q: 'What animations are available?', a: 'We have a library of over 50 animations including seasonal themes, romantic designs for weddings, corporate-friendly options, and birthday celebrations. We can also create custom animations.' },
+                { q: 'How loud is the voice guidance?', a: 'The volume is fully adjustable and we set it appropriately for your venue. For quieter ceremonies, we can reduce the volume or switch to on-screen text prompts.' },
+              ].map((faq, index) => (
+                <div key={index} className="bg-card rounded-xl p-6 shadow-card">
+                  <h3 className="font-heading font-bold text-foreground mb-2">{faq.q}</h3>
+                  <p className="text-muted-foreground">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="section-container text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Ready to Book?
+              Ready to Add Some Magic?
             </h2>
             <p className="text-white/80 mb-8 max-w-xl mx-auto">
-              Make your event unforgettable with our Magic Mirror. Contact us today for availability.
+              Create enchanting memories with our Magic Mirror. Check availability and book today!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="secondary" size="lg" asChild>
