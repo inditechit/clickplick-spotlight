@@ -5,25 +5,15 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop",
+    image: "/main/hero1.png",
+    alt: "ClickPlick Photo Booth - Event Entertainment"
+  },{
+    image: "/main/hero2.png",
+    alt: "ClickPlick Photo Booth - Event Entertainment"
+  },{
+    image: "/main/hero3.png",
     alt: "ClickPlick Photo Booth - Event Entertainment"
   },
-  {
-    image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?q=80&w=2070&auto=format&fit=crop",
-    alt: "ClickPlick Photo Booth - Party Fun"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=2070&auto=format&fit=crop",
-    alt: "ClickPlick Photo Booth - Wedding Celebrations"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2070&auto=format&fit=crop",
-    alt: "ClickPlick Photo Booth - Corporate Events"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop",
-    alt: "ClickPlick Photo Booth - Festival Fun"
-  }
 ];
 
 export function HeroSection() {
@@ -44,8 +34,8 @@ export function HeroSection() {
 
   return (
     <section className="relative pt-20">
-      {/* Hero Slider */}
-      <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
+      {/* Hero Slider - HEIGHT INCREASED BELOW */}
+      <div className="relative w-full h-[600px] md:h-[700px] lg:h-[850px] overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
