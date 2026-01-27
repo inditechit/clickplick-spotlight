@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
-import { Check, ArrowLeft, TreePine, Camera, Gift, Minimize } from 'lucide-react';
+import { Check, ArrowLeft, TreePine, Camera, Gift, Minimize, Star, Heart, Briefcase, GraduationCap, PartyPopper, Leaf, Gem, Hammer } from 'lucide-react';
 
 const features = [
-  { icon: TreePine, title: 'Handcrafted Wood', description: 'Beautiful artisan craftsmanship' },
-  { icon: Camera, title: 'DSLR Camera', description: 'Professional photo quality' },
-  { icon: Gift, title: 'Rustic Props', description: 'Themed props included' },
-  { icon: Minimize, title: 'Compact Setup', description: 'Perfect for any space' },
+  { icon: TreePine, title: 'Handcrafted Wood', description: 'Beautifully handcrafted from sustainable wood with artisan attention to detail and natural finish' },
+  { icon: Camera, title: 'DSLR Camera', description: 'Professional Canon DSLR delivers stunning photo quality with every shot, regardless of lighting conditions' },
+  { icon: Gift, title: 'Rustic Props', description: 'Curated collection of rustic and vintage props that perfectly complement the booth\'s natural aesthetic' },
+  { icon: Minimize, title: 'Compact Design', description: 'Elegant minimal footprint makes it perfect for intimate venues and spaces with limited room' },
 ];
 
 const includes = [
@@ -20,6 +20,25 @@ const includes = [
   'Digital gallery',
   'Custom templates',
   'Professional attendant',
+  'Ring light setup',
+  'Social media sharing',
+  'Personalised overlays',
+  'Online gallery access',
+];
+
+const specifications = [
+  { label: 'Footprint', value: '1m x 1m' },
+  { label: 'Height', value: '1.8m' },
+  { label: 'Guest Capacity', value: '1-6 guests' },
+  { label: 'Setup Time', value: '30 minutes' },
+  { label: 'Power Required', value: 'Standard 13A socket' },
+];
+
+const idealEvents = [
+  { icon: Heart, name: 'Rustic Weddings' },
+  { icon: Leaf, name: 'Garden Parties' },
+  { icon: Briefcase, name: 'Brand Events' },
+  { icon: PartyPopper, name: 'Celebrations' },
 ];
 
 const WoodenTripod = () => {
@@ -38,17 +57,128 @@ const WoodenTripod = () => {
               <ArrowLeft className="w-4 h-4" />
               Back to All Booths
             </Link>
+            <div className="inline-block px-4 py-2 rounded-full bg-white/20 text-white text-sm font-semibold mb-4">
+              🌿 Wedding Favourite
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
               Wooden Vintage Tripod
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed max-w-2xl">
-              Elegant rustic wooden tripod booth ideal for weddings and upscale events. Beautiful craftsmanship meets modern photo technology.
+            <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">
+              Elegant rustic wooden tripod booth ideal for weddings and upscale events. Beautiful handcrafted design meets modern photo technology for a uniquely charming experience.
             </p>
+            <div className="flex flex-wrap gap-4">
+              <Button variant="secondary" size="lg" asChild>
+                <Link to="/book-now">Book This Booth</Link>
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10" asChild>
+                <Link to="/contact">Get a Quote</Link>
+              </Button>
+            </div>
           </div>
         </section>
 
-        {/* Main Content */}
-        <section className="py-20 md:py-28 bg-background">
+        {/* Detailed Description */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  Rustic Elegance, Modern Technology
+                </h2>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    The Wooden Vintage Tripod represents the perfect harmony between natural beauty and modern convenience. Handcrafted from sustainably sourced wood, each tripod is a unique piece of artisan craftsmanship that adds warmth and character to any venue.
+                  </p>
+                  <p>
+                    Unlike bulky booth enclosures, our Wooden Tripod has an open, inviting design that seamlessly blends with your event décor. Its compact footprint makes it ideal for venues where space is at a premium, while its beautiful appearance means it enhances rather than detracts from your styling.
+                  </p>
+                  <p>
+                    But don't let the vintage appearance fool you – hidden within this rustic exterior is state-of-the-art photo technology. The professional DSLR camera, ring light, and instant printer deliver results that rival any modern booth, while the natural wood frame creates photos with a distinctive warmth and character.
+                  </p>
+                  <p>
+                    Perfect for barn weddings, garden parties, rustic celebrations, and any event where you want to combine natural aesthetics with modern entertainment. The Wooden Vintage Tripod is particularly beloved by couples planning bohemian, rustic, or outdoor weddings.
+                  </p>
+                </div>
+              </div>
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+                <img
+                  src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
+                  alt="Wooden Vintage Tripod"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* The Rustic Experience */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
+              The Rustic Experience
+            </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Nature-inspired design meets professional photo quality
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { icon: Hammer, title: 'Artisan Crafted', description: 'Each Wooden Tripod is handcrafted by skilled craftspeople using traditional woodworking techniques. The natural grain and warm tones make every booth unique.' },
+                { icon: Leaf, title: 'Venue Friendly', description: 'The compact, open design means no bulky structures. It blends beautifully with floral arrangements, fairy lights, and natural décor – enhancing your venue styling.' },
+                { icon: Gem, title: 'Timeless Photos', description: 'The warm wood tones create a distinctive frame for photos. Combined with professional lighting and DSLR quality, every image has a timeless, editorial feel.' },
+              ].map((item) => (
+                <div key={item.title} className="bg-card rounded-xl p-8 shadow-card text-center">
+                  <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                    <item.icon className="w-8 h-8 text-gold" />
+                  </div>
+                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Perfect for Small Spaces */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+                  <img
+                    src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=800&auto=format&fit=crop"
+                    alt="Compact Setup"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+                  Space Efficient
+                </div>
+                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+                  Perfect for Intimate Venues
+                </h2>
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    Not every venue has space for a large photo booth setup. The Wooden Vintage Tripod was designed with intimate venues in mind – its compact 1m x 1m footprint means it can fit comfortably in even the cosiest spaces.
+                  </p>
+                  <p>
+                    From converted barns to boutique hotels, from restaurant private rooms to garden marquees, this booth brings professional photo booth entertainment to venues that might otherwise go without.
+                  </p>
+                  <p>
+                    The open design also means it doesn't create visual barriers or block sightlines. Your guests can move freely around it, and it becomes part of your event rather than an obstacle to work around.
+                  </p>
+                  <p>
+                    Despite its compact size, the Wooden Tripod still accommodates groups of up to 6 guests in each photo. The wide-angle lens and professional lighting ensure everyone looks fantastic.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What's Included */}
+        <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Image Gallery */}
@@ -76,12 +206,16 @@ const WoodenTripod = () => {
               {/* Details */}
               <div>
                 <div className="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-semibold mb-6">
-                  Wedding Favorite
+                  Complete Package
                 </div>
                 
                 <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
                   What's Included
                 </h2>
+                
+                <p className="text-muted-foreground mb-6">
+                  Every Wooden Vintage Tripod hire comes complete with everything you need. We've carefully curated a rustic-themed package that complements the booth's natural charm.
+                </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                   {includes.map((item) => (
@@ -108,11 +242,14 @@ const WoodenTripod = () => {
         </section>
 
         {/* Features Grid */}
-        <section className="py-20 bg-secondary/30">
+        <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-12">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
               Key Features
             </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Natural beauty combined with professional performance
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature) => (
                 <div key={feature.title} className="bg-card rounded-xl p-6 shadow-card text-center">
@@ -127,14 +264,106 @@ const WoodenTripod = () => {
           </div>
         </section>
 
+        {/* Specifications & Ideal Events */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12">
+              {/* Specifications */}
+              <div>
+                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+                  Technical Specifications
+                </h2>
+                <div className="bg-card rounded-xl p-6 shadow-card">
+                  {specifications.map((spec, index) => (
+                    <div key={spec.label} className={`flex justify-between py-3 ${index !== specifications.length - 1 ? 'border-b border-border' : ''}`}>
+                      <span className="text-muted-foreground">{spec.label}</span>
+                      <span className="font-semibold text-foreground">{spec.value}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mt-4 text-sm">
+                  * The compact footprint makes this our most space-efficient booth option, perfect for venues with limited floor space.
+                </p>
+              </div>
+
+              {/* Ideal Events */}
+              <div>
+                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+                  Perfect For
+                </h2>
+                <p className="text-muted-foreground mb-6">
+                  The Wooden Vintage Tripod complements these event styles beautifully:
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {idealEvents.map((event) => (
+                    <div key={event.name} className="bg-card rounded-xl p-4 shadow-card flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center">
+                        <event.icon className="w-5 h-5 text-gold" />
+                      </div>
+                      <span className="font-semibold text-foreground">{event.name}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-muted-foreground mt-6 text-sm">
+                  Especially popular for barn weddings, boho celebrations, forest venues, and any event embracing natural, organic aesthetics.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="flex justify-center mb-4">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-6 h-6 text-gold fill-gold" />
+                ))}
+              </div>
+              <blockquote className="text-xl md:text-2xl text-foreground italic mb-6">
+                "We had a rustic barn wedding and the Wooden Tripod booth was absolutely perfect! It looked like it belonged there – our guests thought it was part of the venue décor. The photos were gorgeous and the compact size meant it fit perfectly in our cosy reception barn."
+              </blockquote>
+              <p className="font-semibold text-foreground">Lucy & Tom</p>
+              <p className="text-muted-foreground text-sm">Barn Wedding, Cotswolds</p>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
+              Common questions about the Wooden Vintage Tripod
+            </p>
+            <div className="max-w-3xl mx-auto space-y-6">
+              {[
+                { q: 'Is the wood sustainably sourced?', a: 'Yes! We\'re committed to environmental responsibility. All our wooden tripods are crafted from sustainably sourced timber, and we work with local craftspeople to minimise our carbon footprint.' },
+                { q: 'Can it be used outdoors?', a: 'Yes, the Wooden Tripod works beautifully at outdoor events, though it should be positioned under cover (marquee, gazebo, etc.) to protect from rain. It looks stunning in garden and woodland settings.' },
+                { q: 'How does the open design work for photos?', a: 'The open design actually creates a more relaxed photo experience. Guests can approach naturally, and the wide-angle lens captures groups of up to 6 people. It encourages spontaneous, natural poses.' },
+                { q: 'What props come with it?', a: 'We provide a rustic-themed prop collection including vintage frames, floral crowns, wooden signs, and nature-inspired accessories that complement the booth\'s aesthetic.' },
+                { q: 'Will it match my venue décor?', a: 'The natural wood finish and minimal design mean it complements most décor styles. It\'s particularly suited to rustic, boho, vintage, and natural themes, but also works well in contemporary spaces that use natural materials.' },
+              ].map((faq, index) => (
+                <div key={index} className="bg-card rounded-xl p-6 shadow-card">
+                  <h3 className="font-heading font-bold text-foreground mb-2">{faq.q}</h3>
+                  <p className="text-muted-foreground">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="section-container text-center">
             <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
-              Ready to Book?
+              Ready for Rustic Elegance?
             </h2>
             <p className="text-white/80 mb-8 max-w-xl mx-auto">
-              Add rustic elegance to your event with our Wooden Vintage Tripod. Contact us today for availability.
+              Add natural charm to your event with our Wooden Vintage Tripod. Book today to secure your date!
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Button variant="secondary" size="lg" asChild>
