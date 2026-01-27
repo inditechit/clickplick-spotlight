@@ -48,10 +48,8 @@ export function Header() {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-lg shadow-soft py-3'
-          : 'bg-transparent py-5'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white shadow-soft',
+        isScrolled ? 'py-3' : 'py-4'
       )}
     >
       <div className="section-container">
@@ -62,16 +60,10 @@ export function Header() {
               <span className="text-white font-heading font-bold text-xl">CP</span>
             </div>
             <div className="flex flex-col">
-              <span className={cn(
-                "font-heading font-bold text-xl tracking-tight transition-colors",
-                isScrolled ? "text-primary" : "text-white"
-              )}>
+              <span className="font-heading font-bold text-xl tracking-tight text-primary">
                 ClickPlick
               </span>
-              <span className={cn(
-                "text-xs font-medium -mt-1 transition-colors",
-                isScrolled ? "text-muted-foreground" : "text-white/80"
-              )}>
+              <span className="text-xs font-medium -mt-1 text-muted-foreground">
                 UK Photo Booths
               </span>
             </div>
@@ -84,12 +76,7 @@ export function Header() {
                 {item.children ? (
                   <>
                     <button
-                      className={cn(
-                        "flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all",
-                        isScrolled
-                          ? "text-foreground hover:text-accent hover:bg-accent/10"
-                          : "text-white/90 hover:text-white hover:bg-white/10"
-                      )}
+                      className="flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all text-foreground hover:text-primary hover:bg-primary/10"
                       onMouseEnter={() => setOpenDropdown(item.name)}
                       onMouseLeave={() => setOpenDropdown(null)}
                     >
@@ -108,7 +95,7 @@ export function Header() {
                           <Link
                             key={child.name}
                             to={child.href}
-                            className="block px-4 py-3 rounded-lg text-foreground hover:bg-accent/10 hover:text-accent transition-colors"
+                            className="block px-4 py-3 rounded-lg text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
                           >
                             {child.name}
                           </Link>
@@ -122,12 +109,8 @@ export function Header() {
                     className={cn(
                       "px-4 py-2 rounded-lg font-medium transition-all",
                       location.pathname === item.href
-                        ? isScrolled
-                          ? "text-accent bg-accent/10"
-                          : "text-white bg-white/20"
-                        : isScrolled
-                          ? "text-foreground hover:text-accent hover:bg-accent/10"
-                          : "text-white/90 hover:text-white hover:bg-white/10"
+                        ? "text-primary bg-primary/10"
+                        : "text-foreground hover:text-primary hover:bg-primary/10"
                     )}
                   >
                     {item.name}
@@ -139,10 +122,7 @@ export function Header() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:+447123456789" className={cn(
-              "flex items-center gap-2 font-medium transition-colors",
-              isScrolled ? "text-foreground" : "text-white"
-            )}>
+            <a href="tel:+447123456789" className="flex items-center gap-2 font-medium text-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
               <span>07123 456789</span>
             </a>
@@ -154,10 +134,7 @@ export function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={cn(
-              "lg:hidden p-2 rounded-lg transition-colors",
-              isScrolled ? "text-foreground" : "text-white"
-            )}
+            className="lg:hidden p-2 rounded-lg transition-colors text-foreground hover:text-primary"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
