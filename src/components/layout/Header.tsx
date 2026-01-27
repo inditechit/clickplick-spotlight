@@ -55,17 +55,19 @@ export function Header() {
       <div className="section-container">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center shadow-accent">
-              <span className="text-white font-heading font-bold text-xl">CP</span>
+          <Link to="/" className="flex justify-center items-baseline gap-2 group">
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center">
+              {/* <span className="text-white font-heading font-bold text-xl">CP</span> */}
+              <img src="/main/logo1.png" alt="icon logo" width={120}/>
             </div>
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-xl tracking-tight text-primary">
+              <img src="/main/logo2.png" alt="text logo" width={120}/>
+              {/* <span className="font-heading font-bold text-xl tracking-tight text-primary">
                 ClickPlick
               </span>
               <span className="text-xs font-medium -mt-1 text-muted-foreground">
                 UK Photo Booths
-              </span>
+              </span> */}
             </div>
           </Link>
 
