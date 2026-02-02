@@ -79,37 +79,64 @@ const WoodenTripod = () => {
 
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  Rustic Elegance, Modern Technology
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    The Wooden Vintage Tripod represents the perfect harmony between natural beauty and modern convenience. Handcrafted from sustainably sourced wood, each tripod is a unique piece of artisan craftsmanship that adds warmth and character to any venue.
-                  </p>
-                  <p>
-                    Unlike bulky booth enclosures, our Wooden Tripod has an open, inviting design that seamlessly blends with your event décor. Its compact footprint makes it ideal for venues where space is at a premium, while its beautiful appearance means it enhances rather than detracts from your styling.
-                  </p>
-                  <p>
-                    But don't let the vintage appearance fool you – hidden within this rustic exterior is state-of-the-art photo technology. The professional DSLR camera, ring light, and instant printer deliver results that rival any modern booth, while the natural wood frame creates photos with a distinctive warmth and character.
-                  </p>
-                  <p>
-                    Perfect for barn weddings, garden parties, rustic celebrations, and any event where you want to combine natural aesthetics with modern entertainment. The Wooden Vintage Tripod is particularly beloved by couples planning bohemian, rustic, or outdoor weddings.
-                  </p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
-                  alt="Wooden Vintage Tripod"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          The Wooden Vintage Tripod
+        </h2>
+
+        <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            Clicks amazing professional grade photos with a DSLR camera. We use
+            high quality photo-paper so your prints are safe for life. Capture
+            timeless memories with vintage photo booth hire from ClickPlick.
+          </p>
+
+          <p>
+            Our charming Wooden Vintage Tripod photo booth is the ideal addition
+            to weddings, parties, corporate events, and celebrations. Offering a
+            nostalgic touch, it combines classic retro aesthetics with advanced
+            photographic backdrops, fun props, and customizable photo strip
+            designs.
+          </p>
+
+          <p>
+            Whether you're searching for a vintage photo booth near me or want to
+            add a unique element to your special day, ClickPlick provides
+            hassle-free setup and friendly service to ensure everything runs
+            smoothly.
+          </p>
+
+          <p>
+            Our vintage photo booth hire service allows you to tailor the
+            experience to suit your event’s theme, giving guests the chance to
+            have fun while capturing beautiful moments. With this stylish,
+            high-quality booth, you'll not only entertain your guests but also
+            create lasting memories with printed photos they can take home.
+          </p>
+
+          <p>
+            Let us make your event unforgettable with our vintage photo booth
+            options and excellent service. Rent our Wooden Vintage Tripod photo
+            booth today and let the fun begin!
+          </p>
+        </div>
+      </div>
+
+      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+        <img
+          src="/light/3.png"
+          alt="Wooden Vintage Tripod Photo Booth"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* The Rustic Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -139,7 +166,7 @@ const WoodenTripod = () => {
         </section>
 
         {/* Perfect for Small Spaces */}
-        <section className="py-16 md:py-20 bg-background">
+        {/* <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
@@ -175,71 +202,105 @@ const WoodenTripod = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* What's Included */}
         <section className="py-16 md:py-20 bg-secondary/30">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Image Gallery */}
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
-                    alt="Wooden Vintage Tripod"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
-                      <img
-                        src={`https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=400&auto=format&fit=crop`}
-                        alt={`Wooden Tripod view ${i}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-              {/* Details */}
-              <div>
-                <div className="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-semibold mb-6">
-                  Complete Package
-                </div>
-                
-                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-                  What's Included
-                </h2>
-                
-                <p className="text-muted-foreground mb-6">
-                  Every Wooden Vintage Tripod hire comes complete with everything you need. We've carefully curated a rustic-themed package that complements the booth's natural charm.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
+      {/* Image Gallery */}
+      <div className="space-y-4">
+        <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+          <img
+            src="/light/wo/1.jpg"
+            alt="Wooden Photo Booth"
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">Get a Quote</Link>
-                  </Button>
-                </div>
-              </div>
+        <div className="grid grid-cols-3 gap-4">
+          {["2.jpg", "3.webp", "4.webp"].map((img, index) => (
+            <div key={index} className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src={`/light/wo/${img}`}
+                alt={`Wooden Photo Booth view ${index + 1}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+
+      {/* Details */}
+      <div>
+        <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
+          Complete Package
+        </div>
+
+        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+          Services Included
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          {[
+            "TOTALLY UNLIMITED PRINTS",
+            "TALL STANDING BANNER SIGNALING THE DIRECTION TO BOOTH",
+            "GUEST BOOK (NORMAL)",
+            "WIDE RANGE OF PROPS",
+            "ATTENDANT",
+            "PERSONALIZE WITH TEXT AND LOGO",
+            "GREEN SCREEN",
+            "FILTERS AND PHOTO EFFECTS",
+            "USB WITH DIGITAL COPIES",
+            "CHOICE OF PHOTO LAYOUT",
+            "INSTANTLY DOWNLOAD TO PHONE",
+            "SEND EMAILS",
+            "WHITE OR BLACK BACKDROP",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="text-xl font-semibold text-foreground mb-4">
+          Add On Services
+        </h3>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "CUSTOMIZED PHOTO FRAME",
+            "CUSTOMIZED GUEST BOOK",
+            "OTHER BACKDROPS",
+            "CUSTOMIZED PHOTO PRINTS",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Button size="lg" asChild>
+            <Link to="/book-now">Book This Booth</Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">Get a Quote</Link>
+          </Button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-background">

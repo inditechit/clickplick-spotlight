@@ -79,37 +79,61 @@ const InflatableBooth = () => {
 
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  Maximum Fun, Maximum Impact
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Looking for a photo booth that makes a statement? Our Inflatable Enclosed Booth is impossible to miss! This eye-catching booth combines the classic enclosed photo booth experience with modern technology and vibrant aesthetics.
-                  </p>
-                  <p>
-                    The moment guests see our inflatable booth, they're drawn to its inviting glow. The colour-changing LED lights visible through the walls create an irresistible beacon of fun that gets everyone excited to take part. Once inside, the privacy curtain creates an intimate space where guests can let loose and be themselves.
-                  </p>
-                  <p>
-                    What makes this booth particularly special is its capacity. Unlike traditional enclosed booths that fit 2-3 people, our inflatable design accommodates up to 10 guests at once. That means epic group photos, squad shots, and those chaotic, joyful moments that make the best memories.
-                  </p>
-                  <p>
-                    Built to withstand the demands of busy events, the Inflatable Enclosed Booth is perfect for festivals, garden parties, school events, and anywhere you want to create a fun, high-energy atmosphere. It's also suitable for outdoor use (weather permitting) making it ideal for summer events.
-                  </p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src="https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=800&auto=format&fit=crop"
-                  alt="Inflatable Enclosed Booth"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          The Inflatable Enclosed Photobooth
+        </h2>
+
+        <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <p className="font-semibold text-foreground">
+            Step Inside the Fun – Inflatable Enclosed Photo Booth Experience
+          </p>
+
+          <p>
+            Bring the party to life with our Inflatable Enclosed Photo Booth – a
+            unique, eye-catching feature that adds excitement and unforgettable
+            memories to any event. Measuring 2.5m x 2.5m, this stylish enclosed
+            space offers guests a fun and private photo experience inside a
+            beautifully lit booth.
+          </p>
+
+          <p>
+            The booth features customizable LED lighting, allowing you to match
+            your event’s theme or color palette perfectly. Whether it’s a
+            wedding, birthday, corporate event, or any special celebration, this
+            modern setup creates an immersive and exciting photo experience.
+          </p>
+
+          <p>
+            Enjoy totally unlimited high-quality prints so every guest leaves
+            with a keepsake to cherish. A friendly and professional photobooth
+            attendant is present throughout your event to guide guests, manage
+            the booth, and keep the fun flowing smoothly.
+          </p>
+
+          <p>
+            With its striking design, premium features, and hassle-free setup,
+            the Inflatable Enclosed Photo Booth is the perfect way to elevate
+            your event and keep guests entertained from start to finish.
+          </p>
+        </div>
+      </div>
+
+      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+        <img
+          src="/light/4.png"
+          alt="Inflatable Enclosed Photo Booth"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* The Party Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -139,7 +163,7 @@ const InflatableBooth = () => {
         </section>
 
         {/* Outdoor Ready Section */}
-        <section className="py-16 md:py-20 bg-background">
+        {/* <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
@@ -175,71 +199,98 @@ const InflatableBooth = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* What's Included */}
         <section className="py-16 md:py-20 bg-secondary/30">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Image Gallery */}
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=800&auto=format&fit=crop"
-                    alt="Inflatable Enclosed Booth"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
-                      <img
-                        src={`https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=400&auto=format&fit=crop`}
-                        alt={`Inflatable Booth view ${i}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Details */}
-              <div>
-                <div className="inline-block px-4 py-2 rounded-full bg-celebration/10 text-celebration text-sm font-semibold mb-6">
-                  All-Inclusive Fun
-                </div>
-                
-                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-                  What's Included
-                </h2>
-                
-                <p className="text-muted-foreground mb-6">
-                  Our Inflatable Enclosed Booth hire includes everything you need for a fantastic photo booth experience. The package is designed for maximum fun with no hidden extras.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">Get a Quote</Link>
-                  </Button>
-                </div>
-              </div>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Image Gallery */}
+      <div className="space-y-4">
+        <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+          <img
+            src="/light/in/4.png"
+            alt="Retro White Box Booth"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {["3.png", "2.png", "1.png"].map((img, index) => (
+            <div key={index} className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src={`/light/in/${img}`}
+                alt={`Retro White Box Booth view ${index + 1}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+
+      {/* Details */}
+      <div>
+        <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
+          Complete Package
+        </div>
+        
+        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+          Services Included
+        </h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          {[
+            "TOTALLY UNLIMITED PRINTS",
+            "TALL STANDING BANNER SIGNALING THE DIRECTION TO BOOTH",
+            "GUEST BOOK (NORMAL)",
+            "WIDE RANGE OF PROPS",
+            "ATTENDANT",
+            "PERSONALIZE WITH TEXT AND LOGO",
+            "GREEN SCREEN",
+            "FILTERS AND PHOTO EFFECTS",
+            "USB WITH DIGITAL COPIES",
+            "CHOICE OF PHOTO LAYOUT",
+            "INSTANTLY DOWNLOAD TO PHONE",
+            "SEND EMAILS"
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="text-xl font-semibold text-foreground mb-4">Add On Services</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "CUSTOMIZED PHOTO FRAME",
+            "CUSTOMIZED GUEST BOOK",
+            "OTHER BACKDROPS",
+            "CUSTOMIZED PHOTO PRINTS"
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Button size="lg" asChild>
+            <Link to="/book-now">Book This Booth</Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">Get a Quote</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-background">

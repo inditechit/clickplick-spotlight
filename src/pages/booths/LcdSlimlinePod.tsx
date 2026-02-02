@@ -79,34 +79,44 @@ const LcdSlimlinePod = () => {
 
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  The Ultimate Photo Booth Experience
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    The LCD Screen Slimline Pod represents the perfect fusion of cutting-edge technology and elegant design. Its sleek, contemporary profile makes it an ideal addition to any event space, from grand ballrooms to intimate garden parties.
-                  </p>
-                  <p>
-                    Featuring a large, vibrant LCD touchscreen display, guests can easily navigate through various photo options, choose from a wide selection of digital props and filters, and instantly see their captured moments. The intuitive interface ensures that guests of all ages can enjoy the experience without any assistance.
-                  </p>
-                  <p>
-                    What sets this booth apart is its versatility. Whether you're hosting an elegant wedding reception, a lively birthday celebration, or a professional corporate event, the LCD Slimline Pod adapts seamlessly to your requirements. The sleek white exterior can be customised with branded wraps or left pristine to complement any décor.
-                  </p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"
-                  alt="LCD Screen Slimline Pod"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          THE LCD SCREEN SLIMLINE POD
+        </h2>
+        <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <p className="font-semibold text-lg text-foreground">
+            3 hours for Only £299
+          </p>
+          <p>
+            The LCD Screen Slimline Pod is the ultimate selfie solution for events, blending sleek aesthetics with advanced technology. Featuring a high-resolution LCD screen and HD camera, this modern photo booth is perfect for capturing unforgettable moments at weddings, parties, and corporate functions.
+          </p>
+          <p>
+            A standout feature is the front-facing LCD screen, which allows users to display personalized videos, photos, and messages—making it a truly interactive centerpiece for any occasion. Its compact, stylish design seamlessly fits into any venue while delivering crystal-clear, high-quality images.
+          </p>
+          <p>
+            Designed for effortless use, the Slimline Pod offers a smooth photo-taking experience through intuitive touch-screen controls. Equipped to accommodate large groups, it’s ideal for creating lively and inclusive photo sessions that everyone can enjoy.
+          </p>
+          <p>
+            Whether you're looking to boost brand engagement at a corporate event or create lasting memories at a celebration, the LCD Screen Slimline Pod brings fun, interaction, and professional-grade visuals to every gathering. Make your event stand out with this must-have, all-in-one photo booth experience.
+          </p>
+          <p>
+            The Slimline Pod can also record boomerang GIFs – plus you can share the photos and GIFs digitally by text or email from the pod!
+          </p>
+        </div>
+      </div>
+      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+        <img
+          src="/light/1.png"
+          alt="LCD Screen Slimline Pod"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* How It Works */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -138,67 +148,100 @@ const LcdSlimlinePod = () => {
 
         {/* What's Included */}
         <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Image Gallery */}
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"
-                    alt="LCD Screen Slimline Pod Setup"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
-                      <img
-                        src={`https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=400&auto=format&fit=crop`}
-                        alt={`LCD Pod view ${i}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Details */}
-              <div>
-                <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
-                  Everything You Need
-                </div>
-                
-                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-                  What's Included
-                </h2>
-                
-                <p className="text-muted-foreground mb-6">
-                  Every LCD Slimline Pod hire comes complete with everything you need for a fantastic photo booth experience. No hidden costs, no surprises.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">Get a Quote</Link>
-                  </Button>
-                </div>
-              </div>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Image Slider / Gallery */}
+      <div className="space-y-4">
+        <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+          <img
+            src="/light/led/8.jpg"
+            alt="LCD Slimline Pod Main"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="grid grid-cols-4 gap-4">
+          {[8, 7, 6, 5, 4, 3, 2, 1].map((i) => (
+            <div key={i} className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src={`/light/led/${i}.jpg`}
+                alt={`LCD Pod view ${i}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+
+      {/* Details / Services */}
+      <div>
+        <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+          Everything You Need
+        </div>
+
+        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+          Services Included
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          {[
+            "GUEST BOOK PHOTO ALBUM",
+            "UNLIMITED PRINTS",
+            "ANIMATED GIFS OF YOUR PHOTOS",
+            "DIGITAL BACKDROP",
+            "PARTY PROPS",
+            "ADD TEXT TO PRINTS",
+            "ADD LOGO/BRANDING TO PRINTS",
+            "EMAIL/AIRDROP PHOTO SHARING",
+            "PHOTO FILTERS",
+            "DELIVERY, INSTALLATION & COLLECTION",
+            "BOOMERANGS",
+            "VIDEO MESSAGE RECORDING",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="text-2xl font-heading font-bold text-foreground mb-4 mt-8">
+          Add-On Services
+        </h3>
+        <p className="text-muted-foreground mb-4">(Get in touch to book)</p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "CUSTOMIZED GUEST BOOK PHOTO ALBUM",
+            "PHOTOBOOTH ATTENDANT",
+            "BACKDROP",
+            "CUSTOMIZED PHOTO FRAME",
+            "CUSTOMIZED PHOTO PRINTS",
+            "LCD SCREEN BRANDING (VIDEOS/PHOTOS)",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Button size="lg" asChild>
+            <Link to="/book-now">Book This Booth</Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">Get a Quote</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">

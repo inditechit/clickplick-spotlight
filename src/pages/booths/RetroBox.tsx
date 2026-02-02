@@ -78,38 +78,39 @@ const RetroBox = () => {
         </section>
 
         {/* Detailed Description */}
-        <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  A Trip Down Memory Lane
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Remember the excitement of squeezing into a photo booth at the seaside arcade or shopping centre? The anticipation as you waited for the flash, the joy of collecting your photo strips? Our Retro Box captures all that nostalgic charm while delivering the quality and reliability of modern technology.
-                  </p>
-                  <p>
-                    The Retro Box is a lovingly crafted homage to the classic photo booths of the 1960s, 70s, and 80s. Its vintage exterior immediately transports guests to a bygone era, while the state-of-the-art equipment inside ensures every photo is crisp, clear, and beautifully lit.
-                  </p>
-                  <p>
-                    What makes the Retro Box truly special is the authentic photo strip format. These classic 2x6 strips feature multiple poses and look exactly like the cherished photo booth memories many of us treasure from our youth. They're perfect keepsakes that guests will want to display on fridges, pinboards, and in wallets for years to come.
-                  </p>
-                  <p>
-                    Available with optional vintage filters including classic black and white, warm sepia tones, or vibrant retro colour processing, the Retro Box lets you customise the look to perfectly match your event theme.
-                  </p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=800&auto=format&fit=crop"
-                  alt="Retro Box Booth"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+       <section className="py-16 md:py-20 bg-background">
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          The Retro White Box Booth
+        </h2>
+        <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            Clicks amazing professional grade photos with a DSLR camera. We use high quality photo paper so your prints are safe for life. Step back in time with our retro-inspired white box photobooth, a fusion of classic charm and cutting-edge technology.
+          </p>
+          <p>
+            Encased in pristine white, this photobooth exudes elegance and nostalgia, invoking memories of vintage snapshots while delivering modern-day magic. At its core lies a DSLR camera, capturing every moment with pristine clarity and precision, ensuring that each image preserves the essence of your experience in exquisite detail.
+          </p>
+          <p>
+            Step inside, strike a pose, and watch as the magic unfolds. Whether it's a wedding, corporate event, or birthday celebration, our retro white box photobooth promises to capture memories that transcend time, leaving you with cherished mementos to treasure for years to come.
+          </p>
+          <p>
+            Our unlimited prints truly mean unlimited. If there are 8 people in the photo, all 8 will receive a print! Plus, we’ll include an extra copy for the guest book, so your guests can leave a special message beside their photo.
+          </p>
+        </div>
+      </div>
+      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+        <img
+          src="/light/2.png"
+          alt="Retro White Box Booth"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* The Retro Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -139,68 +140,96 @@ const RetroBox = () => {
         </section>
 
         {/* What's Included */}
-        <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Image Gallery */}
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=800&auto=format&fit=crop"
-                    alt="Retro Box Booth"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
-                      <img
-                        src={`https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=400&auto=format&fit=crop`}
-                        alt={`Retro Box view ${i}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Details */}
-              <div>
-                <div className="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-semibold mb-6">
-                  Complete Package
-                </div>
-                
-                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-                  What's Included
-                </h2>
-                
-                <p className="text-muted-foreground mb-6">
-                  Our Retro Box hire includes everything for an authentic vintage photo booth experience. From the carefully curated props to the custom photo strips, every detail is designed to transport your guests back in time.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">Get a Quote</Link>
-                  </Button>
-                </div>
-              </div>
+      <section className="py-16 md:py-20 bg-background">
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Image Gallery */}
+      <div className="space-y-4">
+        <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+          <img
+            src="/light/retro/4.jpeg"
+            alt="Retro White Box Booth"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {["3.jpeg", "2.jpg", "1.jpg"].map((img, index) => (
+            <div key={index} className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src={`/light/retro/${img}`}
+                alt={`Retro Booth view ${index + 1}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+
+      {/* Details */}
+      <div>
+        <div className="inline-block px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-semibold mb-6">
+          Complete Package
+        </div>
+        
+        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+          Services Included
+        </h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          {[
+            "TOTALLY UNLIMITED PRINTS",
+            "TALL STANDING BANNER SIGNALING THE DIRECTION TO BOOTH",
+            "GUEST BOOK (NORMAL)",
+            "WIDE RANGE OF PROPS",
+            "ATTENDANT",
+            "PERSONALIZE WITH TEXT AND LOGO",
+            "GREEN SCREEN",
+            "FILTERS AND PHOTO EFFECTS",
+            "USB WITH DIGITAL COPIES",
+            "CHOICE OF PHOTO LAYOUT",
+            "INSTANTLY DOWNLOAD TO PHONE",
+            "SEND EMAILS",
+            "WHITE OR BLACK BACKDROP"
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="text-xl font-semibold text-foreground mb-4">Add On Services</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "CUSTOMIZED PHOTO FRAME",
+            "CUSTOMIZED GUEST BOOK",
+            "OTHER BACKDROPS",
+            "CUSTOMIZED PHOTO PRINTS"
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Button size="lg" asChild>
+            <Link to="/book-now">Book This Booth</Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">Get a Quote</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">

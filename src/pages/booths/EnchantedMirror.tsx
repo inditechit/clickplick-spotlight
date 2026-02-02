@@ -79,37 +79,34 @@ const EnchantedMirror = () => {
 
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  Where Elegance Meets Entertainment
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    The Enchanted Mirror X Selfie represents the pinnacle of photo booth luxury. Designed specifically for couples and event planners who demand nothing but the best, this premium booth delivers an experience that matches even the most opulent celebrations.
-                  </p>
-                  <p>
-                    From the moment guests approach its gleaming surface, they're greeted by sophisticated animations and a charming voice that guides them through an unforgettable interactive experience. The Enchanted Mirror doesn't just take photos – it creates a moment of theatre that guests will remember long after the event.
-                  </p>
-                  <p>
-                    What sets the Enchanted Mirror X Selfie apart is its attention to detail. The premium finish, elegant frame design, and seamless technology integration make it a stunning focal point that enhances rather than detracts from your venue's ambiance. It's photo booth entertainment elevated to an art form.
-                  </p>
-                  <p>
-                    Perfect for luxury weddings, exclusive corporate events, award ceremonies, and any occasion where only the finest will do. The Enchanted Mirror X Selfie is more than a photo booth – it's a statement of sophistication.
-                  </p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop"
-                  alt="Enchanted Mirror X Selfie"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          The Enchanted Mirror X Selfie Booth
+        </h2>
+        <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            Clicks amazing professional grade photos with a DSLR camera. We use high quality photo paper so your prints are safe for life. Introducing the ultimate fusion of style and technology: the Magic Mirror X Selfie Pod! Step into the future of photo booths with this sleek and innovative design, combining the elegance of a mirror with the functionality of a selfie pod.
+          </p>
+          <p>
+            Say goodbye to bulky setups and hello to seamless elegance, as this cutting-edge device effortlessly captures your best moments with style.
+          </p>
+          <p>
+            Our unlimited prints truly mean unlimited. If there are 8 people in the photo, all 8 will receive a print! Plus, we’ll include an extra copy for the guest book, so your guests can leave a special message beside their photo.
+          </p>
+        </div>
+      </div>
+      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+        <img
+          src="/light/3.jpg"
+          alt="Enchanted Mirror X Selfie Booth"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* The Enchanted Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -139,7 +136,7 @@ const EnchantedMirror = () => {
         </section>
 
         {/* Green Screen Feature */}
-        <section className="py-16 md:py-20 bg-background">
+        {/* <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="order-2 lg:order-1">
@@ -172,71 +169,96 @@ const EnchantedMirror = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* What's Included */}
-        <section className="py-16 md:py-20 bg-secondary/30">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Image Gallery */}
-              <div className="space-y-4">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop"
-                    alt="Enchanted Mirror X Selfie"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
-                      <img
-                        src={`https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=400&auto=format&fit=crop`}
-                        alt={`Enchanted Mirror view ${i}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Details */}
-              <div>
-                <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-                  Premium Package
-                </div>
-                
-                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-                  What's Included
-                </h2>
-                
-                <p className="text-muted-foreground mb-6">
-                  Every Enchanted Mirror X Selfie hire includes our complete luxury package. From the premium print quality to the elegant attendant service, every detail is designed to exceed expectations.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">Get a Quote</Link>
-                  </Button>
-                </div>
-              </div>
+      <section className="py-16 md:py-20 bg-secondary/30">
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Image Gallery */}
+      <div className="space-y-4">
+        <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+          <img
+            src="/light/en/1.jpeg"
+            alt="Enchanted Mirror X Selfie Booth"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {["3.jpeg", "2.jpeg", "4.jpg"].map((img, index) => (
+            <div key={index} className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src={`/light/en/${img}`}
+                alt={`Enchanted Mirror view ${index + 1}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+
+      {/* Details */}
+      <div>
+        <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
+          Premium Package
+        </div>
+        
+        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+          Services Included
+        </h2>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          {[
+            "WHITE OR BLACK BACKDROP",
+            "GUEST BOOK",
+            "UNLIMITED PRINT OUTS",
+            "INSTANTLY DOWNLOAD TO PHONE",
+            "USB DATA TRANSFER AT END OF EVENT",
+            "PHOTOBOOTH ATTENDANT",
+            "WIDE RANGE OF PROPS",
+            "CHOICE OF PHOTO LAYOUT (2x6 OR 4x6)",
+            "PERSONALIZED TEXT OR LOGO",
+            "TALL STANDING BANNER SIGNALING TOWARDS PHOTO BOOTH"
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="text-xl font-semibold text-foreground mb-4">Add On Services</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "CUSTOMIZED GUEST BOOK",
+            "CUSTOMIZED PHOTO FRAMES",
+            "CUSTOM BACKDROPS",
+            "CUSTOMIZED PHOTO PRINTS"
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Button size="lg" asChild>
+            <Link to="/book-now">Book This Booth</Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">Get a Quote</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-background">

@@ -78,38 +78,39 @@ const MagicMirror = () => {
         </section>
 
         {/* Detailed Description */}
-        <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  Mirror, Mirror on the Wall...
-                </h2>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    Step into a world of enchantment with our Magic Mirror photo booth. This isn't just a photo booth – it's an interactive experience that captivates guests from the moment they approach its gleaming surface.
-                  </p>
-                  <p>
-                    The Magic Mirror features a stunning full-length mirror design that conceals cutting-edge technology within its elegant frame. When activated, the mirror comes alive with beautiful animations, playful prompts, and voice guidance that leads guests through an unforgettable photo experience.
-                  </p>
-                  <p>
-                    What makes the Magic Mirror truly special is its ability to engage guests in ways traditional booths cannot. From the moment they touch the screen to sign their name, add emoji stamps, or record a video message, your guests become part of the magic. It's interactive entertainment that creates lasting memories.
-                  </p>
-                  <p>
-                    Perfect for weddings, proms, corporate galas, and any event where you want to create that 'wow' factor. The Magic Mirror isn't just a photo booth – it's a conversation starter and a centrepiece that elevates any celebration.
-                  </p>
-                </div>
-              </div>
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop"
-                  alt="Magic Mirror Booth"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+       <section className="py-16 md:py-20 bg-background">
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          THE AUGMENTED REALITY MAGIC MIRROR PHOTOBOOTH
+        </h2>
+        <div className="space-y-4 text-muted-foreground leading-relaxed">
+          <p>
+            Clicks amazing professional grade photos with a DSLR camera. We use high-quality photo paper so your prints are safe for life. Welcome to ClickPlick and our fantastic Magic Mirror Photo Booth services! If you're looking to elevate your event with something truly unique, our Magic Mirror Photo Booth Hire is the perfect choice. This innovative and interactive entertainment option brings an unforgettable experience to your party, wedding, or corporate event.
+          </p>
+          <p>
+            Our Magic Selfie Mirror is the brand-new must-have attraction, providing great fun for your guests. This touch-sensitive full-length mirror allows groups of friends to enjoy hilarious photo opportunities. The Magic Mirror Booth offers full instructions, prompting you to pose before capturing the perfect picture. As an added bonus, the mirror will interact with you, displaying amusing phrases on its interactive screen, ensuring laughter all around.
+          </p>
+          <p>
+            Whether you’re searching for a magic mirror photo booth near me or planning to hire a magic mirror photo booth, ClickPlick has everything you need to elevate your event. Our magic mirror hire service combines elegance and fun, offering your guests an interactive and unforgettable experience. From weddings to corporate events, this stunning addition is sure to create lasting memories for everyone.
+          </p>
+          <p>
+            Excited to make your event unforgettable? Book your magic mirror photo booth today with ClickPlick!
+          </p>
+        </div>
+      </div>
+      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+        <img
+          src="/light/magic.jpg"
+          alt="Magic Mirror Booth"
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
 
         {/* The Magic Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -140,67 +141,83 @@ const MagicMirror = () => {
 
         {/* What's Included */}
         <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Image Gallery */}
-              <div className="space-y-4">
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-start">
+      {/* Image Gallery */}
+      <div className="space-y-4">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop"
-                    alt="Magic Mirror Booth"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          <img
+            src="/light/magic/4.jpeg"
+            alt="Magic Mirror Booth"
+            className="w-full h-full object-cover"
+          />
+        </div>
                 <div className="grid grid-cols-3 gap-4">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="aspect-square rounded-lg overflow-hidden">
-                      <img
-                        src={`https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=400&auto=format&fit=crop`}
-                        alt={`Magic Mirror view ${i}`}
-                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Details */}
-              <div>
-                <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-                  All-Inclusive Package
-                </div>
-                
-                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-                  What's Included
-                </h2>
-                
-                <p className="text-muted-foreground mb-6">
-                  Every Magic Mirror hire includes our complete package with all the features that make this booth so special. Everything is included in the price – no hidden extras.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                  {includes.map((item) => (
-                    <div key={item} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Check className="w-4 h-4 text-primary" />
-                      </div>
-                      <span className="text-foreground">{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild>
-                    <Link to="/contact">Get a Quote</Link>
-                  </Button>
-                </div>
-              </div>
+                 {["3.jpg", "2.jpeg", "1.jpeg"].map((img, index) => (
+            <div key={index} className="aspect-square rounded-lg overflow-hidden">
+              <img
+                src={`/light/magic/${img}`}
+                alt={`Magic Mirror view ${index + 1}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </section>
+          ))}
+                </div>
+              </div>
+      {/* Details */}
+      <div>
+        <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
+          All-Inclusive Package
+        </div>
+
+        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+          Services Included
+        </h2>
+
+        <p className="text-muted-foreground mb-6">
+          Every Magic Mirror hire comes with everything you need for an unforgettable experience. No hidden costs, no surprises. Here’s what’s included:
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          {[
+            "GUEST BOOK PHOTO ALBUM",
+            "UNLIMITED PRINTS",
+            "DIGITAL COPIES OF PICTURES TAKEN DURING THE HIRE",
+            "ANIMATED GIFS OF YOUR PHOTOS",
+            "EMAIL AND AIRDROP PHOTOS",
+            "PHOTOBOOTH ATTENDANT",
+            "INSTANT PRINTS (20 SECONDS)",
+            "USE OF A WIDE RANGE OF PROPS",
+            "PERSONALIZED TEXT AND LOGO",
+            "SEND EMAILS",
+            "FILTERS AND PHOTO EFFECTS",
+            "WHITE OR BLACK BACKDROP",
+            "CUSTOMIZED PHOTO FRAME",
+            "CUSTOMIZED GUEST BOOK PHOTO ALBUM",
+            "CUSTOMIZED BACKGROUND",
+            "CUSTOMIZED PHOTO PRINTS",
+          ].map((item) => (
+            <div key={item} className="flex items-center gap-3">
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Check className="w-4 h-4 text-primary" />
+              </div>
+              <span className="text-foreground">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap gap-4">
+          <Button size="lg" asChild>
+            <Link to="/book-now">Book This Booth</Link>
+          </Button>
+          <Button variant="outline" size="lg" asChild>
+            <Link to="/contact">Get a Quote</Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">
