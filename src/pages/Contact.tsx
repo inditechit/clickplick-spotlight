@@ -12,7 +12,7 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Phone',
-    details: '07123 456789',
+    details: '+44 7931-983-588',
     link: 'tel:+447123456789',
   },
   {
@@ -24,7 +24,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Location',
-    details: 'London, United Kingdom',
+    details: 'Syon Gardrens, Newport Pagnell, Milton Keynes',
     link: null,
   },
   {
@@ -193,7 +193,7 @@ const Contact = () => {
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="07123 456789"
+                        placeholder="+44 7931-983-588"
                         className="h-12"
                       />
                     </div>

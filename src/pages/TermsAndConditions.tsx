@@ -98,7 +98,7 @@ const TermsAndConditions = () => {
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
                     For questions about these terms, please contact us at 
-                    info@clickplick.co.uk or call 07123 456789.
+                    info@clickplick.co.uk or call +44 7931-983-588.
                   </p>
                 </div>
               </div>

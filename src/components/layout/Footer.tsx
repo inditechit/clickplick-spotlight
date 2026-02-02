@@ -118,7 +118,7 @@ export function Footer() {
               <li>
                 <a href="tel:+447123456789" className="flex items-start gap-3 text-white/70 hover:text-accent transition-colors">
                   <Phone className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>07123 456789</span>
+                  <span>+44 7931-983-588</span>
                 </a>
               </li>
               <li>
@@ -130,7 +130,7 @@ export function Footer() {
               <li>
                 <div className="flex items-start gap-3 text-white/70">
                   <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>London, United Kingdom</span>
+                  <span>Syon Gardrens, Newport Pagnell, Milton Keynes</span>
                 </div>
               </li>
             </ul>

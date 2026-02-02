@@ -10,53 +10,70 @@ import {
 } from '@/components/ui/accordion';
 
 const faqs = [
-  {
-    question: 'What is included in the photo booth hire package?',
-    answer: 'Our packages include the photo booth of your choice, a professional booth attendant, unlimited prints for all guests, digital copies of all photos, a selection of fun props, custom photo templates with your event details, and free setup and collection.',
+ {
+    question: "What’s included in your photobooth hire packages?",
+    answer: `All of our full-service photobooth packages include:
+1. Totally unlimited prints – every person in the photo gets a print, plus one extra for the guest book
+2. A free guest book, with glue sticks and pens included
+3. GIFs and fun filters available on all booths
+4. Instant sharing of photos via Airdrop or Email
+5. A DSLR professional-grade camera for studio-quality photos
+6. A photo backdrop (provided with all booths except the LCD Slimline Pod)
+7. A USB with all photos from the event (excluded from LCD Slimline Pod package)
+8. A tall standing banner to direct guests to the booth
+9. A friendly photobooth attendant on-site throughout the event (except with the LCD Slimline Pod)`
   },
   {
-    question: 'How many prints can guests have?',
-    answer: 'All our packages include unlimited prints! Every guest can have as many photos as they like throughout your event. We believe everyone should take home memories from your special day.',
+    question: "What does “unlimited prints” mean?",
+    answer: "It means exactly that—unlimited use of the booth during your hire! Every guest in the photo receives their own copy, and we print one extra copy for your guest book."
   },
   {
-    question: 'Can photos be shared digitally?',
-    answer: 'Yes! Our booths offer instant digital sharing. Guests can email photos to themselves, share directly to social media, or send via text message. We also provide a USB drive with all photos after the event.',
+    question: "Is a guest book included?",
+    answer: "Yes! We provide a complimentary guest book with glue sticks and pens so your guests can add their photos and leave personal messages. Our booth attendant helps manage this throughout the event."
   },
   {
-    question: 'Do you provide a booth attendant?',
-    answer: 'Yes, every booking includes a friendly, professional booth attendant who will set up the booth, assist your guests, manage the props, and ensure everything runs smoothly throughout your event.',
+    question: "Can guests share their photos digitally?",
+    answer: "Absolutely. All our booths allow guests to instantly send their photos via Airdrop or Email, right from the booth interface."
   },
   {
-    question: 'What backup options do you have?',
-    answer: 'We take reliability seriously. All photos are backed up in real-time to the cloud. We also provide a USB drive after the event and can set up an online gallery for easy access and downloads.',
+    question: "Are filters and GIFs available?",
+    answer: "Yes! Every photobooth comes equipped with fun filters and the ability to create GIFs—great for creating memorable, shareable content."
   },
   {
-    question: 'How much space does the photo booth need?',
-    answer: 'Space requirements vary by booth type. Generally, we need approximately 8ft x 8ft for most booths. We\'ll confirm exact requirements when you book and can advise on the best booth for your venue.',
+    question: "Will there be someone to help with the booth during the event?",
+    answer: "Yes, a dedicated booth attendant is always present to assist guests and maintain smooth operation—except with the LCD Slimline Pod, which is a self-service booth."
   },
   {
-    question: 'Can we customize the photo template?',
-    answer: 'Absolutely! We create custom photo templates for every event. You can include your names, event date, logos, custom messages, and choose colors and designs that match your theme.',
+    question: "Do all booths come with a backdrop?",
+    answer: "All of our booths include a high-quality backdrop, except for the LCD Slimline Pod, which is designed for minimal setups or tight spaces."
   },
   {
-    question: 'Do you offer green screen backgrounds?',
-    answer: 'Yes, green screen is available with our LCD Slimline Pod and other select booths. Guests can choose from a variety of fun backgrounds or we can create custom backgrounds for your event.',
+    question: "Will we receive digital copies of all the photos?",
+    answer: "Yes, at the end of your event, you’ll receive a USB with all digital images captured—except for the LCD Slimline Pod, which does not include USB transfer."
   },
   {
-    question: 'What areas do you cover?',
-    answer: 'We cover all of London and the surrounding areas including Kent, Essex, Surrey, Hertfordshire, and beyond. Contact us with your postcode for a quote including any travel fees.',
+    question: "What kind of camera do you use in the booths?",
+    answer: "We only use professional DSLR cameras in all our booths to deliver crisp, high-resolution photos every time."
   },
   {
-    question: 'How far in advance should I book?',
-    answer: 'We recommend booking as early as possible, especially for peak dates like Saturdays and holiday periods. However, we sometimes have last-minute availability, so always reach out to check!',
+    question: "How will guests find the photobooth?",
+    answer: "We provide a tall standing branded banner at the event to clearly signal where your photobooth is located."
   },
   {
-    question: 'Can you accommodate outdoor events?',
-    answer: 'Yes, we can set up at outdoor events with a few considerations. We\'ll need access to power, protection from rain (a marquee or tent), and a stable, flat surface for the booth.',
+    question: "Are there any venue requirements for setup?",
+    answer: "Yes. Our Original Magic Mirror requires step-free access to the venue due to its size and mobility.\nAll other photobooths can be installed in venues with stairs or steps."
   },
   {
-    question: 'What payment methods do you accept?',
-    answer: 'We accept bank transfers, credit/debit cards, and PayPal. We require a deposit to secure your date, with the balance due 7 days before your event.',
+    question: "What is the LCD Slimline Pod and what makes it special?",
+    answer: "The LCD Slimline Pod is a sleek, compact photo booth featuring a large front-facing LCD screen. This screen can be branded with any image or video, making it ideal for product launches and corporate activations.\nIt’s a self-service booth without an attendant, backdrop, or USB output—but perfect for modern, high-traffic events."
+  },
+  {
+    question: "Do you offer branding options for corporate or branded events?",
+    answer: "Yes! We specialize in full photobooth branding for corporate clients and branded experiences. You can customize:\n1. The booth’s start screen\n2. The photo print layout\n3. The backdrop design\n4. The guest book cover\n5. Even selfie frames and signage\nPerfect for brand activations, marketing campaigns, and company parties."
+  },
+  {
+    question: "What types of events do you cover?",
+    answer: "We cover weddings, birthday parties, corporate and university events, private parties, and community events, providing memorable experiences with high-quality prints, digital sharing, and fun features like GIFs and filters."
   },
 ];
 

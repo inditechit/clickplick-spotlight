@@ -150,7 +150,7 @@ const BookNow = () => {
                             type="tel"
                             value={formData.phone}
                             onChange={handleChange}
-                            placeholder="07123 456789"
+                            placeholder="+44 7931-983-588"
                             className="pl-11 h-12"
                             required
                           />

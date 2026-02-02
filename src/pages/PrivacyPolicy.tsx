@@ -86,7 +86,7 @@ const PrivacyPolicy = () => {
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
                     If you have any questions about this Privacy Policy, please contact us at 
-                    info@clickplick.co.uk or call us at 07123 456789.
+                    info@clickplick.co.uk or call us at +44 7931-983-588.
                   </p>
                 </div>
               </div>

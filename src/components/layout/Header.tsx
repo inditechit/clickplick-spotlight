@@ -126,7 +126,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <a href="tel:+447123456789" className="flex items-center gap-2 font-medium text-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
-              <span>07123 456789</span>
+              <span>+44 7931-983-588</span>
             </a>
             <Button variant="accent" asChild>
               <Link to="/book-now">Book Now</Link>
@@ -199,7 +199,7 @@ export function Header() {
             <div className="pt-4 border-t border-border space-y-3">
               <a href="tel:+447123456789" className="flex items-center gap-2 px-4 py-2 text-foreground">
                 <Phone className="w-4 h-4" />
-                <span>07123 456789</span>
+                <span>+44 7931-983-588</span>
               </a>
               <Button variant="accent" className="w-full" asChild>
                 <Link to="/book-now">Book Now</Link>

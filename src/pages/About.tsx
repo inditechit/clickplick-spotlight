@@ -56,80 +56,129 @@ const About = () => {
         </section>
 
         {/* Story Section */}
-        <section className="py-20 md:py-28 bg-background">
-          <div className="section-container">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-                  From a Simple Idea to{' '}
-                  <span className="gradient-text">500+ Events</span>
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  ClickPlick UK started with a simple vision: to bring the joy of photo booths 
-                  to events of all sizes across the UK. What began as a passion project has grown 
-                  into one of the most trusted photo booth hire companies in the country.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  Over the years, we've had the privilege of being part of countless weddings, 
-                  corporate events, birthday parties, and celebrations. Each event has taught us 
-                  something new and helped us perfect our craft.
-                </p>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  Today, we offer a diverse range of photo booths to suit every style and budget, 
-                  backed by a team of dedicated professionals who share our passion for creating 
-                  unforgettable memories.
-                </p>
-                <Button variant="accent" size="lg" asChild>
-                  <Link to="/contact">Get In Touch</Link>
-                </Button>
-              </div>
-              <div className="relative">
-                <div className="aspect-square rounded-2xl overflow-hidden shadow-elevated">
-                  <img
-                    src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop"
-                    alt="ClickPlick team at an event"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-8 -left-8 p-6 bg-card rounded-xl shadow-elevated border border-border">
-                  <div className="text-4xl font-heading font-bold gradient-text mb-1">8+</div>
-                  <div className="text-sm text-muted-foreground">Years Experience</div>
-                </div>
-              </div>
-            </div>
+       <section className="py-20 md:py-28 bg-background">
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      {/* Left Content */}
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+          About <span className="gradient-text">ClickPlick Photobooths</span>
+        </h2>
+
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Welcome to <strong>ClickPlick Photobooths</strong>! At ClickPlick, we're not just
+          capturing moments — we're setting trends.
+        </p>
+
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          Inspired by the ever-evolving world of social media and the excitement of capturing
+          life’s best moments in style, we’ve created a photobooth experience like no other.
+        </p>
+
+        <p className="text-muted-foreground leading-relaxed mb-8">
+          From stylish setups to seamless experiences, our goal is to help you and your guests
+          create memories that are fun, shareable, and truly unforgettable.
+        </p>
+
+        <Button variant="accent" size="lg" asChild>
+          <Link to="/contact">Get In Touch</Link>
+        </Button>
+      </div>
+
+      {/* Right Image */}
+      <div className="relative">
+        <div className="aspect-square rounded-2xl overflow-hidden shadow-elevated">
+          <img
+            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop"
+            alt="ClickPlick Photobooths at an event"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="absolute -bottom-8 -left-8 p-6 bg-card rounded-xl shadow-elevated border border-border">
+          <div className="text-4xl font-heading font-bold gradient-text mb-1">
+            Trend-Driven
           </div>
-        </section>
+          <div className="text-sm text-muted-foreground">
+            Modern Photo Booth Experiences
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* Values Section */}
-        <section className="py-20 md:py-28 bg-secondary/30">
-          <div className="section-container">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
-                Our Values
-              </span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-                What Drives{' '}
-                <span className="gradient-text">Everything We Do</span>
-              </h2>
-            </div>
+      <section className="py-20 md:py-28 bg-secondary/30">
+  <div className="section-container">
+    
+    {/* Heading */}
+    <div className="text-center max-w-3xl mx-auto mb-16">
+      <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
+        Our Story
+      </span>
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
+        What Makes <span className="gradient-text">ClickPlick Different</span>
+      </h2>
+    </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value) => (
-                <div key={value.title} className="p-6 rounded-2xl bg-card border border-border card-hover">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
-                    <value.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-lg font-heading font-bold text-foreground mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+    {/* Cards */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      {/* OUR JOURNEY */}
+      <div className="p-6 rounded-2xl bg-card border border-border card-hover">
+        <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
+          <span className="text-white font-bold text-lg">01</span>
+        </div>
+        <h3 className="text-lg font-heading font-bold text-foreground mb-2">
+          Our Journey
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Our journey began with a simple idea: to merge the timeless charm of traditional
+          photobooths with the latest trends in technology and design. The result is an
+          immersive and interactive experience, perfect for weddings, corporate events,
+          birthday parties, and brand activations.
+        </p>
+      </div>
+
+      {/* WHAT SETS US APART */}
+      <div className="p-6 rounded-2xl bg-card border border-border card-hover">
+        <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
+          <span className="text-white font-bold text-lg">02</span>
+        </div>
+        <h3 className="text-lg font-heading font-bold text-foreground mb-2">
+          What Sets Us Apart
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          We stay ahead of the curve with sleek modern designs and cutting-edge features
+          like augmented reality filters and instant social media sharing. But it’s not
+          just about technology — it’s about creating moments and memories that truly matter.
+        </p>
+      </div>
+
+      {/* ABOUT OUR TEAM */}
+      <div className="p-6 rounded-2xl bg-card border border-border card-hover">
+        <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center mb-4">
+          <span className="text-white font-bold text-lg">03</span>
+        </div>
+        <h3 className="text-lg font-heading font-bold text-foreground mb-2">
+          About Our Team
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Our team of experienced professionals is dedicated to making every moment inside
+          the booth full of laughter, joy, and unforgettable memories. At ClickPlick
+          Photobooths, it’s not just about renting a booth — it’s about creating fun
+          memories that last forever.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
         {/* Mission Section */}
         <section className="py-20 md:py-28 bg-background">
