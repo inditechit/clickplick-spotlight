@@ -27,11 +27,11 @@ const includes = [
 ];
 
 const specifications = [
-  { label: 'Footprint', value: '2.4m x 2.4m' },
-  { label: 'Height', value: '2.4m' },
-  { label: 'Guest Capacity', value: '1-10 guests' },
-  { label: 'Setup Time', value: '45 minutes' },
-  { label: 'Power Required', value: 'Standard 13A socket' },
+  { label: 'Footprint', value: '2.0m x 2.0m' },
+  // { label: 'Height', value: '2.4m' },
+  { label: 'Guest Capacity', value: '15-20 guests' },
+  { label: 'Setup Time', value: '90 minutes' },
+  { label: 'Power Required', value: 'Standard socket' },
 ];
 
 const idealEvents = [

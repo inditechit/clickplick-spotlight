@@ -44,8 +44,8 @@ const About = () => {
                 Our Story
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-                Creating Memories{' '}
-                <span className="gradient-text-gold">Since 2015</span>
+                Creating Beautiful  Memories{' '}
+                {/* <span className="gradient-text-gold">Since 2015</span> */}
               </h1>
               <p className="text-xl text-white/80 leading-relaxed">
                 ClickPlick UK has been bringing joy to events across the United Kingdom, 
@@ -88,22 +88,27 @@ const About = () => {
 
       {/* Right Image */}
       <div className="relative">
-        <div className="aspect-square rounded-2xl overflow-hidden shadow-elevated">
-          <img
-            src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop"
-            alt="ClickPlick Photobooths at an event"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <div className="aspect-square rounded-2xl overflow-hidden shadow-elevated bg-black">
+  <video
+    src="/20251026_132438_474_1x.mp4"
+    className="w-full h-full object-cover"
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+    Your browser does not support the video tag.
+  </video>
+</div>
 
-        <div className="absolute -bottom-8 -left-8 p-6 bg-card rounded-xl shadow-elevated border border-border">
+        {/* <div className="absolute -bottom-8 -left-8 p-6 bg-card rounded-xl shadow-elevated border border-border">
           <div className="text-4xl font-heading font-bold gradient-text mb-1">
             Trend-Driven
           </div>
           <div className="text-sm text-muted-foreground">
             Modern Photo Booth Experiences
           </div>
-        </div>
+        </div> */}
       </div>
 
     </div>

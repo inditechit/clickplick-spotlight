@@ -28,10 +28,10 @@ const includes = [
 
 const specifications = [
   { label: 'Footprint', value: '1.4m x 1.4m' },
-  { label: 'Height', value: '2m' },
-  { label: 'Guest Capacity', value: '1-6 guests' },
+  // { label: 'Height', value: '2m' },
+  { label: 'Guest Capacity', value: '15-20 guests' },
   { label: 'Setup Time', value: '75 minutes' },
-  { label: 'Power Required', value: 'Standard 13A socket' },
+  { label: 'Power Required', value: 'Standard socket' },
 ];
 
 const idealEvents = [
@@ -321,7 +321,7 @@ const EnchantedMirror = () => {
                   ))}
                 </div>
                 <p className="text-muted-foreground mt-6 text-sm">
-                  We've provided the Enchanted Mirror X Selfie for luxury weddings at 5-star venues, Fortune 500 corporate events, celebrity parties, and exclusive private celebrations.
+                  {/* We've provided the Enchanted Mirror X Selfie for luxury weddings at 5-star venues, Fortune 500 corporate events, celebrity parties, and exclusive private celebrations. */}
                 </p>
               </div>
             </div>

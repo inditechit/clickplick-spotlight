@@ -3,16 +3,45 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Camera, Smartphone, Printer, Sparkles, Users, Clock, Maximize, Star, Heart, Briefcase, GraduationCap, PartyPopper } from 'lucide-react';
+import React, { useState, useEffect } from "react";
 
 const features = [
-  { icon: Camera, title: 'DSLR Camera', description: 'Professional quality photos every time with our high-end Canon DSLR camera system' },
-  { icon: Smartphone, title: 'Digital Sharing', description: 'Instant share to social media via email, SMS, or QR code' },
-  { icon: Printer, title: 'Instant Prints', description: 'Unlimited high-quality 6x4 or 2x6 strip prints on premium photo paper' },
-  { icon: Sparkles, title: 'Custom Overlays', description: 'Personalized designs with your names, date, and event branding' },
+  { icon: Camera, title: 'HD Camera', description: 'Professional quality photos every time with our high-end Canon HD camera system' },
+  { icon: Smartphone, title: 'Digital Sharing', description: 'Instant share to social media via email, AirDrop, or QR code' },
+  { icon: Printer, title: 'Instant Prints', description: 'Unlimited high-quality 2x6 strip prints on premium photo paper' },
+  { icon: Sparkles, title: 'Custom Overlays', description: 'Personalized designs with your names, date, logo, and event branding' },
+];
+const sliderImages = [
+  "/slider/12.jpg",
+  "/slider/11.jpg",
+  "/slider/10.jpg",
+  "/slider/9.jpg",
+  "/slider/8.jpg",
+  "/slider/7.jpg",
+  "/slider/6.jpg",
+  "/slider/5.jpg",
+  "/slider/4.jpg",
+  "/slider/3.jpg",
+  "/slider/2.jpg",
+  "/slider/1.avif",
 ];
 
+const circleImages = [
+  "/slider/circle/12.avif",
+  "/slider/circle/11.avif",
+  "/slider/circle/10.avif",
+  "/slider/circle/9.avif",
+  "/slider/circle/8.avif",
+  "/slider/circle/7.avif",
+  "/slider/circle/6.avif",
+  "/slider/circle/5.avif",
+  "/slider/circle/4.avif",
+  "/slider/circle/3.avif",
+  "/slider/circle/2.avif",
+  "/slider/circle/1.avif",
+];
 const includes = [
-  'Professional DSLR camera',
+  'Professional HD camera',
   'Touchscreen interface',
   'Unlimited prints',
   'Digital copies of all photos',
@@ -28,10 +57,10 @@ const includes = [
 
 const specifications = [
   { label: 'Footprint', value: '1.2m x 1.2m' },
-  { label: 'Height', value: '2.1m' },
+  // { label: 'Height', value: '2.1m' },
   { label: 'Guest Capacity', value: '1-8 guests' },
   { label: 'Setup Time', value: '45 minutes' },
-  { label: 'Power Required', value: 'Standard 13A socket' },
+  { label: 'Power Required', value: 'Standard socket' },
 ];
 
 const idealEvents = [
@@ -40,8 +69,28 @@ const idealEvents = [
   { icon: Briefcase, name: 'Corporate Events' },
   { icon: GraduationCap, name: 'Graduations' },
 ];
-
+const reviews = [
+    { name: "Aleksandra", time: "3 days ago", text: "The photo booth was a fantastic addition to our event, keeping guests entertained and creating lasting memories." },
+    { name: "Kaz", time: "5 days ago", text: "Very friendly and helpful by phone and email before I booked. The guy who delivered the booth was great too!" },
+    { name: "Grace", time: "3 weeks ago", text: "We hired a slimline pod for my 60th Birthday. Delivered on time and picked up at 12:00 pm as arranged. So much fun!!" },
+    { name: "Lucy", time: "1 month ago", text: "5 star!! Thank you for making a good party GREAT! Everyone loved it." },
+    { name: "Claire", time: "1 month ago", text: "Amazing service from start to finish, the photos were outstanding and all of our guests loved the booth." },
+    { name: "Miss Sharp", time: "2 months ago", text: "Everyone loved the booth and we got so many good comments about it. I would highly recommend this company." },
+  ];
+  const images = [
+    '/combo/a.jpeg', '/combo/b.jpeg', '/combo/c.jpeg', '/combo/d.jpeg',
+    '/combo/e.jpeg', '/combo/h.jpeg', '/combo/j.jpeg', '/combo/k.jpeg'
+  ];
+  
 const LcdSlimlinePod = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % sliderImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="min-h-screen">
       <Header />
@@ -76,6 +125,8 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
+
+
 
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
@@ -116,8 +167,122 @@ const LcdSlimlinePod = () => {
     </div>
   </div>
 </section>
+<section className="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-gray-50 to-gray-100 rounded-3xl shadow-lg">
+  {/* Row: Text + Main Image */}
+  <div className="md:flex md:items-center md:gap-16">
+    {/* Left: Text */}
+    <div className="md:w-1/2 mb-10 md:mb-0">
+      <p className="uppercase text-sm font-semibold text-gray-500 mb-3 tracking-widest">
+        PERSONALISE
+      </p>
+      <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-snug text-gray-900">
+        Flawless Instant <br /> Background Removal
+      </h2>
+      <p className="text-gray-600 max-w-md leading-relaxed text-lg">
+        Our selfie pod features intelligent background removal technology,
+        allowing you to instantly replace any setting with a choice of 12
+        uniquely stunning backdrops. Completely optional of course.
+      </p>
+    </div>
 
+    {/* Right: Main Image */}
+    <div className="md:w-1/2 flex justify-center">
+      <div className="w-full max-w-md rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform hover:scale-105 transition-transform duration-500 bg-white p-2">
+        <img
+          src={sliderImages[currentIndex]}
+          alt={`Background ${currentIndex + 1}`}
+          className="w-full h-auto rounded-3xl object-cover border border-gray-200"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
 
+  {/* Row: Thumbnails */}
+  <div className="flex flex-wrap justify-center gap-5 mt-10">
+    {circleImages.map((img, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrentIndex(i)}
+        className={`w-16 h-16 rounded-full border-4 overflow-hidden transition-all duration-300 transform ${
+          i === currentIndex
+            ? "border-indigo-500 shadow-xl scale-110"
+            : "border-white/70 hover:scale-110 hover:shadow-lg hover:brightness-105"
+        }`}
+        aria-label={`Select background ${i + 1}`}
+      >
+        <img
+          src={img}
+          alt={`Thumbnail ${i + 1}`}
+          className="w-full h-full object-cover rounded-full"
+          loading="lazy"
+        />
+      </button>
+    ))}
+  </div>
+</section>
+<section className="py-8 bg-white">
+      <div className="max-w-5xl mx-auto px-4">
+        
+        {/* Compact Glass Container */}
+        <div className="relative bg-slate-50/50 rounded-3xl border border-slate-100 overflow-hidden py-6 px-2 shadow-sm">
+          
+          {/* Minimal Header */}
+          <div className="flex items-center justify-between px-6 mb-6">
+            <div>
+              <h2 className="text-xl font-bold text-slate-800 tracking-tight">
+                Choose Your  <span className="text-blue-500">Print Layout</span>
+              </h2>
+              <p className="text-[10px] text-slate-400 uppercase tracking-[2px]">Select a stunning template and customize it to perfectly fit your event.</p>
+            </div>
+            <div className="hidden sm:block text-[10px] font-medium py-1 px-3 bg-white rounded-full border border-slate-200 text-slate-500 shadow-sm">
+              ClickPlick
+            </div>
+          </div>
+
+          {/* Slider Area */}
+          <div className="relative flex overflow-hidden">
+            {/* Smooth Infinite Loop */}
+            <div className="flex animate-slow-slide group hover:paused">
+              {[...images, ...images].map((src, index) => (
+                <div 
+                  key={index} 
+                  className="flex-none mx-2 transition-transform duration-500 hover:scale-105"
+                  // Ultra-compact size: 100px width
+                  style={{ width: '100px', height: '300px' }} 
+                >
+                  <div className="w-full h-full rounded-md overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-slate-200">
+                    <img
+                      src={src}
+                      alt={`Combo ${index}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Edge Fades for a cleaner look */}
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Optimized CSS */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes slow-slide {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-slow-slide {
+          animation: slow-slide 20s linear infinite;
+        }
+        .paused {
+          animation-play-state: paused;
+        }
+      `}} />
+    </section>
         {/* How It Works */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -130,9 +295,9 @@ const LcdSlimlinePod = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               {[
                 { step: '1', title: 'Step Up', description: 'Guests approach the booth and are greeted by a friendly welcome screen with clear instructions.' },
-                { step: '2', title: 'Strike a Pose', description: 'Choose from various layouts, add digital props, and get ready for the countdown timer.' },
-                { step: '3', title: 'Capture', description: 'Our professional DSLR camera captures stunning, high-resolution photos with perfect lighting.' },
-                { step: '4', title: 'Print & Share', description: 'Photos print instantly in seconds, and digital copies can be shared via email, SMS, or social media.' },
+                { step: '2', title: 'Strike a Pose', description: 'Choose from various layouts, grab digital props, and get ready for the countdown timer.' },
+                { step: '3', title: 'Capture', description: 'Our advanced HD camera captures stunning, high-resolution photos with perfect lighting.' },
+                { step: '4', title: 'Print & Share', description: 'Unlimited instant prints in seconds, and digital copies can be shared via Email, AirDrop, or AirDrop.' },
               ].map((item) => (
                 <div key={item.step} className="text-center">
                   <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
@@ -145,7 +310,80 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
+<section className="py-20 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          
+          {/* Left Content Section */}
+          <div className="order-2 lg:order-1">
+            <span className="text-gray-400 uppercase tracking-widest text-[10px] font-bold mb-3 block">
+              Personalise
+            </span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-slate-900 mb-5">
+              Instant personalised Prints
+            </h2>
+            <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
+Pick from our beautiful ready-made templates or share your own branding, and we’ll take care of the rest. Either way, you and your guests will enjoy instant, personalized printouts.            </p>
 
+            {/* Feature Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <Check className="w-5 h-5 text-blue-500" />
+                </div>
+                <span className="font-semibold text-slate-700 text-xs">Choose from 8 templates</span>
+              </div>
+
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <Check className="w-5 h-5 text-blue-500" />
+                </div>
+                <span className="font-semibold text-slate-700 text-xs">Add your logo or branding</span>
+              </div>
+
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <Check className="w-5 h-5 text-blue-500" />
+                </div>
+                <span className="font-semibold text-slate-700 text-xs">Personalise with text</span>
+              </div>
+
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
+                <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                  <Check className="w-5 h-5 text-blue-500" />
+                </div>
+                <span className="font-semibold text-slate-700 text-xs">Fully customisable</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Images Section (Smaller Size) */}
+          <div className="order-1 lg:order-2 relative h-[400px] flex items-center justify-center">
+            {/* White Template Print - a.jpeg */}
+            <div className="absolute z-20 transform -rotate-12 -translate-x-8 shadow-xl rounded-sm overflow-hidden border-4 border-white w-32 md:w-40 transition-transform hover:-rotate-3 duration-500">
+               <img 
+                src="/slider/a.jpeg" 
+                alt="White template print" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
+            {/* Black Template Print - b.jpeg */}
+            <div className="absolute z-10 transform rotate-6 translate-x-8 shadow-xl rounded-sm overflow-hidden border-4 border-gray-900 bg-gray-900 w-32 md:w-40 transition-transform hover:rotate-12 duration-500">
+              <img 
+                src="/slider/b.jpeg" 
+                alt="Black template print" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
+
+            {/* Center soft glow */}
+            <div className="absolute w-48 h-48 bg-blue-50 rounded-full blur-[80px] opacity-40 z-0"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
         {/* What's Included */}
         <section className="py-16 md:py-20 bg-background">
   <div className="section-container">
@@ -242,7 +480,58 @@ const LcdSlimlinePod = () => {
   </div>
 </section>
 
+<section className="relative bg-white py-24 px-6 overflow-hidden">
+      {/* Niche ki side halka color gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-blue-50 to-transparent z-0"></div>
 
+      <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
+        <h2 className="text-4xl font-bold text-gray-800 mb-3">Booth Hire Reviews</h2>
+        <p className="text-gray-500 text-sm max-w-md mx-auto">
+          See what others think about the slimline selfie pod
+        </p>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Flex container for the single row */}
+        <div className="flex flex-nowrap lg:grid lg:grid-cols-6 gap-4 items-center">
+          {reviews.map((rev, i) => (
+            <div
+              key={i}
+              className={`bg-white p-5 rounded-xl shadow-lg border border-gray-100 transition-transform duration-300 hover:scale-105
+                ${i % 2 === 0 ? 'translate-y-6' : '-translate-y-6'} 
+                min-w-[200px] flex flex-col`}
+            >
+              {/* Header: Trustpilot Logo & Name */}
+              <div className="flex items-center gap-2 mb-3">
+                <div className="bg-[#00b67a] p-1 rounded-sm">
+                  <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.963c.3.921-.755 1.688-1.54 1.118l-3.38-2.454a1 1 0 00-1.176 0l-3.38 2.454c-.784.57-1.838-.197-1.54-1.118l1.287-3.963a1 1 0 00-.364-1.118L2.04 9.39c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.962z" />
+                  </svg>
+                </div>
+                <span className="font-bold text-gray-800 text-xs tracking-tight">{rev.name}</span>
+              </div>
+
+              {/* Trustpilot Stars */}
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(5)].map((_, idx) => (
+                  <div key={idx} className="bg-[#00b67a] w-4 h-4 flex items-center justify-center rounded-sm">
+                     <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.963c.3.921-.755 1.688-1.54 1.118l-3.38-2.454a1 1 0 00-1.176 0l-3.38 2.454c-.784.57-1.838-.197-1.54-1.118l1.287-3.963a1 1 0 00-.364-1.118L2.04 9.39c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.962z" />
+                    </svg>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-[10px] text-gray-400 mb-3 font-medium tracking-wide uppercase">{rev.time}</p>
+
+              <p className="text-gray-600 text-xs leading-relaxed italic">
+                "{rev.text}"
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -340,8 +629,8 @@ const LcdSlimlinePod = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                { q: 'How much space does the booth need?', a: 'The LCD Slimline Pod requires a minimum floor space of 2.5m x 2.5m (8ft x 8ft) to allow enough room for guests and queuing. The booth itself is compact at just 1.2m x 1.2m.' },
-                { q: 'Can we customise the photo templates?', a: 'Absolutely! We create bespoke photo templates for every event at no extra charge. Send us your event details, colour scheme, and any logos or images you\'d like included.' },
+                { q: 'How much space does the booth need?', a: 'The LCD Slimline Pod requires a minimum floor space of 2.5m x 2.5m (8ft x 8ft) to allow enough room for guests and queuing. The booth itself is compact and stands in just 1.2m x 1.2m.' },
+                { q: 'Can we customise the photo templates?', a: 'Standard unlimited prints are included in the package. Bespoke photo templates can be created for each event at an additional charge.' },
                 { q: 'How many people can fit in a photo?', a: 'The open design allows for up to 8 guests in a single photo, making it perfect for group shots. Solo and couple photos work beautifully too!' },
                 { q: 'Do you provide props?', a: 'Yes! Every hire includes a box of quality props including glasses, hats, signs, and more. We can also source themed props for your specific event.' },
                 { q: 'How long does setup take?', a: 'Our team arrives approximately 1-2 hours before your event starts to set up and test everything. Takedown after the event takes about 45 minutes.' },

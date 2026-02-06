@@ -28,10 +28,10 @@ const includes = [
 
 const specifications = [
   { label: 'Footprint', value: '1.3m x 1.3m' },
-  { label: 'Height', value: '2.2m' },
-  { label: 'Guest Capacity', value: '1-4 guests' },
-  { label: 'Setup Time', value: '60 minutes' },
-  { label: 'Power Required', value: 'Standard 13A socket' },
+  // { label: 'Height', value: '2.2m' },
+  { label: 'Guest Capacity', value: '10-15 guests' },
+  { label: 'Setup Time', value: '90 minutes' },
+  { label: 'Power Required', value: 'Standard socket' },
 ];
 
 const idealEvents = [
