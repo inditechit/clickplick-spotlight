@@ -47,7 +47,7 @@ export function Footer() {
             </Link>
             <p className="text-white/70 mb-6 leading-relaxed">
               Premium photo booth hire for weddings, parties, and corporate events across the UK. 
-              Creating unforgettable memories since 2015.
+              Creating unforgettable memories.
             </p>
             <div className="flex gap-3">
               <a

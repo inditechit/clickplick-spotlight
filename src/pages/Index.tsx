@@ -7,6 +7,8 @@ import { BoothShowcase } from '@/components/home/BoothShowcase';
 import { TestimonialsSection } from '@/components/home/TestimonialsSection';
 import { BookingForm } from '@/components/home/BookingForm';
 import { InstagramSection } from '@/components/home/InstagramSection';
+import InstagramFeed from '@/components/home/Instagram';
+import ElfsightInstagramWidget from '@/components/home/ElfsightInstagramWidget';
 
 const Index = () => {
   return (
@@ -19,7 +21,9 @@ const Index = () => {
         <BoothShowcase />
         <TestimonialsSection />
         <BookingForm />
-        <InstagramSection />
+        {/* <InstagramSection /> */}
+        <InstagramFeed/>
+        <ElfsightInstagramWidget />
       </main>
       <Footer />
     </div>

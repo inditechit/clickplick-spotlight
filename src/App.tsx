@@ -23,6 +23,7 @@ import RetroBox from "./pages/booths/RetroBox";
 import EnchantedMirror from "./pages/booths/EnchantedMirror";
 import InflatableBooth from "./pages/booths/InflatableBooth";
 import WoodenTripod from "./pages/booths/WoodenTripod";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/hire-photobooth/wooden-tripod" element={<WoodenTripod />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/faqs" element={<FAQs />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/events" element={<Events />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<Blog />} />
