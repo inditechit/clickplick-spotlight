@@ -13,7 +13,7 @@ const contactInfo = [
     icon: Phone,
     title: 'Phone',
     details: '+44 7931-983-588',
-    link: 'tel:+447123456789',
+    link: 'tel:+447931983588',
   },
   {
     icon: Mail,
@@ -24,7 +24,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Location',
-    details: 'Syon Gardrens, Newport Pagnell, Milton Keynes',
+    details: 'Syon Gardens, Newport Pagnell, Milton Keynes',
     link: null,
   },
   {
@@ -55,14 +55,37 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success('Message sent!', {
-      description: 'We\'ll get back to you as soon as possible.',
-    });
-    
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    setIsSubmitting(false);
+    try {
+      // API integration: POST to your contact endpoint
+      // Adjust the URL if your backend is hosted elsewhere
+      const response = await fetch('https://api.clickplick.co.uk/api/leads/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to send message');
+      }
+
+      toast.success('Message sent!', {
+        description: 'We\'ll get back to you as soon as possible.',
+      });
+      
+      // Reset form on success
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (err) {
+      console.error('Contact form error:', err);
+      toast.error('Submission failed', {
+        description: 'Please check your connection or try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -136,7 +159,7 @@ const Contact = () => {
 
                 {/* WhatsApp Button */}
                 <a
-                  href="https://wa.me/447123456789"
+                  href="https://wa.me/447931983588"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-xl font-semibold hover:bg-green-600 transition-colors"
@@ -216,10 +239,11 @@ const Contact = () => {
                       variant="accent" 
                       size="lg"
                       disabled={isSubmitting}
+                      className="w-full md:w-auto"
                     >
                       {isSubmitting ? 'Sending...' : (
                         <>
-                          <Send className="w-5 h-5" />
+                          <Send className="w-5 h-5 mr-2" />
                           Send Message
                         </>
                       )}

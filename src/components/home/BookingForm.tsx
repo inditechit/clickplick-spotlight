@@ -26,23 +26,69 @@ export function BookingForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success('Quote request submitted!', {
-      description: 'We\'ll get back to you within 24 hours.',
-    });
-    
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      eventDate: '',
-      eventTime: '',
-      postcode: '',
-    });
-    setIsSubmitting(false);
+
+    // 1. Map frontend state to API expected format
+    const apiPayload = {
+      name: formData.name,
+      email: formData.email,
+      phone_number: formData.phone,
+      event_date: formData.eventDate,
+      event_time: formData.eventTime,
+      event_postcode: formData.postcode
+    };
+
+    try {
+      // 2. Send Data to Backend
+      // NOTE: Ensure this URL matches your backend port (default 5000 or 8080)
+      const response = await fetch('https://api.clickplick.co.uk/api/leads/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(apiPayload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+      
+      // 3. Handle Success
+      toast.success('Quote request submitted!', {
+        description: 'We\'ll get back to you within 24 hours. Your brochure is downloading.',
+      });
+
+      // --- PDF DOWNLOAD LOGIC START ---
+      const pdfUrl = "https://orig.clickplick.co.uk/final%20clickplick.pdf";
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      link.download = "ClickPlick_Brochure.pdf"; // Suggest a filename
+      link.target = "_blank"; // Opens in new tab if cross-origin blocks auto-download
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      // --- PDF DOWNLOAD LOGIC END ---
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        eventDate: '',
+        eventTime: '',
+        postcode: '',
+      });
+
+    } catch (error) {
+      // 4. Handle Error
+      console.error('Submission Error:', error);
+      toast.error('Submission failed', {
+        description: 'Please check your connection or try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -64,7 +110,7 @@ export function BookingForm() {
               {' '}Today
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              Ready to make your event unforgettable? Fill out the form and we'll get back to you with a personalized quote within 24 hours.
+              Ready to make your event unforgettable? Fill out the form to get your <strong>Free Quote</strong> and instantly download our exclusive brochure.
             </p>
 
             {/* Benefits List */}
@@ -217,7 +263,7 @@ export function BookingForm() {
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    Get Free Quote
+                    Get Free Quote 
                   </>
                 )}
               </Button>
