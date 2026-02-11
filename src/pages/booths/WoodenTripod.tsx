@@ -414,11 +414,11 @@ const WoodenTripod = () => {
 
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
-            <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
+            {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
               Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
-            </p>
+            </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">

@@ -56,9 +56,9 @@ const includes = [
 ];
 
 const specifications = [
-  { label: 'Footprint', value: '1.2m x 1.2m' },
+  { label: 'Footprint', value: '2ft x 2ft' },
   // { label: 'Height', value: '2.1m' },
-  { label: 'Guest Capacity', value: '1-8 guests' },
+  { label: 'Guest Capacity', value: '10-15 guests' },
   { label: 'Setup Time', value: '45 minutes' },
   { label: 'Power Required', value: 'Standard socket' },
 ];
@@ -641,11 +641,11 @@ const LcdSlimlinePod = () => {
 
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
-            <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
+            {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
               Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
-            </p>
+            </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
@@ -701,7 +701,7 @@ const LcdSlimlinePod = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                { q: 'How much space does the booth need?', a: 'The LCD Slimline Pod requires a minimum floor space of 2.5m x 2.5m (8ft x 8ft) to allow enough room for guests and queuing. The booth itself is compact and stands in just 1.2m x 1.2m.' },
+                { q: 'How much space does the booth need?', a: 'The LCD Slimline Pod requires a minimum floor space of 2.5m x 2.5m (8ft x 8ft) to allow enough room for guests and queuing. The booth itself is compact and stands in just 2ft X 2ft.' },
                 { q: 'Can we customise the photo templates?', a: 'Standard unlimited prints are included in the package. Bespoke photo templates can be created for each event at an additional charge.' },
                 { q: 'How many people can fit in a photo?', a: 'The open design allows for up to 8 guests in a single photo, making it perfect for group shots. Solo and couple photos work beautifully too!' },
                 { q: 'Do you provide props?', a: 'Yes! Every hire includes a box of quality props including glasses, hats, signs, and more. We can also source themed props for your specific event.' },

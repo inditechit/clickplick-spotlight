@@ -20,7 +20,7 @@ const boothLinks = [
 ];
 
 const customerLinks = [
-  { name: 'Client support', href: '/support' },
+  { name: 'Client support', href: 'https://api.whatsapp.com/send?phone=447931983588&text=hii.' },
   { name: 'Terms and conditions', href: '/terms-and-conditions' },
   { name: 'Privacy and Policy', href: '/privacy-policy' },
 ];

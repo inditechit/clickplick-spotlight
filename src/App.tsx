@@ -51,6 +51,19 @@ const App = () => (
             <Route path="/hire-photobooth/enchanted-mirror" element={<EnchantedMirror />} />
             <Route path="/hire-photobooth/inflatable-booth" element={<InflatableBooth />} />
             <Route path="/hire-photobooth/wooden-tripod" element={<WoodenTripod />} />
+
+
+            <Route path="/the-lcd-screen-slimline-pod.php" element={<LcdSlimlinePod />} />
+            <Route path="/the-magic-mirror.php" element={<MagicMirror />} />
+            <Route path="/the-retro-box.php" element={<RetroBox />} />
+            <Route path="/the-enchanted-mirror-x-selfie.php" element={<EnchantedMirror />} />
+            <Route path="/the-inflatable-enclosed-photobooth.php" element={<InflatableBooth />} />
+            <Route path="/the-wooden-vintage-tripod.php" element={<WoodenTripod />} />
+
+            <Route path="/service1.php" element={<LcdSlimlinePod />} />
+            <Route path="/service2.php" element={<MagicMirror />} />
+            <Route path="/service3.php" element={<RetroBox />} />
+            <Route path="/service4.php" element={<EnchantedMirror />} />
             
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/faqs" element={<FAQs />} />

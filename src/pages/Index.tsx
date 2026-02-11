@@ -17,8 +17,8 @@ const Index = () => {
       <main>
         <HeroSection />
         <ClientLogos />
-        <FeaturesSection />
         <BoothShowcase />
+        <FeaturesSection />
         <TestimonialsSection />
         <ElfsightInstagramWidget />
         <BookingForm />
