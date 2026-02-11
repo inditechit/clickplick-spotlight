@@ -29,7 +29,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden mb-20">
       {/* Background Decoration */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10">
         <div className="absolute top-10 left-10 w-64 h-64 border border-white rounded-full" />

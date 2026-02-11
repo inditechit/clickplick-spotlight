@@ -28,7 +28,7 @@ const ElfsightInstagramWidget = ({
   }, []);
 
   return (
-    <div className={`elfsight-app-${appId} data-elfsight-app-lazy ${className}`}>
+    <div className={`elfsight-app-${appId} data-elfsight-app-lazy ${className}`} style={{marginTop:'10px'}}>
       {/* Google Tag Manager noscript fallback - optional */}
       <noscript>
         <iframe 

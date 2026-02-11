@@ -2,26 +2,33 @@ import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
 
 const quickLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About Us', href: '/about' },
-  { name: 'Hire Photobooth', href: '/hire-photobooth' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'FAQs', href: '/faqs' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Who we are', href: '/about' },
+  { name: 'Contact us', href: '/contact' },
+  { name: 'Careers', href: 'https://orig.clickplick.co.uk/careers.php' },
+  { name: 'Blog', href: 'https://orig.clickplick.co.uk/blog.php' },
 ];
 
 const boothLinks = [
-  { name: 'LCD Screen Slimline Pod', href: '/hire-photobooth/lcd-slimline-pod' },
-  { name: 'Magic Mirror', href: '/hire-photobooth/magic-mirror' },
-  { name: 'Retro Box', href: '/hire-photobooth/retro-box' },
-  { name: 'Enchanted Mirror X Selfie', href: '/hire-photobooth/enchanted-mirror' },
-  { name: 'Inflatable Enclosed Booth', href: '/hire-photobooth/inflatable-booth' },
-  { name: 'Wooden Vintage Tripod', href: '/hire-photobooth/wooden-tripod' },
+  { name: 'The LCD Screen', href: '/hire-photobooth/lcd-slimline-pod' },
+  { name: 'Slimline Pod', href: '/hire-photobooth/slimline-pod' },
+  { name: 'The Magic Mirror', href: '/hire-photobooth/magic-mirror' },
+  { name: 'The Retro Box', href: '/hire-photobooth/retro-box' },
+  { name: 'The Enchanted', href: '/hire-photobooth/enchanted-mirror' },
+  { name: 'Mirror X Selfie', href: '/hire-photobooth/mirror-x' },
+  { name: 'The Wooden Vintage', href: '/hire-photobooth/wooden-tripod' },
+  { name: 'Tripod', href: '/hire-photobooth/tripod' },
 ];
 
-const legalLinks = [
-  { name: 'Privacy Policy', href: '/privacy-policy' },
-  { name: 'Terms & Conditions', href: '/terms-and-conditions' },
+const customerLinks = [
+  { name: 'Client support', href: '/support' },
+  { name: 'Terms and conditions', href: '/terms-and-conditions' },
+  { name: 'Privacy and Policy', href: '/privacy-policy' },
+];
+
+const locations = [
+  "Cambridge", "Oxford", "Guildford", "Milton Keynes", "Slough",
+  "Peterborough", "Reading", "Northampton", "Leicester", "Hertfordshire",
+  "Barnet", "Birmingham", "Buckinghamshire", "Nottingham", "London"
 ];
 
 export function Footer() {
@@ -29,80 +36,83 @@ export function Footer() {
     <footer className="bg-primary text-primary-foreground">
       {/* Main Footer */}
       <div className="section-container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-xl">CP</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          
+          {/* Column 1: Brand, Address Box, Contact & Socials */}
+          <div className="flex flex-col space-y-6">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center">
+                <span className="text-white font-heading font-bold text-lg">CP</span>
               </div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-xl tracking-tight text-white">
-                  ClickPlick
-                </span>
-                <span className="text-xs font-medium -mt-1 text-white/70">
-                  UK Photo Booths
-                </span>
-              </div>
+              <span className="font-heading font-bold text-2xl tracking-tight text-white">
+                ClickPlick
+              </span>
             </Link>
-            <p className="text-white/70 mb-6 leading-relaxed">
-              Premium photo booth hire for weddings, parties, and corporate events across the UK. 
-              Creating unforgettable memories.
-            </p>
-            <div className="flex gap-3">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
+
+            {/* Blue Location Box */}
+            <div className="bg-[#0ea5e9] rounded-lg p-4 text-white shadow-lg max-w-[280px]">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-5 h-5 mt-0.5 shrink-0 text-white/90" />
+                <p className="text-sm font-medium leading-relaxed">
+                  Location: Syon Gardens,<br />
+                  Newport Pagnell, Milton Keynes
+                </p>
+              </div>
+            </div>
+
+            {/* Direct Contact Info */}
+            <div className="space-y-2 text-sm text-white/70">
+              <a href="tel:+447931983588" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone className="w-4 h-4" /> +44 7931-983-588
               </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
+              <a href="mailto:info@clickplick.co.uk" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail className="w-4 h-4" /> info@clickplick.co.uk
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex gap-3 pt-2">
+              <a href="https://instagram.com" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://facebook.com" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="https://twitter.com" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                <Twitter className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: Company */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-6">Quick Links</h4>
+            <h4 className="font-heading font-bold text-lg mb-6">Company</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-white/70 hover:text-accent transition-colors"
+                    className="text-white/60 hover:text-white text-sm transition-colors flex items-center gap-2"
                   >
                     {link.name}
+                    {link.name === 'Who we are' && (
+                      <span className="px-1.5 py-0.5 bg-slate-800 text-[10px] font-bold rounded-full text-white border border-slate-700">HOT</span>
+                    )}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Our Booths */}
+          {/* Column 3: Photobooths */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-6">Our Booths</h4>
+            <h4 className="font-heading font-bold text-lg mb-6 uppercase tracking-wider text-sm">Photobooths</h4>
             <ul className="space-y-3">
               {boothLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-white/70 hover:text-accent transition-colors"
+                    className="text-white/60 hover:text-white text-sm uppercase transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -111,52 +121,50 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 4: Customer */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-6">Contact Us</h4>
-            <ul className="space-y-4">
-              <li>
-                <a href="tel:+447123456789" className="flex items-start gap-3 text-white/70 hover:text-accent transition-colors">
-                  <Phone className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>+44 7931-983-588</span>
-                </a>
-              </li>
-              <li>
-                <a href="mailto:info@clickplick.co.uk" className="flex items-start gap-3 text-white/70 hover:text-accent transition-colors">
-                  <Mail className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>info@clickplick.co.uk</span>
-                </a>
-              </li>
-              <li>
-                <div className="flex items-start gap-3 text-white/70">
-                  <MapPin className="w-5 h-5 mt-0.5 shrink-0" />
-                  <span>Syon Gardrens, Newport Pagnell, Milton Keynes</span>
-                </div>
-              </li>
+            <h4 className="font-heading font-bold text-lg mb-6">Customer</h4>
+            <ul className="space-y-3">
+              {customerLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-white/60 hover:text-white text-sm transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
+          {/* Column 5: Locations We Serve */}
+          <div>
+            <h4 className="font-heading font-bold text-lg mb-6">Locations We Serve</h4>
+            <ul className="space-y-2">
+              {locations.map((loc) => (
+                <li key={loc}>
+                  {/* Using 'a' tag here since .php usually implies a specific server-side page/SEO link */}
+                  <a 
+                    href={`https://orig.clickplick.co.uk/photo-booth-hire-in-${loc.toLowerCase().replace(' ', '-')}.php`} 
+                    className="text-white/60 hover:text-white text-sm transition-colors block"
+                  >
+                    {loc}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </div>
 
-      {/* Bottom Bar */}
+      {/* Bottom Copyright Bar */}
       <div className="border-t border-white/10">
-        <div className="section-container py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
-              © {new Date().getFullYear()} ClickPlick UK. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              {legalLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="text-white/60 text-sm hover:text-accent transition-colors"
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="section-container py-6 text-center">
+          <p className="text-white/40 text-sm">
+            Copyright © {new Date().getFullYear()} ClickPlick
+          </p>
         </div>
       </div>
     </footer>

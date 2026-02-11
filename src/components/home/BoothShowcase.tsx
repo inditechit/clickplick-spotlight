@@ -31,13 +31,13 @@ const booths = [
     image: '/images/enhanced.jpg',
     popular: true,
   },
-  // {
-  //   id: 'inflatable-booth',
-  //   name: 'Inflatable Enclosed Booth',
-  //   description: 'Fun enclosed inflatable booth creating a private photo experience.',
-  //   image: 'https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=800&auto=format&fit=crop',
-  //   popular: false,
-  // },
+  {
+    id: 'inflatable-booth',
+    name: 'Inflatable Enclosed Booth',
+    description: 'Fun enclosed inflatable booth creating a private photo experience.',
+    image: '/light/in/2.png',
+    popular: false,
+  },
   {
     id: 'wooden-tripod',
     name: 'Wooden Vintage Tripod',

@@ -20,10 +20,10 @@ const Index = () => {
         <FeaturesSection />
         <BoothShowcase />
         <TestimonialsSection />
+        <ElfsightInstagramWidget />
         <BookingForm />
         {/* <InstagramSection /> */}
         <InstagramFeed/>
-        <ElfsightInstagramWidget />
       </main>
       <Footer />
     </div>

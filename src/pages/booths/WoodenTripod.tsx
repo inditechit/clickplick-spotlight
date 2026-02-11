@@ -325,6 +325,45 @@ const WoodenTripod = () => {
           </div>
         </section>
 
+         {/* --- NEW SECTION ADDED FROM SCREENSHOT --- */}
+        <section className="py-16 md:py-20 bg-slate-50">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side: Text from Screenshot */}
+              <div>
+                <span className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-2 block">
+                  Effortless Setup
+                </span>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  Relax and Enjoy: <br />
+                  We’ll Handle Setup
+                </h2>
+                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+                  <p>
+                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                  </p>
+                  <p>
+                    From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
+                  </p>
+                  <p className="font-semibold text-primary">
+                    Setup is included outside of your hire time.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Side: Image instead of Specs (as requested) */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-square">
+                <img
+                  src="/light/wo/4.webp" // Reusing an existing image path as placeholder
+                  alt="Booth Setup"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* --- END NEW SECTION --- */}
+
         {/* Specifications & Ideal Events */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -368,6 +407,39 @@ const WoodenTripod = () => {
                 <p className="text-muted-foreground mt-6 text-sm">
                   Especially popular for barn weddings, boho celebrations, forest venues, and any event embracing natural, organic aesthetics.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 bg-slate-50">
+          <div className="section-container text-center">
+            <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
+              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
+              or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
+              or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
+            </p>
+
+            <div className="max-w-md mx-auto relative group">
+              <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
+                   {/* Decorative elements from the image */}
+                   <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
+                   <div className="absolute bottom-0 right-0 w-8 h-8 bg-pink-500 clip-triangle rotate-135 transform translate-x-4 translate-y-4"></div>
+                   
+                   <img 
+                    src="/services/audiobook.jpeg" // Ensure you have a relevant image here
+                    alt="Audio Guest Book" 
+                    className="w-full h-full object-cover rounded-xl"
+                   />
+                   <div className="absolute bottom-6 right-6 bg-white shadow-xl rounded-xl px-6 py-3 border border-slate-100">
+                      <span className="text-3xl font-black text-cyan-500">£49</span>
+                   </div>
+                </div>
+                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
+                  More About Our Audio Telephone Guest Book
+                </Link>
               </div>
             </div>
           </div>

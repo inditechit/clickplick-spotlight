@@ -34,14 +34,14 @@ const specifications = [
   { label: 'Power Required', value: 'Standard socket' },
 ];
 const photos = [
-    { src: "/light/magic/1.jpeg", angle: "-deg-6", label: "Pose & Smile" },
-    { src: "/light/magic/2.jpeg", angle: "rotate-3", label: "Voice Guided" },
-    { src: "/light/magic/3.jpg", angle: "-rotate-12", label: "Instant Print" },
-    { src: "/light/magic/4.jpeg", angle: "rotate-6", label: "Digital Share" },
-    { src: "/light/magic.jpg", angle: "-rotate-2", label: "Signature Art" },
-    
-  ];
-  const items = [
+  { src: "/light/magic/1.jpeg", angle: "-deg-6", label: "Pose & Smile" },
+  { src: "/light/magic/2.jpeg", angle: "rotate-3", label: "Voice Guided" },
+  { src: "/light/magic/3.jpg", angle: "-rotate-12", label: "Instant Print" },
+  { src: "/light/magic/4.jpeg", angle: "rotate-6", label: "Digital Share" },
+  { src: "/light/magic.jpg", angle: "-rotate-2", label: "Signature Art" },
+
+];
+const items = [
   { src: "/light/magic/1.jpeg", size: "w-48 h-48", pos: "top-0 left-5", delay: "0s" },
   { src: "/light/magic/2.jpeg", size: "w-64 h-64", pos: "top-10 right-10", delay: "1.5s" },
   { src: "/light/magic/3.jpg", size: "w-40 h-40", pos: "bottom-10 left-10", delay: "0.8s" },
@@ -66,92 +66,92 @@ const MagicMirror = () => {
       <Header />
       <main>
         {/* Hero Section */}
-       <section
-  className="relative pt-32 pb-20 md:pt-40 md:pb-28 text-primary-foreground overflow-hidden bg-cover bg-center"
-  style={{
-    backgroundImage: "url('/imgg7.jpg')",
-  }}
->
-  {/* Soft black overlay */}
-  <div className="absolute inset-0 bg-black/40"></div>
+        <section
+          className="relative pt-32 pb-20 md:pt-40 md:pb-28 text-primary-foreground overflow-hidden bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/imgg7.jpg')",
+          }}
+        >
+          {/* Soft black overlay */}
+          <div className="absolute inset-0 bg-black/40"></div>
 
-  {/* Decorative circles */}
-  <div className="absolute inset-0 opacity-10">
-    <div className="absolute top-20 left-20 w-64 h-64 border border-white rounded-full" />
-    <div className="absolute bottom-20 right-20 w-96 h-96 border border-white rounded-full" />
-  </div>
+          {/* Decorative circles */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-20 w-64 h-64 border border-white rounded-full" />
+            <div className="absolute bottom-20 right-20 w-96 h-96 border border-white rounded-full" />
+          </div>
 
-  <div className="section-container relative">
-    <Link
-      to="/hire-photobooth"
-      className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
-    >
-      <ArrowLeft className="w-4 h-4" />
-      Back to All Booths
-    </Link>
+          <div className="section-container relative">
+            <Link
+              to="/hire-photobooth"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to All Booths
+            </Link>
 
-    <div className="inline-block px-4 py-2 rounded-full bg-white/20 text-white text-sm font-semibold mb-4">
-      ✨ Premium Experience
-    </div>
+            <div className="inline-block px-4 py-2 rounded-full bg-white/20 text-white text-sm font-semibold mb-4">
+              ✨ Premium Experience
+            </div>
 
-    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
-      Magic Mirror
-    </h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6">
+              Magic Mirror
+            </h1>
 
-    <p className="text-xl text-white/90 leading-relaxed max-w-2xl mb-8">
-      Interactive full-length mirror with animated graphics, voice guidance, and touchscreen technology. Create truly magical moments with this showstopping centrepiece.
-    </p>
+            <p className="text-xl text-white/90 leading-relaxed max-w-2xl mb-8">
+              Interactive full-length mirror with animated graphics, voice guidance, and touchscreen technology. Create truly magical moments with this showstopping centrepiece.
+            </p>
 
-    <div className="flex flex-wrap gap-4">
-      <Button variant="secondary" size="lg" asChild>
-        <Link to="/book-now">Book This Booth</Link>
-      </Button>
-      <Button
-        variant="outline"
-        size="lg"
-        className="border-white/30 text-white hover:bg-white/10"
-        asChild
-      >
-        <Link to="/contact">Get a Quote</Link>
-      </Button>
-    </div>
-  </div>
-</section>
+            <div className="flex flex-wrap gap-4">
+              <Button variant="secondary" size="lg" asChild>
+                <Link to="/book-now">Book This Booth</Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white/30 text-white hover:bg-white/10"
+                asChild
+              >
+                <Link to="/contact">Get a Quote</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
 
 
         {/* Detailed Description */}
-       <section className="py-16 md:py-20 bg-background">
-  <div className="section-container">
-    <div className="grid lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-          THE AUGMENTED REALITY MAGIC MIRROR PHOTOBOOTH
-        </h2>
-        <div className="space-y-4 text-muted-foreground leading-relaxed">
-          <p>
-            Clicks amazing professional grade photos with a DSLR camera. We use high-quality photo paper so your prints are safe for life. Welcome to ClickPlick and our fantastic Magic Mirror Photo Booth services! If you're looking to elevate your event with something truly unique, our Magic Mirror Photo Booth Hire is the perfect choice. This innovative and interactive entertainment option brings an unforgettable experience to your party, wedding, or corporate event.
-          </p>
-          <p>
-            Our Magic Selfie Mirror is the brand-new must-have attraction, providing great fun for your guests. This touch-sensitive full-length mirror allows groups of friends to enjoy hilarious photo opportunities. The Magic Mirror Booth offers full instructions, prompting you to pose before capturing the perfect picture. As an added bonus, the mirror will interact with you, displaying amusing phrases on its interactive screen, ensuring laughter all around.
-          </p>
-          <p>
-            Whether you’re searching for a magic mirror photo booth near me or planning to hire a magic mirror photo booth, ClickPlick has everything you need to elevate your event. Our magic mirror hire service combines elegance and fun, offering your guests an interactive and unforgettable experience. From weddings to corporate events, this stunning addition is sure to create lasting memories for everyone.
-          </p>
-          <p>
-            Excited to make your event unforgettable? Book your magic mirror photo booth today with ClickPlick!
-          </p>
-        </div>
-      </div>
-      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-        <img
-          src="/light/magic.jpg"
-          alt="Magic Mirror Booth"
-          className="w-full h-full object-cover"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  THE AUGMENTED REALITY MAGIC MIRROR PHOTOBOOTH
+                </h2>
+                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                  <p>
+                    Clicks amazing professional grade photos with a DSLR camera. We use high-quality photo paper so your prints are safe for life. Welcome to ClickPlick and our fantastic Magic Mirror Photo Booth services! If you're looking to elevate your event with something truly unique, our Magic Mirror Photo Booth Hire is the perfect choice. This innovative and interactive entertainment option brings an unforgettable experience to your party, wedding, or corporate event.
+                  </p>
+                  <p>
+                    Our Magic Selfie Mirror is the brand-new must-have attraction, providing great fun for your guests. This touch-sensitive full-length mirror allows groups of friends to enjoy hilarious photo opportunities. The Magic Mirror Booth offers full instructions, prompting you to pose before capturing the perfect picture. As an added bonus, the mirror will interact with you, displaying amusing phrases on its interactive screen, ensuring laughter all around.
+                  </p>
+                  <p>
+                    Whether you’re searching for a magic mirror photo booth near me or planning to hire a magic mirror photo booth, ClickPlick has everything you need to elevate your event. Our magic mirror hire service combines elegance and fun, offering your guests an interactive and unforgettable experience. From weddings to corporate events, this stunning addition is sure to create lasting memories for everyone.
+                  </p>
+                  <p>
+                    Excited to make your event unforgettable? Book your magic mirror photo booth today with ClickPlick!
+                  </p>
+                </div>
+              </div>
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+                <img
+                  src="/light/magic.jpg"
+                  alt="Magic Mirror Booth"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
 
         {/* The Magic Experience */}
@@ -183,100 +183,100 @@ const MagicMirror = () => {
 
         {/* What's Included */}
         <section className="py-16 md:py-20 bg-background">
-  <div className="section-container">
-    <div className="grid lg:grid-cols-2 gap-12 items-start">
-      {/* Image Gallery */}
-      <div className="space-y-4">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              {/* Image Gallery */}
+              <div className="space-y-4">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
-          <img
-            src="/light/magic/4.jpeg"
-            alt="Magic Mirror Booth"
-            className="w-full h-full object-cover"
-          />
-        </div>
+                  <img
+                    src="/light/magic/4.jpeg"
+                    alt="Magic Mirror Booth"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div className="grid grid-cols-3 gap-4">
-                 {["3.jpg", "2.jpeg", "1.jpeg"].map((img, index) => (
-            <div key={index} className="aspect-square rounded-lg overflow-hidden">
-              <img
-                src={`/light/magic/${img}`}
-                alt={`Magic Mirror view ${index + 1}`}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-              />
-            </div>
-          ))}
+                  {["3.jpg", "2.jpeg", "1.jpeg"].map((img, index) => (
+                    <div key={index} className="aspect-square rounded-lg overflow-hidden">
+                      <img
+                        src={`/light/magic/${img}`}
+                        alt={`Magic Mirror view ${index + 1}`}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
-      {/* Details */}
-      <div>
-        <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-          All-Inclusive Package
-        </div>
+              {/* Details */}
+              <div>
+                <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
+                  All-Inclusive Package
+                </div>
 
-        <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
-          Services Included
-        </h2>
+                <h2 className="text-3xl font-heading font-bold text-foreground mb-6">
+                  Services Included
+                </h2>
 
-        <p className="text-muted-foreground mb-6">
-          Every Magic Mirror hire comes with everything you need for an unforgettable experience. No hidden costs, no surprises. Here’s what’s included:
-        </p>
+                <p className="text-muted-foreground mb-6">
+                  Every Magic Mirror hire comes with everything you need for an unforgettable experience. No hidden costs, no surprises. Here’s what’s included:
+                </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-          {[
-            "GUEST BOOK PHOTO ALBUM",
-            "UNLIMITED PRINTS",
-            "DIGITAL COPIES OF PICTURES TAKEN DURING THE HIRE",
-            "ANIMATED GIFS OF YOUR PHOTOS",
-            "EMAIL AND AIRDROP PHOTOS",
-            "PHOTOBOOTH ATTENDANT",
-            "INSTANT PRINTS (20 SECONDS)",
-            "USE OF A WIDE RANGE OF PROPS",
-            "PERSONALIZED TEXT AND LOGO",
-            "SEND EMAILS",
-            "FILTERS AND PHOTO EFFECTS",
-            "WHITE OR BLACK BACKDROP",
-            "CUSTOMIZED PHOTO FRAME",
-            "CUSTOMIZED GUEST BOOK PHOTO ALBUM",
-            "CUSTOMIZED BACKGROUND",
-            "CUSTOMIZED PHOTO PRINTS",
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-3">
-              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Check className="w-4 h-4 text-primary" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                  {[
+                    "GUEST BOOK PHOTO ALBUM",
+                    "UNLIMITED PRINTS",
+                    "DIGITAL COPIES OF PICTURES TAKEN DURING THE HIRE",
+                    "ANIMATED GIFS OF YOUR PHOTOS",
+                    "EMAIL AND AIRDROP PHOTOS",
+                    "PHOTOBOOTH ATTENDANT",
+                    "INSTANT PRINTS (20 SECONDS)",
+                    "USE OF A WIDE RANGE OF PROPS",
+                    "PERSONALIZED TEXT AND LOGO",
+                    "SEND EMAILS",
+                    "FILTERS AND PHOTO EFFECTS",
+                    "WHITE OR BLACK BACKDROP",
+                    "CUSTOMIZED PHOTO FRAME",
+                    "CUSTOMIZED GUEST BOOK PHOTO ALBUM",
+                    "CUSTOMIZED BACKGROUND",
+                    "CUSTOMIZED PHOTO PRINTS",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Check className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="text-foreground">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <Button size="lg" asChild>
+                    <Link to="/book-now">Book This Booth</Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild>
+                    <Link to="/contact">Get a Quote</Link>
+                  </Button>
+                </div>
               </div>
-              <span className="text-foreground">{item}</span>
             </div>
-          ))}
-        </div>
+          </div>
+        </section>
+        <section className="py-24 bg-slate-50 overflow-hidden relative">
+          <div className="section-container">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
+                Witness the Magic Captured
+              </h2>
+              <p className="text-slate-500 max-w-xl mx-auto">
+                Step into our enchanted gallery. Hover over any photo to bring it to life!
+              </p>
+            </div>
 
-        <div className="flex flex-wrap gap-4">
-          <Button size="lg" asChild>
-            <Link to="/book-now">Book This Booth</Link>
-          </Button>
-          <Button variant="outline" size="lg" asChild>
-            <Link to="/contact">Get a Quote</Link>
-          </Button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section className="py-24 bg-slate-50 overflow-hidden relative">
-      <div className="section-container">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
-            Witness the Magic Captured
-          </h2>
-          <p className="text-slate-500 max-w-xl mx-auto">
-            Step into our enchanted gallery. Hover over any photo to bring it to life!
-          </p>
-        </div>
-
-        {/* Scattered Photo Container */}
-        <div className="relative h-[500px] md:h-[600px] mt-10">
-          {photos.map((photo, index) => (
-            <div
-              key={index}
-              className={`absolute transition-all duration-500 ease-out cursor-pointer group
+            {/* Scattered Photo Container */}
+            <div className="relative h-[500px] md:h-[600px] mt-10">
+              {photos.map((photo, index) => (
+                <div
+                  key={index}
+                  className={`absolute transition-all duration-500 ease-out cursor-pointer group
                 hover:z-50 hover:rotate-0 hover:scale-110
                 /* Positioning logic for scattering */
                 ${index === 0 ? 'top-0 left-[5%] md:left-[15%]' : ''}
@@ -285,83 +285,83 @@ const MagicMirror = () => {
                 ${index === 3 ? 'bottom-0 right-[10%] md:right-[30%]' : ''}
                 ${index === 4 ? 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' : ''}
               `}
-              style={{ transform: `rotate(${index % 2 === 0 ? (index + 2) * -3 : (index + 1) * 3}deg)` }}
-            >
-              {/* Polaroid Frame */}
-              <div className="bg-white p-3 pb-10 shadow-xl border border-slate-100 rounded-sm">
-                <div className="relative overflow-hidden w-40 h-48 md:w-56 md:h-64">
-                  <img
-                    src={photo.src}
-                    alt={photo.label}
-                    className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500"
-                  />
-                  {/* Magic Glow on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                
-                {/* Handwritten Style Caption */}
-                <div className="mt-4 text-center">
-                  <span className="font-handwriting text-slate-500 text-lg md:text-xl italic">
-                    {photo.label}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+                  style={{ transform: `rotate(${index % 2 === 0 ? (index + 2) * -3 : (index + 1) * 3}deg)` }}
+                >
+                  {/* Polaroid Frame */}
+                  <div className="bg-white p-3 pb-10 shadow-xl border border-slate-100 rounded-sm">
+                    <div className="relative overflow-hidden w-40 h-48 md:w-56 md:h-64">
+                      <img
+                        src={photo.src}
+                        alt={photo.label}
+                        className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500"
+                      />
+                      {/* Magic Glow on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
 
-      {/* Background Decorative Sparkles */}
-      <div className="absolute top-1/4 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
-      <div className="absolute bottom-1/4 right-10 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-    </section>
-    <section className="py-24 bg-[#050505] overflow-hidden relative min-h-[800px] flex items-center">
-      {/* Background Neon Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
-      
-      <div className="section-container relative z-10 w-full">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
-            <Sparkles className="w-3 h-3" /> Interactive Gallery
-          </div>
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
-            Step Into The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Magic</span>
-          </h2>
-        </div>
-
-        <div className="relative h-[600px] w-full">
-          {items.map((item, idx) => (
-            <div
-              key={idx}
-              className={`absolute ${item.pos} group cursor-pointer animate-float`}
-              style={{ animationDelay: item.delay }}
-            >
-              {/* Outer Glowing Ring */}
-              <div className="relative p-1 rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-100 transition-opacity duration-700 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-                
-                {/* Image Circle */}
-                <div className={`${item.size} rounded-full overflow-hidden border-4 border-black relative z-10 transition-transform duration-500 group-hover:scale-110`}>
-                  <img
-                    src={item.src}
-                    alt="Magic Moment"
-                    className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
-                  />
-                  
-                  {/* Overlay on Hover */}
-                  <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="text-white font-bold text-sm tracking-widest uppercase">View Magic</span>
+                    {/* Handwritten Style Caption */}
+                    <div className="mt-4 text-center">
+                      <span className="font-handwriting text-slate-500 text-lg md:text-xl italic">
+                        {photo.label}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Decorative Particle */}
-              <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full blur-sm animate-pulse"></div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      <style jsx>{`
+          {/* Background Decorative Sparkles */}
+          <div className="absolute top-1/4 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
+          <div className="absolute bottom-1/4 right-10 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+        </section>
+        <section className="py-24 bg-[#050505] overflow-hidden relative min-h-[800px] flex items-center">
+          {/* Background Neon Glows */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+
+          <div className="section-container relative z-10 w-full">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
+                <Sparkles className="w-3 h-3" /> Interactive Gallery
+              </div>
+              <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-4">
+                Step Into The <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Magic</span>
+              </h2>
+            </div>
+
+            <div className="relative h-[600px] w-full">
+              {items.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute ${item.pos} group cursor-pointer animate-float`}
+                  style={{ animationDelay: item.delay }}
+                >
+                  {/* Outer Glowing Ring */}
+                  <div className="relative p-1 rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 opacity-30 group-hover:opacity-100 transition-opacity duration-700 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+
+                    {/* Image Circle */}
+                    <div className={`${item.size} rounded-full overflow-hidden border-4 border-black relative z-10 transition-transform duration-500 group-hover:scale-110`}>
+                      <img
+                        src={item.src}
+                        alt="Magic Moment"
+                        className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+                      />
+
+                      {/* Overlay on Hover */}
+                      <div className="absolute inset-0 bg-blue-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span className="text-white font-bold text-sm tracking-widest uppercase">View Magic</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Decorative Particle */}
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-white rounded-full blur-sm animate-pulse"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <style jsx>{`
         @keyframes float {
           0% { transform: translateY(0px) translateX(0px); }
           33% { transform: translateY(-20px) translateX(10px); }
@@ -372,7 +372,7 @@ const MagicMirror = () => {
           animation: float 6s ease-in-out infinite;
         }
       `}</style>
-    </section>
+        </section>
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -395,6 +395,45 @@ const MagicMirror = () => {
             </div>
           </div>
         </section>
+
+        {/* --- NEW SECTION ADDED FROM SCREENSHOT --- */}
+        <section className="py-16 md:py-20 bg-slate-50">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side: Text from Screenshot */}
+              <div>
+                <span className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-2 block">
+                  Effortless Setup
+                </span>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+                  Relax and Enjoy: <br />
+                  We’ll Handle Setup
+                </h2>
+                <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
+                  <p>
+                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                  </p>
+                  <p>
+                    From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
+                  </p>
+                  <p className="font-semibold text-primary">
+                    Setup is included outside of your hire time.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Side: Image instead of Specs (as requested) */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-square">
+                <img
+                  src="/light/magic/2.jpeg" // Reusing an existing image path as placeholder
+                  alt="Booth Setup"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* --- END NEW SECTION --- */}
 
         {/* Specifications & Ideal Events */}
         <section className="py-16 md:py-20 bg-background">
@@ -441,76 +480,109 @@ const MagicMirror = () => {
           </div>
         </section>
         {/* Unique Interactive Experience Section */}
-<section className="py-24 bg-[#0a0a0b] relative overflow-hidden text-white">
-  {/* Magic Glow Effects */}
-  <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-pulse"></div>
-  <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
+        <section className="py-24 bg-[#0a0a0b] relative overflow-hidden text-white">
+          {/* Magic Glow Effects */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
 
-  <div className="section-container relative z-10">
-    <div className="text-center mb-20">
-      <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-300 bg-clip-text text-transparent">
-        The Mirror's Secret Journey
-      </h2>
-      <p className="text-gray-400 max-w-2xl mx-auto">
-        It’s not just a photo; it’s a 30-second magic show where you are the star.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-      {/* Connecting Line (Desktop Only) */}
-      <div className="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -translate-y-1/2"></div>
-
-      {[
-        { 
-          step: "01", 
-          title: "The Wake Up", 
-          desc: "Approach the mirror and it 'wakes up' with sparkling animations.",
-          icon: <Sparkles className="w-6 h-6 text-purple-400" />
-        },
-        { 
-          step: "02", 
-          title: "The Pose", 
-          desc: "Voice guidance tells you when to strike that perfect pose.",
-          icon: <Users className="w-6 h-6 text-blue-400" />
-        },
-        { 
-          step: "03", 
-          title: "The Signature", 
-          desc: "Draw on the glass! Your signature appears on the print.",
-          icon: <Pen className="w-6 h-6 text-pink-400" />
-        },
-        { 
-          step: "04", 
-          title: "The Reveal", 
-          desc: "Get high-res prints in 10 seconds and a digital copy instantly.",
-          icon: <Wand2 className="w-6 h-6 text-green-400" />
-        }
-      ].map((item, idx) => (
-        <div key={idx} className="group relative">
-          <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl relative z-20 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-4">
-            <div className="text-6xl font-black text-white/5 absolute -top-4 -right-2 group-hover:text-purple-500/10 transition-colors">
-              {item.step}
+          <div className="section-container relative z-10">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6 bg-gradient-to-r from-white via-purple-200 to-blue-300 bg-clip-text text-transparent">
+                The Mirror's Secret Journey
+              </h2>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                It’s not just a photo; it’s a 30-second magic show where you are the star.
+              </p>
             </div>
-            
-            <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/5">
-              {item.icon}
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+              {/* Connecting Line (Desktop Only) */}
+              <div className="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -translate-y-1/2"></div>
+
+              {[
+                {
+                  step: "01",
+                  title: "The Wake Up",
+                  desc: "Approach the mirror and it 'wakes up' with sparkling animations.",
+                  icon: <Sparkles className="w-6 h-6 text-purple-400" />
+                },
+                {
+                  step: "02",
+                  title: "The Pose",
+                  desc: "Voice guidance tells you when to strike that perfect pose.",
+                  icon: <Users className="w-6 h-6 text-blue-400" />
+                },
+                {
+                  step: "03",
+                  title: "The Signature",
+                  desc: "Draw on the glass! Your signature appears on the print.",
+                  icon: <Pen className="w-6 h-6 text-pink-400" />
+                },
+                {
+                  step: "04",
+                  title: "The Reveal",
+                  desc: "Get high-res prints in 10 seconds and a digital copy instantly.",
+                  icon: <Wand2 className="w-6 h-6 text-green-400" />
+                }
+              ].map((item, idx) => (
+                <div key={idx} className="group relative">
+                  <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl relative z-20 hover:border-purple-500/50 transition-all duration-500 hover:-translate-y-4">
+                    <div className="text-6xl font-black text-white/5 absolute -top-4 -right-2 group-hover:text-purple-500/10 transition-colors">
+                      {item.step}
+                    </div>
+
+                    <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border border-white/5">
+                      {item.icon}
+                    </div>
+
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-purple-300 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  {/* Decorative Dot on the line */}
+                  <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-purple-500 rounded-full blur-sm group-hover:scale-150 transition-transform"></div>
+                </div>
+              ))}
             </div>
-            
-            <h3 className="text-xl font-bold mb-3 group-hover:text-purple-300 transition-colors">
-              {item.title}
-            </h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              {item.desc}
-            </p>
           </div>
-          
-          {/* Decorative Dot on the line */}
-          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-purple-500 rounded-full blur-sm group-hover:scale-150 transition-transform"></div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
+        </section>
+
+        <section className="py-20 bg-slate-50">
+          <div className="section-container text-center">
+            <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
+              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199)
+              or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200)
+              or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
+            </p>
+
+            <div className="max-w-md mx-auto relative group">
+              <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
+                  {/* Decorative elements from the image */}
+                  <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
+                  <div className="absolute bottom-0 right-0 w-8 h-8 bg-pink-500 clip-triangle rotate-135 transform translate-x-4 translate-y-4"></div>
+
+                  <img
+                    src="/services/audiobook.jpeg" // Ensure you have a relevant image here
+                    alt="Audio Guest Book"
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                  <div className="absolute bottom-6 right-6 bg-white shadow-xl rounded-xl px-6 py-3 border border-slate-100">
+                    <span className="text-3xl font-black text-cyan-500">£49</span>
+                  </div>
+                </div>
+                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
+                  More About Our Audio Telephone Guest Book
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Testimonial */}
         <section className="py-16 md:py-20 bg-secondary/30">
