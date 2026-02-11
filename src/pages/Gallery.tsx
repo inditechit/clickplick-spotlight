@@ -1,48 +1,61 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { X } from 'lucide-react';
+import { X, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 const categories = ['All', 'Weddings', 'Parties', 'Corporate', 'Booths'];
+const API_BASE_URL = "https://api.clickplick.co.uk"; // Your Backend URL
 
-const galleryImages = [
-  { src: '/gallery/1.jpeg', category: 'Weddings' },
-  { src: '/gallery/2.jpeg', category: 'Weddings' },
-  { src: '/gallery/3.jpeg', category: 'Weddings' },
-  { src: '/gallery/4.jpeg', category: 'Parties' },
-  { src: '/gallery/5.jpeg', category: 'Parties' },
-  { src: '/gallery/6.jpeg', category: 'Parties' },
-  { src: '/gallery/7.jpeg', category: 'Parties' },
-  { src: '/gallery/8.jpeg', category: 'Corporate' },
-  { src: '/gallery/9.jpeg', category: 'Corporate' },
-  { src: '/gallery/10.jpeg', category: 'Corporate' },
-  { src: '/gallery/11.jpeg', category: 'Corporate' },
-  { src: '/gallery/12.jpeg', category: 'Booths' },
-  { src: '/gallery/13.jpeg', category: 'Booths' },
-  { src: '/gallery/14.jpeg', category: 'Booths' },
-  { src: '/gallery/15.jpeg', category: 'Booths' },
-  { src: '/gallery/16.jpeg', category: 'Weddings' },
-  { src: '/gallery/17.jpeg', category: 'Weddings' },
-  { src: '/gallery/18.jpeg', category: 'Parties' },
-  { src: '/gallery/19.jpeg', category: 'Parties' },
-  { src: '/gallery/20.jpeg', category: 'Corporate' },
-  { src: '/gallery/21.jpeg', category: 'Corporate' },
-  { src: '/gallery/22.jpeg', category: 'Booths' },
-  { src: '/gallery/23.jpeg', category: 'Booths' },
-  { src: '/gallery/24.jpeg', category: 'Weddings' },
-  { src: '/gallery/25.jpeg', category: 'Parties' },
-  { src: '/gallery/26.jpeg', category: 'Corporate' },
-  { src: '/gallery/27.jpeg', category: 'Booths' },
-  { src: '/gallery/28.jpeg', category: 'Weddings' },
-];
+// Define the shape of the data coming from your DB
+interface GalleryImage {
+  id: number;
+  image_url: string;
+  type: string; // This maps to our categories
+}
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  
+  // State for dynamic data
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
+  const [loading, setLoading] = useState(true);
 
+  // --- FETCH IMAGES FROM API ---
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`${API_BASE_URL}/api/gallery`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch gallery');
+        }
+        
+        const data = await response.json();
+        setGalleryImages(data);
+      } catch (error) {
+        console.error("Gallery fetch error:", error);
+        toast.error("Could not load gallery images. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGallery();
+  }, []);
+
+  // --- FILTER LOGIC ---
   const filteredImages = activeCategory === 'All' 
     ? galleryImages 
-    : galleryImages.filter(img => img.category === activeCategory);
+    : galleryImages.filter(img => (img.type || 'All') === activeCategory);
+
+  // Helper to ensure full image URL
+  const getImageUrl = (path: string) => {
+    if (!path) return '';
+    return path.startsWith('http') ? path : `${API_BASE_URL}${path}`;
+  };
 
   return (
     <div className="min-h-screen">
@@ -90,46 +103,62 @@ const Gallery = () => {
               ))}
             </div>
 
-            {/* Gallery Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {filteredImages.map((image, index) => (
-                <button
-                  key={index}
-                  onClick={() => setLightboxImage(image.src)}
-                  className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer"
-                >
-                  <img
-                    src={image.src}
-                    alt={`Gallery image ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                    <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                      View
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
+            {/* Loading State */}
+            {loading ? (
+              <div className="flex justify-center items-center py-20">
+                <Loader2 className="w-10 h-10 animate-spin text-primary" />
+              </div>
+            ) : filteredImages.length > 0 ? (
+              /* Gallery Grid */
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {filteredImages.map((image) => (
+                  <button
+                    key={image.id}
+                    onClick={() => setLightboxImage(getImageUrl(image.image_url))}
+                    className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-muted"
+                  >
+                    <img
+                      src={getImageUrl(image.image_url)}
+                      alt={`Gallery image ${image.id}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "https://placehold.co/600x600?text=No+Image";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+                      <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                        View
+                      </span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              /* Empty State */
+              <div className="text-center py-20 text-muted-foreground">
+                <p>No images found for "{activeCategory}".</p>
+              </div>
+            )}
           </div>
         </section>
 
         {/* Lightbox */}
         {lightboxImage && (
           <div 
-            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-sm"
             onClick={() => setLightboxImage(null)}
           >
             <button
               onClick={() => setLightboxImage(null)}
-              className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+              className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition-colors z-50"
             >
               <X className="w-6 h-6" />
             </button>
             <img
               src={lightboxImage}
               alt="Gallery preview"
-              className="max-w-full max-h-[90vh] rounded-lg"
+              className="max-w-full max-h-[90vh] rounded-lg shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             />
           </div>

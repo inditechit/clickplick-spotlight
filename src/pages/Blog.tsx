@@ -1,68 +1,101 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
-const blogPosts = [
-  {
-    slug: 'top-10-photo-booth-poses',
-    title: 'Top 10 Photo Booth Poses Your Guests Will Love',
-    excerpt: 'Get your guests striking the perfect poses with these fun and creative photo booth ideas that are guaranteed to create memorable shots.',
-    image: 'https://images.unsplash.com/photo-1529543544277-750e-58e8f5fd808c?q=80&w=800&auto=format&fit=crop',
-    category: 'Tips & Ideas',
-    date: '2024-01-15',
-    readTime: '5 min read',
-  },
-  {
-    slug: 'wedding-photo-booth-guide',
-    title: 'The Complete Guide to Wedding Photo Booths',
-    excerpt: 'Everything you need to know about adding a photo booth to your wedding day, from choosing the right booth to creating the perfect setup.',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop',
-    category: 'Weddings',
-    date: '2024-01-10',
-    readTime: '8 min read',
-  },
-  {
-    slug: 'corporate-events-photo-booth-benefits',
-    title: 'Why Every Corporate Event Needs a Photo Booth',
-    excerpt: 'Discover how photo booths can boost engagement, create brand awareness, and make your corporate event unforgettable.',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop',
-    category: 'Corporate',
-    date: '2024-01-05',
-    readTime: '6 min read',
-  },
-  {
-    slug: 'photo-booth-props-ideas',
-    title: '50 Creative Photo Booth Props Ideas for 2024',
-    excerpt: 'Looking for prop inspiration? Check out our curated list of the most fun and on-trend photo booth props for your next event.',
-    image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=800&auto=format&fit=crop',
-    category: 'Tips & Ideas',
-    date: '2024-01-01',
-    readTime: '7 min read',
-  },
-  {
-    slug: 'magic-mirror-vs-traditional-booth',
-    title: 'Magic Mirror vs Traditional Booth: Which is Right for You?',
-    excerpt: 'A detailed comparison to help you choose between our popular Magic Mirror and traditional enclosed photo booths.',
-    image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop',
-    category: 'Guides',
-    date: '2023-12-20',
-    readTime: '5 min read',
-  },
-  {
-    slug: 'birthday-party-photo-booth-themes',
-    title: 'Amazing Birthday Party Photo Booth Theme Ideas',
-    excerpt: 'Make your birthday celebration extra special with these creative theme ideas for your photo booth setup.',
-    image: 'https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=800&auto=format&fit=crop',
-    category: 'Parties',
-    date: '2023-12-15',
-    readTime: '4 min read',
-  },
-];
+// API Configuration
+const API_BASE_URL = "https://api.clickplick.co.uk/api/posts"; 
 
-const categories = ['All', 'Weddings', 'Corporate', 'Parties', 'Tips & Ideas', 'Guides'];
+// Interface for Post Data from API
+interface BlogPost {
+  id: number;
+  slug: string; // Added slug here
+  title: string;
+  short_content: string; 
+  content: string;
+  category_name: string; 
+  created_at: string;
+  link?: string; 
+  image?: string; 
+}
+
+interface Category {
+  id: number;
+  name: string;
+}
 
 const Blog = () => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [categories, setCategories] = useState<string[]>(['All']);
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [loading, setLoading] = useState(true);
+
+  // --- 1. FETCH DATA ---
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        // Fetch Posts
+        const postsRes = await fetch(`${API_BASE_URL}`);
+        const postsData = await postsRes.json();
+
+        // Fetch Categories
+        const catsRes = await fetch(`${API_BASE_URL}/categories/all`);
+        const catsData = await catsRes.json();
+
+        if (Array.isArray(postsData)) {
+          setPosts(postsData);
+        }
+
+        if (Array.isArray(catsData)) {
+          // Extract names and add 'All' at the beginning
+          const catNames = ['All', ...catsData.map((c: Category) => c.name)];
+          setCategories(catNames);
+        }
+
+      } catch (error) {
+        console.error("Error fetching blog data:", error);
+        toast.error("Failed to load blog posts");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // --- 2. HELPER: Calculate Read Time ---
+  const calculateReadTime = (content: string) => {
+    if (!content) return "1 min read";
+    const wordsPerMinute = 200;
+    const words = content.trim().split(/\s+/).length;
+    const time = Math.ceil(words / wordsPerMinute);
+    return `${time} min read`;
+  };
+
+  // --- 3. HELPER: Get Image URL ---
+  const getImageUrl = (post: BlogPost) => {
+    // If backend returns a relative path (e.g., /uploads/img.jpg), prepend API domain
+    const baseUrl = "https://api.clickplick.co.uk";
+    
+    if (post.image) {
+      return post.image.startsWith('http') ? post.image : `${baseUrl}${post.image}`;
+    }
+    if (post.link) {
+      return post.link.startsWith('http') ? post.link : `${baseUrl}${post.link}`;
+    }
+    
+    return "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop"; // Fallback
+  };
+
+  // --- 4. FILTER LOGIC ---
+  const filteredPosts = activeCategory === 'All'
+    ? posts
+    : posts.filter(post => post.category_name === activeCategory);
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -93,72 +126,100 @@ const Blog = () => {
         {/* Blog Section */}
         <section className="py-20 md:py-28 bg-background">
           <div className="section-container">
-            {/* Category Filter */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  className={`px-5 py-2 rounded-full font-medium transition-all ${
-                    category === 'All'
-                      ? 'bg-accent text-accent-foreground'
-                      : 'bg-secondary text-secondary-foreground hover:bg-accent/10 hover:text-accent'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+            
+            {/* Loading State */}
+            {loading ? (
+              <div className="flex justify-center py-20">
+                <Loader2 className="w-10 h-10 animate-spin text-primary" />
+              </div>
+            ) : (
+              <>
+                {/* Category Filter */}
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setActiveCategory(category)}
+                      className={`px-5 py-2 rounded-full font-medium transition-all ${
+                        activeCategory === category
+                          ? 'bg-accent text-accent-foreground shadow-sm'
+                          : 'bg-secondary text-secondary-foreground hover:bg-accent/10 hover:text-accent'
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
 
-            {/* Blog Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.map((post) => (
-                <article 
-                  key={post.slug}
-                  className="group bg-card rounded-2xl overflow-hidden border border-border card-hover"
-                >
-                  <Link to={`/blog/${post.slug}`}>
-                    <div className="relative h-52 overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold">
-                          {post.category}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          {new Date(post.date).toLocaleDateString('en-GB', {
-                            day: 'numeric',
-                            month: 'short',
-                            year: 'numeric',
-                          })}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4" />
-                          {post.readTime}
-                        </span>
-                      </div>
-                      <h2 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-accent transition-colors line-clamp-2">
-                        {post.title}
-                      </h2>
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4">
-                        {post.excerpt}
-                      </p>
-                      <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm group-hover:gap-3 transition-all">
-                        Read More
-                        <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </Link>
-                </article>
-              ))}
-            </div>
+                {/* Blog Grid */}
+                {filteredPosts.length > 0 ? (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredPosts.map((post) => (
+                      <article 
+                        key={post.id}
+                        className="group bg-card rounded-2xl overflow-hidden border border-border card-hover flex flex-col h-full"
+                      >
+                        {/* Link to Detail Page using SLUG */}
+                        <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
+                          <div className="relative h-52 overflow-hidden shrink-0 bg-muted">
+                            <img
+                              src={getImageUrl(post)}
+                              alt={post.title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              loading="lazy"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = "https://placehold.co/600x400?text=No+Image";
+                              }}
+                            />
+                            <div className="absolute top-4 left-4">
+                              <span className="px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold">
+                                {post.category_name || "General"}
+                              </span>
+                            </div>
+                          </div>
+                          
+                          <div className="p-6 flex flex-col flex-grow">
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                              <span className="flex items-center gap-1">
+                                <Calendar className="w-4 h-4" />
+                                {new Date(post.created_at).toLocaleDateString('en-GB', {
+                                  day: 'numeric',
+                                  month: 'short',
+                                  year: 'numeric',
+                                })}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <Clock className="w-4 h-4" />
+                                {calculateReadTime(post.content)}
+                              </span>
+                            </div>
+                            
+                            <h2 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-accent transition-colors line-clamp-2">
+                              {post.title}
+                            </h2>
+                            
+                            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4 flex-grow">
+                              {post.short_content}
+                            </p>
+                            
+                            <div className="mt-auto pt-2">
+                              <span className="inline-flex items-center gap-2 text-accent font-semibold text-sm group-hover:gap-3 transition-all">
+                                Read More
+                                <ArrowRight className="w-4 h-4" />
+                              </span>
+                            </div>
+                          </div>
+                        </Link>
+                      </article>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-10 text-muted-foreground">
+                    <p>No posts found in this category.</p>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         </section>
       </main>
