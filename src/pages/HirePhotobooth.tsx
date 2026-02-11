@@ -10,7 +10,7 @@ const booths = [
     name: 'LCD Screen Slimline Pod',
     tagline: 'Modern & Versatile',
     description: 'Our most popular booth! Sleek, modern design with a stunning LCD touchscreen interface. Perfect for any venue and event type.',
-    image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop',
+    image: '/light/1.png',
     features: ['Touchscreen interface', 'Instant prints', 'Digital sharing', 'Custom overlays'],
     specs: { footprint: '1m x 1m', height: '2m', guests: '1-8 people' },
     idealFor: ['Weddings', 'Corporate Events', 'Birthdays'],
@@ -22,7 +22,7 @@ const booths = [
     name: 'Magic Mirror',
     tagline: 'Interactive Experience',
     description: 'Interactive full-length mirror with animated graphics, voice guidance, and touchscreen technology. A truly magical experience!',
-    image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=800&auto=format&fit=crop',
+    image: '/light/magic.jpg',
     features: ['Full-length mirror', 'Voice guidance', 'Animations', 'Signature capture'],
     specs: { footprint: '1.2m x 0.8m', height: '2.1m', guests: '1-6 people' },
     idealFor: ['Weddings', 'Proms', 'Gala Events'],
@@ -34,7 +34,7 @@ const booths = [
     name: 'Retro Box',
     tagline: 'Vintage Charm',
     description: 'Classic vintage-style photo booth bringing nostalgic charm to your celebration. Features authentic retro styling with modern technology inside.',
-    image: 'https://images.unsplash.com/photo-1527529482837-4698179dc6ce?q=80&w=800&auto=format&fit=crop',
+    image: '/light/2.png',
     features: ['Vintage design', 'Strip photos', 'Props included', 'Classic flash'],
     specs: { footprint: '1.5m x 1.5m', height: '2.2m', guests: '1-4 people' },
     idealFor: ['Themed Parties', 'Weddings', 'Festivals'],
@@ -46,7 +46,7 @@ const booths = [
     name: 'Enchanted Mirror X Selfie',
     tagline: 'Premium Luxury',
     description: 'Our premium mirror booth with voice guidance, stunning visual effects, and elegant design. Perfect for luxury weddings and upscale events.',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop',
+    image: '/light/3.jpg',
     features: ['Premium finish', 'Emoji stamps', 'Green screen', 'GIF creation'],
     specs: { footprint: '1m x 0.6m', height: '2m', guests: '1-6 people' },
     idealFor: ['Luxury Weddings', 'VIP Events', 'Brand Activations'],
@@ -58,7 +58,7 @@ const booths = [
     name: 'Inflatable Enclosed Booth',
     tagline: 'Party Favorite',
     description: 'Fun enclosed inflatable booth creating a private photo experience. Great for parties and festivals where you want that classic booth feel.',
-    image: 'https://images.unsplash.com/photo-1496843916299-590492c751f4?q=80&w=800&auto=format&fit=crop',
+    image: '/light/4.png',
     features: ['Enclosed design', 'LED lighting', 'Privacy curtain', 'Festival ready'],
     specs: { footprint: '2.5m x 2.5m', height: '2.4m', guests: '1-8 people' },
     idealFor: ['Festivals', 'Outdoor Events', 'House Parties'],
@@ -70,7 +70,7 @@ const booths = [
     name: 'Wooden Vintage Tripod',
     tagline: 'Rustic Elegance',
     description: 'Elegant rustic wooden tripod booth ideal for weddings and upscale events. Beautiful craftsmanship meets modern photo technology.',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop',
+    image: '/light/3.png',
     features: ['Handcrafted wood', 'DSLR camera', 'Rustic props', 'Compact setup'],
     specs: { footprint: '0.8m x 0.8m', height: '1.8m', guests: '1-10 people' },
     idealFor: ['Rustic Weddings', 'Garden Parties', 'Intimate Events'],
@@ -125,9 +125,9 @@ const HirePhotobooth = () => {
                         Most Popular
                       </div>
                     )}
-                    <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-bold">
+                    {/* <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-full bg-accent text-accent-foreground text-sm font-bold">
                       From {booth.startingPrice}
-                    </div>
+                    </div> */}
                     <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
                       <img
                         src={booth.image}
@@ -159,10 +159,10 @@ const HirePhotobooth = () => {
                         <Users className="w-4 h-4 text-primary" />
                         <span>{booth.specs.guests}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-foreground">
+                      {/* <div className="flex items-center gap-2 text-foreground">
                         <Tag className="w-4 h-4 text-primary" />
                         <span>From {booth.startingPrice}</span>
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* Ideal For */}

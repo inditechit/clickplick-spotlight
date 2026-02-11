@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; // <--- Import Helmet
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Calendar, Clock, ArrowRight, Loader2 } from 'lucide-react';
@@ -11,7 +12,7 @@ const API_BASE_URL = "https://api.clickplick.co.uk/api/posts";
 // Interface for Post Data from API
 interface BlogPost {
   id: number;
-  slug: string; // Added slug here
+  slug: string;
   title: string;
   short_content: string; 
   content: string;
@@ -78,7 +79,6 @@ const Blog = () => {
 
   // --- 3. HELPER: Get Image URL ---
   const getImageUrl = (post: BlogPost) => {
-    // If backend returns a relative path (e.g., /uploads/img.jpg), prepend API domain
     const baseUrl = "https://api.clickplick.co.uk";
     
     if (post.image) {
@@ -98,6 +98,15 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen">
+      {/* --- SEO TAGS FOR BLOG LISTING --- */}
+      <Helmet>
+        <title>Our Blog - Tips, Ideas & Inspiration | ClickPlick</title>
+        <meta name="description" content="Explore expert advice, creative photo booth ideas, and event inspiration to make your celebration unforgettable with ClickPlick." />
+        <meta property="og:title" content="Our Blog - Tips, Ideas & Inspiration | ClickPlick" />
+        <meta property="og:description" content="Explore expert advice, creative photo booth ideas, and event inspiration to make your celebration unforgettable." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       <Header />
       <main>
         {/* Hero Section */}

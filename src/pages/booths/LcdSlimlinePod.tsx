@@ -6,7 +6,7 @@ import { Check, ArrowLeft, Camera, Smartphone, Printer, Sparkles, Users, Clock, 
 import React, { useState, useEffect } from "react";
 
 const features = [
-  { icon: Camera, title: 'HD Camera', description: 'Professional quality photos every time with our high-end Canon HD camera system' },
+  { icon: Camera, title: 'HD Camera', description: 'Professional quality photos every time with our high-end HD camera system' },
   { icon: Smartphone, title: 'Digital Sharing', description: 'Instant share to social media via email, AirDrop, or QR code' },
   { icon: Printer, title: 'Instant Prints', description: 'Unlimited high-quality 2x6 strip prints on premium photo paper' },
   { icon: Sparkles, title: 'Custom Overlays', description: 'Personalized designs with your names, date, logo, and event branding' },
@@ -113,7 +113,7 @@ const LcdSlimlinePod = () => {
               LCD Screen Slimline Pod
             </h1>
             <p className="text-xl text-white/80 leading-relaxed max-w-2xl mb-8">
-              Our most popular booth! Sleek, modern design with a stunning LCD touchscreen interface. Perfect for any venue and event type, from intimate gatherings to large corporate functions.
+              Our most popular booth! Sleek, modern design with a stunning LCD interface. Perfect for any venue and event type, from intimate gatherings to large corporate functions.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button variant="secondary" size="lg" asChild>

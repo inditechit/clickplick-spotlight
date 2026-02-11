@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async'; // <--- IMPORT THIS
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { 
@@ -23,7 +24,7 @@ const API_BASE_URL = "https://api.clickplick.co.uk/api/posts";
 // Interface for Post Data
 interface BlogPost {
   id: number;
-  slug: string; // Added slug
+  slug: string;
   title: string;
   short_content: string;
   content: string;
@@ -37,7 +38,7 @@ interface BlogPost {
 }
 
 const BlogPost = () => {
-  const { slug } = useParams(); // Get slug from URL instead of ID
+  const { slug } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
@@ -52,14 +53,14 @@ const BlogPost = () => {
 
         if (!slug) return;
 
-        // 1. Fetch Single Post by Slug
+        // 1. Fetch Single Post
         const response = await fetch(`${API_BASE_URL}/${slug}`);
         if (!response.ok) throw new Error("Post not found");
         
         const data = await response.json();
         setPost(data);
 
-        // 2. Fetch All Posts to filter Related ones
+        // 2. Fetch Related Posts
         const allPostsRes = await fetch(API_BASE_URL);
         const allPosts = await allPostsRes.json();
         
@@ -95,17 +96,11 @@ const BlogPost = () => {
   // --- HELPER: Get Image ---
   const getImageUrl = (p: BlogPost) => {
     const baseUrl = "https://api.clickplick.co.uk";
-    
-    if (p.image) {
-      return p.image.startsWith('http') ? p.image : `${baseUrl}${p.image}`;
-    }
-    if (p.link) {
-      return p.link.startsWith('http') ? p.link : `${baseUrl}${p.link}`;
-    }
+    if (p.image) return p.image.startsWith('http') ? p.image : `${baseUrl}${p.image}`;
+    if (p.link) return p.link.startsWith('http') ? p.link : `${baseUrl}${p.link}`;
     return "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop";
   };
 
-  // --- HELPER: Get Tags Array ---
   const getTags = (tagString?: string) => {
     if (!tagString) return [];
     return tagString.split(',').map(t => t.trim());
@@ -137,11 +132,33 @@ const BlogPost = () => {
     );
   }
 
+  // --- SEO IMAGE URL ---
+  const seoImage = getImageUrl(post);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      {/* --- DYNAMIC SEO TAGS --- */}
+      <Helmet>
+        {/* Standard Metadata */}
+        <title>{post.title} | ClickPlick Blog</title>
+        <meta name="description" content={post.short_content || "Read this article on ClickPlick."} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.short_content} />
+        <meta property="og:image" content={seoImage} />
+        <meta property="og:url" content={window.location.href} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.short_content} />
+        <meta name="twitter:image" content={seoImage} />
+      </Helmet>
+
       <Header />
       <main className="flex-grow">
-        {/* --- Header Section --- */}
         <section className="pt-32 pb-12 md:pt-40 md:pb-20 bg-secondary/30 relative">
            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:20px_20px]" />
           <div className="section-container max-w-4xl mx-auto relative z-10">
@@ -164,7 +181,6 @@ const BlogPost = () => {
                 {post.title}
               </h1>
 
-              {/* Metadata Items */}
               <div className="flex flex-wrap items-center gap-y-4 gap-x-8 text-muted-foreground text-sm md:text-base pt-2">
                 <span className="flex items-center gap-2 font-medium text-foreground/80">
                   <User className="w-5 h-5 text-accent" />
@@ -187,7 +203,6 @@ const BlogPost = () => {
           </div>
         </section>
 
-        {/* --- Featured Image Section --- */}
         <section className="px-4 relative z-20 -mt-12">
           <div className="max-w-5xl mx-auto">
             <div className="aspect-[16/9] md:aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-border/50 bg-muted">
@@ -203,18 +218,15 @@ const BlogPost = () => {
           </div>
         </section>
 
-        {/* --- Article Content Section --- */}
         <section className="py-16 md:py-24">
           <div className="section-container max-w-3xl mx-auto">
             <article>
-              {/* Lead Excerpt */}
               {post.short_content && (
                 <p className="text-xl md:text-2xl text-foreground/80 font-medium leading-relaxed mb-10 border-l-4 border-accent pl-6 py-2 italic font-heading">
                   {post.short_content}
                 </p>
               )}
 
-              {/* Main Content Body */}
               <div 
                 className="prose prose-lg max-w-none
                   prose-headings:font-heading prose-headings:font-bold prose-headings:text-foreground prose-headings:mt-10 prose-headings:mb-4
@@ -226,9 +238,7 @@ const BlogPost = () => {
                 dangerouslySetInnerHTML={{ __html: post.content }} 
               />
 
-              {/* Article Footer (Tags & Share) */}
               <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row gap-8 justify-between items-start md:items-center">
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2 items-center">
                   <Tag className="w-4 h-4 text-accent mb-1 mr-2" />
                   {getTags(post.tag).length > 0 ? (
@@ -242,21 +252,21 @@ const BlogPost = () => {
                   )}
                 </div>
 
-                {/* Share Buttons */}
                 <div className="flex items-center gap-4">
                   <span className="text-sm font-medium text-foreground/70 flex items-center gap-2">
                     <Share2 className="w-4 h-4" /> Share Article
                   </span>
                   <div className="flex gap-3">
-                    <button aria-label="Share on Facebook" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-[#1877F2] hover:text-white transition-all duration-300">
+                    {/* Updated Share Links for Real Sharing */}
+                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-[#1877F2] hover:text-white transition-all duration-300">
                       <Facebook className="w-5 h-5" />
-                    </button>
-                    <button aria-label="Share on Twitter" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-[#1DA1F2] hover:text-white transition-all duration-300">
+                    </a>
+                    <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-[#1DA1F2] hover:text-white transition-all duration-300">
                       <Twitter className="w-5 h-5" />
-                    </button>
-                    <button aria-label="Share on LinkedIn" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-[#0A66C2] hover:text-white transition-all duration-300">
+                    </a>
+                    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-secondary text-secondary-foreground hover:bg-[#0A66C2] hover:text-white transition-all duration-300">
                       <Linkedin className="w-5 h-5" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -265,7 +275,6 @@ const BlogPost = () => {
           </div>
         </section>
 
-        {/* --- Related Posts Section --- */}
         {relatedPosts.length > 0 && (
           <section className="py-20 bg-secondary/20 border-t border-border">
             <div className="section-container">
@@ -276,7 +285,6 @@ const BlogPost = () => {
               <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {relatedPosts.map((relatedPost) => (
                   <Link 
-                    // Link uses slug now
                     to={`/blog/${relatedPost.slug}`}
                     key={relatedPost.id}
                     className="group bg-card rounded-2xl overflow-hidden border border-border card-hover flex flex-col h-full"
