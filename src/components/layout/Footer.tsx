@@ -5,7 +5,7 @@ const quickLinks = [
   { name: 'Who we are', href: '/about' },
   { name: 'Contact us', href: '/contact' },
   { name: 'Careers', href: 'https://orig.clickplick.co.uk/careers.php' },
-  { name: 'Blog', href: 'https://orig.clickplick.co.uk/blog.php' },
+  { name: 'Blog', href: '/blog' },
 ];
 
 const boothLinks = [

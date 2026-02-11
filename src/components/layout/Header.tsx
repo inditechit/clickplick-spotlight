@@ -22,7 +22,7 @@ const navigation = [
   { name: 'Events', href: '/events' },
   { name: 'Gallery', href: '/gallery' },
   { name: 'FAQs', href: '/faqs' },
-  { name: 'Blog', href: 'https://orig.clickplick.co.uk/blog.php' },
+  { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
 ];
 
