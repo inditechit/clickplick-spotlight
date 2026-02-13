@@ -26,6 +26,7 @@ import RetroBox from "./pages/booths/RetroBox";
 import EnchantedMirror from "./pages/booths/EnchantedMirror";
 import InflatableBooth from "./pages/booths/InflatableBooth";
 import WoodenTripod from "./pages/booths/WoodenTripod";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
