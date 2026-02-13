@@ -3,11 +3,11 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Smile, Video, Image, Layers, Star, Heart, Briefcase, GraduationCap, PartyPopper, Crown, Gem, Wand2 } from 'lucide-react';
-
+import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 const features = [
-  { icon: Smile, title: 'Emoji Stamps', description: 'Fun interactive emoji overlays that guests can place anywhere on their photos for added personality' },
+  // { icon: Smile, title: 'Emoji Stamps', description: 'Fun interactive emoji overlays that guests can place anywhere on their photos for added personality' },
   { icon: Layers, title: 'Green Screen', description: 'Transport guests to any location with our professional green screen and library of stunning backgrounds' },
-  { icon: Video, title: 'GIF & Boomerang', description: 'Create animated GIFs and boomerangs that capture the fun and energy of your celebration' },
+  { icon: Video, title: 'Animated GIFs', description: 'Create animated GIFs that capture the fun and energy of your celebration' },
   { icon: Image, title: 'Premium Finish', description: 'Elegant high-end design with luxurious detailing that complements the most sophisticated venues' },
 ];
 
@@ -27,7 +27,7 @@ const includes = [
 ];
 
 const specifications = [
-  { label: 'Footprint', value: '1.4m x 1.4m' },
+  { label: 'Footprint', value: '2FT x 2FT' },
   // { label: 'Height', value: '2m' },
   { label: 'Guest Capacity', value: '15-20 guests' },
   { label: 'Setup Time', value: '75 minutes' },
@@ -36,7 +36,7 @@ const specifications = [
 
 const idealEvents = [
   { icon: Crown, name: 'Luxury Weddings' },
-  { icon: Briefcase, name: 'Award Ceremonies' },
+  { icon: Briefcase, name: 'Compact spaces' },
   { icon: Gem, name: 'Gala Dinners' },
   { icon: GraduationCap, name: 'Proms' },
 ];
@@ -97,12 +97,18 @@ const EnchantedMirror = () => {
           </p>
         </div>
       </div>
-      <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
+
+      {/* --- Image Fix: Poori photo dikhane ke liye --- */}
+      <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 shadow-elevated flex items-center justify-center p-4" 
+           style={{ minHeight: '500px', maxHeight: '700px' }}> 
         <img
           src="/light/3.jpg"
           alt="Enchanted Mirror X Selfie Booth"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain" // 'contain' se photo kabhi nahi kategi
         />
+        
+        {/* Optional: Subtle glow effect behind the mirror */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-transparent pointer-events-none" />
       </div>
     </div>
   </div>
@@ -110,30 +116,65 @@ const EnchantedMirror = () => {
 
         {/* The Enchanted Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
-          <div className="section-container">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-4">
-              The Enchanted Experience
-            </h2>
-            <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-              Every interaction is designed to delight, surprise, and create unforgettable memories
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { icon: Crown, title: 'Regal Welcome', description: 'Guests are welcomed with elegant animations and a sophisticated voice greeting. The mirror awakens with a flourish that immediately captures attention and creates excitement.' },
-                { icon: Wand2, title: 'Interactive Magic', description: 'Touch the screen to add emoji stamps, choose stunning backgrounds, or record personal video messages. The intuitive interface makes every guest feel like a VIP.' },
-                { icon: Gem, title: 'Premium Output', description: 'Photos are printed on premium quality paper with a luxurious finish. Digital copies are delivered via a beautifully designed online gallery perfect for sharing.' },
-              ].map((item) => (
-                <div key={item.title} className="bg-card rounded-xl p-8 shadow-card text-center">
-                  <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
-                    <item.icon className="w-8 h-8 text-accent" />
-                  </div>
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
+  <div className="section-container">
+    <div className="grid lg:grid-cols-2 gap-12 items-center"> {/* Changed to 2-column grid */}
+      
+      {/* --- Left Column: Image --- */}
+      <div className="">
+        {/* Main image for the Magic Mirror */}
+        <img
+          src="/services/bs.jpg" // **APNE IMAGE PATH KO YAHAN UPDATE KAREIN**
+          alt="Enchanted Magic Mirror Photobooth"
+          className="w-full h-full object-cover "
+        />
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
+          <p className="text-white text-xl font-bold">Unleash the Magic!</p>
+        </div> */}
+      </div>
+
+      {/* --- Right Column: Text Content --- */}
+      <div>
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+          The Enchanted Experience
+        </h2>
+        <p className="text-muted-foreground max-w-xl mb-10">
+          Every interaction is designed to delight, surprise, and create unforgettable memories with our Magic Mirror.
+        </p>
+        
+        <div className="space-y-8"> {/* Changed to space-y for vertical stacking */}
+          {[
+            { 
+              icon: Crown, 
+              title: 'Regal Welcome', 
+              description: 'The Magic Mirror can have your choice of start screen. Just send us your design/LOGO and we will do the rest.' 
+            },
+            // { 
+            //   icon: Wand2, // Interactive Magic point wapas add kiya hai
+            //   title: 'Interactive Magic', 
+            //   description: 'Touch the screen to add emoji stamps, choose stunning backgrounds, or record personal video messages. The intuitive interface makes every guest feel like a VIP.' 
+            // },
+            { 
+              icon: Gem, 
+              title: 'Premium Output', 
+              description: 'Photos are printed on premium quality paper with a luxurious finish. Digital copies are delivered via a beautifully designed online gallery perfect for sharing.' 
+            },
+          ].map((item) => (
+            <div key={item.title} className="flex items-start gap-4"> {/* Flexbox for icon and text */}
+              <div className="w-12 h-12 flex-shrink-0 rounded-full bg-accent/10 flex items-center justify-center mt-1">
+                <item.icon className="w-6 h-6 text-accent" />
+              </div>
+              <div>
+                <h3 className="font-heading font-bold text-xl text-foreground mb-1">{item.title}</h3>
+                <p className="text-muted-foreground text-base">{item.description}</p>
+              </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
         {/* Green Screen Feature */}
         {/* <section className="py-16 md:py-20 bg-background">
@@ -269,17 +310,26 @@ const EnchantedMirror = () => {
             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
               Cutting-edge technology wrapped in elegant design
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((feature) => (
-                <div key={feature.title} className="bg-card rounded-xl p-6 shadow-card text-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <feature.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-bold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </div>
-              ))}
-            </div>
+            <div className="max-w-6xl mx-auto"> {/* Container added to keep 3 cards looking elegant */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> {/* Changed lg:4 to 3 and adjusted gap */}
+    {features.map((feature) => (
+      <div 
+        key={feature.title} 
+        className="bg-card rounded-2xl p-8 shadow-card text-center border border-slate-50 hover:shadow-xl transition-shadow duration-300"
+      >
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 transform -rotate-3 group-hover:rotate-0 transition-transform">
+          <feature.icon className="w-8 h-8 text-primary" />
+        </div>
+        <h3 className="font-heading font-bold text-xl text-foreground mb-3">
+          {feature.title}
+        </h3>
+        <p className="text-muted-foreground text-base leading-relaxed">
+          {feature.description}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
           </div>
         </section>
 
@@ -298,7 +348,7 @@ const EnchantedMirror = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                   <p>
-                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                    With ClickPlick delivering and setting up The Enchanted Magic Mirror, you can relax while we handle all the technical details.
                   </p>
                   <p>
                     From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
@@ -312,7 +362,7 @@ const EnchantedMirror = () => {
               {/* Right Side: Image instead of Specs (as requested) */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-square">
                 <img
-                  src="/light/en/4.jpg" // Reusing an existing image path as placeholder
+                  src="/services/bhabi.jpg" // Reusing an existing image path as placeholder
                   alt="Booth Setup"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
@@ -370,14 +420,14 @@ const EnchantedMirror = () => {
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
             {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
+              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199) 
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
             </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
-                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
                    {/* Decorative elements from the image */}
                    <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
@@ -392,9 +442,9 @@ const EnchantedMirror = () => {
                       <span className="text-3xl font-black text-cyan-500">£49</span>
                    </div>
                 </div>
-                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
-                  More About Our Audio Telephone Guest Book
-                </Link>
+                <Link to="/audio-guest-book" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors"> 
+                                  More About Our Audio Telephone Guest Book Hire
+                                </Link>
               </div>
             </div>
           </div>
@@ -412,12 +462,54 @@ const EnchantedMirror = () => {
               <blockquote className="text-xl md:text-2xl text-foreground italic mb-6">
                 "We wanted something special for our wedding at The Shard and the Enchanted Mirror exceeded our expectations. The green screen transported our guests to locations around the world, and the quality matched the venue perfectly. Absolutely stunning!"
               </blockquote>
-              <p className="font-semibold text-foreground">Alexandra & Charles</p>
-              <p className="text-muted-foreground text-sm">Wedding at The Shard, London</p>
+              <p className="font-semibold text-foreground">Alexandra</p>
+              {/* <p className="text-muted-foreground text-sm">Wedding at The Shard, London</p> */}
             </div>
           </div>
         </section>
+<div className="section-container py-12">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
+        
+        <div className="relative flex flex-col md:flex-row items-center gap-8">
+          {/* Icon Part */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+            </div>
+          </div>
 
+          {/* Content Part */}
+          <div className="flex-grow text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                Professional Standard
+              </span>
+              <Info className="w-4 h-4 text-slate-400" />
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+            </h3>
+            
+            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+              This is a standard requirement for most premium venues across the UK, ensuring 
+              complete peace of mind for you and your guests.
+            </p>
+          </div>
+
+          {/* Badge Part */}
+          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+            <div className="flex items-center gap-2 text-green-600 font-bold">
+              <CheckCircle2 className="w-5 h-5" />
+              <span>Venue Approved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -429,11 +521,11 @@ const EnchantedMirror = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                { q: 'What makes this booth "premium"?', a: 'Every aspect is elevated – from the luxurious mirror finish and elegant frame to the superior print quality and advanced interactive features. We also provide white-glove attendant service with this booth.' },
-                { q: 'Can we have custom green screen backgrounds?', a: 'Absolutely! We can create bespoke backgrounds featuring your venue, branding, wedding theme, or any imagery you provide. We include up to 5 custom backgrounds at no extra charge.' },
-                { q: 'How do the emoji stamps work?', a: 'After taking photos, guests can use the touchscreen to add fun emoji graphics anywhere on their images. They can choose from hundreds of options including themed seasonal emojis.' },
+                { q: 'What makes this booth "premium"?', a: 'Every aspect is elevated – from the luxurious mirror finish and elegant frame to the superior print quality and advanced interactive features. We also provide attendant service with this booth.' },
+                { q: 'Can we have custom green screen backgrounds?', a: 'Absolutely! We can create bespoke backgrounds featuring your venue, branding, wedding theme, or any imagery you provide.' },
+                // { q: 'How do the emoji stamps work?', a: 'After taking photos, guests can use the touchscreen to add fun emoji graphics anywhere on their images. They can choose from hundreds of options including themed seasonal emojis.' },
                 { q: 'Is this suitable for very formal events?', a: 'Perfectly suited! The Enchanted Mirror X Selfie is designed to complement black-tie events, luxury weddings, and sophisticated corporate functions. It adds entertainment without compromising elegance.' },
-                { q: 'What about the GIF and boomerang features?', a: 'These fun modes capture short animated sequences that guests can share instantly via email or social media. They\'re hugely popular and create shareable content that extends your event\'s reach.' },
+                { q: 'What about the Animated GIFs?', a: 'These fun modes capture short animated sequences that guests can share instantly via email or social media. They\'re hugely popular and create shareable content that extends your event\'s reach.' },
               ].map((faq, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 shadow-card">
                   <h3 className="font-heading font-bold text-foreground mb-2">{faq.q}</h3>

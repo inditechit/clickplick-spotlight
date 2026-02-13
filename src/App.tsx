@@ -27,7 +27,7 @@ import EnchantedMirror from "./pages/booths/EnchantedMirror";
 import InflatableBooth from "./pages/booths/InflatableBooth";
 import WoodenTripod from "./pages/booths/WoodenTripod";
 import ScrollToTop from "./components/ScrollToTop";
-
+import AudioGuestBook from './pages/AudioGuestBook';
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -53,7 +53,7 @@ const App = () => (
             <Route path="/hire-photobooth/enchanted-mirror" element={<EnchantedMirror />} />
             <Route path="/hire-photobooth/inflatable-booth" element={<InflatableBooth />} />
             <Route path="/hire-photobooth/wooden-tripod" element={<WoodenTripod />} />
-
+            <Route path="/audio-guest-book" element={<AudioGuestBook />} />
 
             <Route path="/the-lcd-screen-slimline-pod.php" element={<LcdSlimlinePod />} />
             <Route path="/the-magic-mirror.php" element={<MagicMirror />} />

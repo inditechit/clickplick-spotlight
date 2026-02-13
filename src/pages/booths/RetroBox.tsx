@@ -3,12 +3,12 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Camera, Zap, Film, Gift, Star, Heart, Briefcase, GraduationCap, PartyPopper, Clock, Palette } from 'lucide-react';
-
+import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 const features = [
-  { icon: Film, title: 'Classic Strip Photos', description: 'Authentic photo strip format just like the vintage arcade booths of yesteryear' },
-  { icon: Camera, title: 'Vintage Aesthetics', description: 'Beautifully designed exterior with authentic retro styling and warm, inviting appearance' },
+  { icon: Film, title: 'Photo-Booth Attendant', description: 'A professional photobooth attendant will always accompany the photobooth and encourage the guests to click pictures.' },
+  { icon: Camera, title: 'Retro TV Aesthetics', description: 'Beautifully designed exterior with authentic retro styling and warm, inviting appearance' },
   { icon: Zap, title: 'Classic Flash Lighting', description: 'Soft, flattering lighting that recreates the warm glow of vintage photography' },
-  { icon: Gift, title: 'Themed Props', description: 'Curated vintage prop collection including classic hats, glasses, and period accessories' },
+  { icon: Gift, title: 'Themed Props', description: 'High quality prop collection including classic hats, glasses, and sign boards' },
 ];
 
 const includes = [
@@ -27,7 +27,7 @@ const includes = [
 ];
 
 const specifications = [
-  { label: 'Footprint', value: '1.3m x 1.3m' },
+  { label: 'Footprint', value: '2FT x 2FT' },
   // { label: 'Height', value: '2.2m' },
   { label: 'Guest Capacity', value: '10-15 guests' },
   { label: 'Setup Time', value: '90 minutes' },
@@ -269,7 +269,7 @@ const RetroBox = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                   <p>
-                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                    With ClickPlick delivering and setting up The Retro white box, you can relax while we handle all the technical details.
                   </p>
                   <p>
                     From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
@@ -341,14 +341,14 @@ const RetroBox = () => {
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
             {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
+              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199) 
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
             </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
-                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
                    {/* Decorative elements from the image */}
                    <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
@@ -363,9 +363,9 @@ const RetroBox = () => {
                       <span className="text-3xl font-black text-cyan-500">£49</span>
                    </div>
                 </div>
-                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
-                  More About Our Audio Telephone Guest Book
-                </Link>
+                <Link to="/audio-guest-book" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors"> 
+  More About Our Audio Telephone Guest Book Hire
+</Link>
               </div>
             </div>
           </div>
@@ -388,7 +388,49 @@ const RetroBox = () => {
             </div>
           </div>
         </section>
+<div className="section-container py-12">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
+        
+        <div className="relative flex flex-col md:flex-row items-center gap-8">
+          {/* Icon Part */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+            </div>
+          </div>
 
+          {/* Content Part */}
+          <div className="flex-grow text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                Professional Standard
+              </span>
+              <Info className="w-4 h-4 text-slate-400" />
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+            </h3>
+            
+            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+              This is a standard requirement for most premium venues across the UK, ensuring 
+              complete peace of mind for you and your guests.
+            </p>
+          </div>
+
+          {/* Badge Part */}
+          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+            <div className="flex items-center gap-2 text-green-600 font-bold">
+              <CheckCircle2 className="w-5 h-5" />
+              <span>Venue Approved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
@@ -400,10 +442,10 @@ const RetroBox = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                { q: 'Is it really enclosed like the old booths?', a: 'Yes! The Retro Box features a classic enclosed design with a curtain for privacy, just like the original arcade photo booths. This creates an intimate, authentic experience.' },
+                // { q: 'Is it really enclosed like the old booths?', a: 'Yes! The Retro Box features a classic enclosed design with a curtain for privacy, just like the original arcade photo booths. This creates an intimate, authentic experience.' },
                 { q: 'How many photos are on each strip?', a: 'Each photo strip features 4 individual poses arranged vertically, exactly like traditional photo booth strips. We can customise the number if you prefer 2 or 3 poses.' },
-                { q: 'Can we get both vintage and colour photos?', a: 'Absolutely! You can choose to have all photos in one style, or we can print one colour and one vintage-filtered strip for each session so guests get both options.' },
-                { q: 'What props come with the Retro Box?', a: 'We provide a specially curated vintage prop collection including fedoras, bowler hats, feather boas, vintage glasses, bow ties, and period-appropriate accessories.' },
+                // { q: 'Can we get both vintage and colour photos?', a: 'Absolutely! You can choose to have all photos in one style, or we can print one colour and one vintage-filtered strip for each session so guests get both options.' },
+                { q: 'What props come with the Retro Box?', a: 'We provide High-quality Hats, Wigs, Glasses and Sign Props with all our photo booth packages' },
                 { q: 'Will it match our venue decor?', a: 'The Retro Box has a timeless design that complements most venues. It looks particularly stunning at heritage venues, barn weddings, and spaces with classic or industrial styling.' },
               ].map((faq, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 shadow-card">

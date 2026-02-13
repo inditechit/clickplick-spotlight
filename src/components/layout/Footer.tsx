@@ -33,6 +33,7 @@ const locations = [
 
 export function Footer() {
   return (
+    
     <footer className="bg-primary text-primary-foreground">
       {/* Main Footer */}
       <div className="section-container py-16">

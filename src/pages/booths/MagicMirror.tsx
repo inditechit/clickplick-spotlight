@@ -3,7 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Mic, Sparkles, Pen, Video, Users, Star, Heart, Briefcase, GraduationCap, PartyPopper, Wand2, MessageSquare } from 'lucide-react';
-
+import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 const features = [
   { icon: Mic, title: 'Voice Guidance', description: 'Interactive voice prompts guide guests through the entire experience, making it easy and fun for everyone' },
   { icon: Sparkles, title: 'Stunning Animations', description: 'Beautiful visual effects and animations displayed on the mirror surface create a truly magical atmosphere' },
@@ -29,7 +29,7 @@ const includes = [
 const specifications = [
   { label: 'Footprint', value: '2m x 2m' },
   // { label: 'Height', value: '2m' },
-  { label: 'Guest Capacity', value: '1-10 guests' },
+  { label: 'Guest Capacity', value: '15-20 guests' },
   { label: 'Setup Time', value: '90 minutes' },
   { label: 'Power Required', value: 'Standard socket' },
 ];
@@ -411,7 +411,7 @@ const MagicMirror = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                   <p>
-                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                    With ClickPlick delivering and setting up The Original Magic Mirror, you can relax while we handle all the technical details.
                   </p>
                   <p>
                     From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
@@ -554,14 +554,14 @@ const MagicMirror = () => {
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
             {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199)
+              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199)
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200)
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
             </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
-                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
                   {/* Decorative elements from the image */}
                   <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
@@ -576,8 +576,8 @@ const MagicMirror = () => {
                     <span className="text-3xl font-black text-cyan-500">£49</span>
                   </div>
                 </div>
-                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
-                  More About Our Audio Telephone Guest Book
+                <Link to="/audio-guest-book" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
+                  More About Our Audio Telephone Guest Book Hire
                 </Link>
               </div>
             </div>
@@ -597,11 +597,53 @@ const MagicMirror = () => {
                 "The Magic Mirror was absolutely incredible! Our guests couldn't stop talking about it. The voice guidance made it so easy for everyone, and the signature feature was a beautiful touch. The video messages from our guests made us cry!"
               </blockquote>
               <p className="font-semibold text-foreground">Emma & David</p>
-              <p className="text-muted-foreground text-sm">Wedding at Thornton Manor, Wirral</p>
+              {/* <p className="text-muted-foreground text-sm">Wedding at Thornton Manor, Wirral</p> */}
             </div>
           </div>
         </section>
+<div className="section-container py-12">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
+        
+        <div className="relative flex flex-col md:flex-row items-center gap-8">
+          {/* Icon Part */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+            </div>
+          </div>
 
+          {/* Content Part */}
+          <div className="flex-grow text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                Professional Standard
+              </span>
+              <Info className="w-4 h-4 text-slate-400" />
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+            </h3>
+            
+            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+              This is a standard requirement for most premium venues across the UK, ensuring 
+              complete peace of mind for you and your guests.
+            </p>
+          </div>
+
+          {/* Badge Part */}
+          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+            <div className="flex items-center gap-2 text-green-600 font-bold">
+              <CheckCircle2 className="w-5 h-5" />
+              <span>Venue Approved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
@@ -616,8 +658,8 @@ const MagicMirror = () => {
                 { q: 'How does the signature feature work?', a: 'Guests touch the mirror screen and use their finger to sign their name or write a message. This signature is then printed directly onto their photo strip as a unique keepsake.' },
                 { q: 'Can guests record video messages?', a: 'Yes! Guests can record personal video messages up to 30 seconds long. These are compiled and delivered to you after the event on a USB drive or via cloud link.' },
                 { q: 'Is it suitable for outdoor events?', a: 'The Magic Mirror is designed for indoor use. For outdoor events, we can set it up under a marquee or covered area to protect the equipment from the elements.' },
-                { q: 'What animations are available?', a: 'We have a library of over 50 animations including seasonal themes, romantic designs for weddings, corporate-friendly options, and birthday celebrations. We can also create custom animations.' },
-                { q: 'How loud is the voice guidance?', a: 'The volume is fully adjustable and we set it appropriately for your venue. For quieter ceremonies, we can reduce the volume or switch to on-screen text prompts.' },
+                { q: 'What animations are available?', a: 'The Magic Mirror Photo Booth turns your pictures into Animated GIFs Automatically. These can be transferred via Air drop/Email directly to your phone.' },
+                // { q: 'How loud is the voice guidance?', a: 'The volume is fully adjustable and we set it appropriately for your venue. For quieter ceremonies, we can reduce the volume or switch to on-screen text prompts.' },
               ].map((faq, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 shadow-card">
                   <h3 className="font-heading font-bold text-foreground mb-2">{faq.q}</h3>

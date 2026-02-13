@@ -33,7 +33,7 @@ const booths = [
     id: 'retro-box',
     name: 'Retro Box',
     tagline: 'Vintage Charm',
-    description: 'Classic vintage-style photo booth bringing nostalgic charm to your celebration. Features authentic retro styling with modern technology inside.',
+    description: 'Classic Retro-style TV photo booth bringing nostalgic charm to your celebration. Features authentic retro styling with modern technology inside.',
     image: '/light/2.png',
     features: ['Retro TV design', 'Strip photos', 'Props included', 'Pro. Canon Camera'],
     specs: { footprint: '2ft X 2ft', height: '2.2m', guests: '15-20 people' },

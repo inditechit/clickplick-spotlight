@@ -3,11 +3,11 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, TreePine, Camera, Gift, Minimize, Star, Heart, Briefcase, GraduationCap, PartyPopper, Leaf, Gem, Hammer } from 'lucide-react';
-
+import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 const features = [
-  { icon: TreePine, title: 'Handcrafted Wood', description: 'Beautifully handcrafted from sustainable wood with artisan attention to detail and natural finish' },
+  // { icon: TreePine, title: 'Vintage Elegance', description: 'Beautifully handcrafted from sustainable wood with artisan attention to detail and natural finish' },
   { icon: Camera, title: 'DSLR Camera', description: 'Professional Canon DSLR delivers stunning photo quality with every shot, regardless of lighting conditions' },
-  { icon: Gift, title: 'Rustic Props', description: 'Curated collection of rustic and vintage props that perfectly complement the booth\'s natural aesthetic' },
+  { icon: Gift, title: 'High quality Props', description: 'Curated collection of High quality props that perfectly complement the booth\'s natural aesthetic' },
   { icon: Minimize, title: 'Compact Design', description: 'Elegant minimal footprint makes it perfect for intimate venues and spaces with limited room' },
 ];
 
@@ -27,7 +27,7 @@ const includes = [
 ];
 
 const specifications = [
-  { label: 'Footprint', value: '2m x 2m' },
+  { label: 'Footprint', value: '2FT x 2FT' },
   // { label: 'Height', value: '1.8m' },
   { label: 'Guest Capacity', value: '15-20 guests' },
   { label: 'Setup Time', value: '90 minutes' },
@@ -35,7 +35,7 @@ const specifications = [
 ];
 
 const idealEvents = [
-  { icon: Heart, name: 'Rustic Weddings' },
+  { icon: Heart, name: 'Rustic Kids' },
   { icon: Leaf, name: 'Garden Parties' },
   { icon: Briefcase, name: 'Brand Events' },
   { icon: PartyPopper, name: 'Celebrations' },
@@ -311,17 +311,29 @@ const WoodenTripod = () => {
             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
               Natural beauty combined with professional performance
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((feature) => (
-                <div key={feature.title} className="bg-card rounded-xl p-6 shadow-card text-center">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <feature.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="font-heading font-bold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </div>
-              ))}
-            </div>
+           <div className="max-w-6xl mx-auto"> {/* Isse 3 cards desktop par bahut zyada wide nahi honge */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> {/* lg:4 se badal kar 3 kar diya gaya hai */}
+    {features.map((feature) => (
+      <div 
+        key={feature.title} 
+        className="bg-card rounded-2xl p-8 shadow-card text-center border border-slate-50 hover:shadow-xl transition-all duration-300 group"
+      >
+        {/* Icon container ko thoda bada aur stylish banaya hai */}
+        <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+          <feature.icon className="w-8 h-8 text-primary" />
+        </div>
+        
+        <h3 className="font-heading font-bold text-xl text-foreground mb-3 uppercase tracking-tight">
+          {feature.title}
+        </h3>
+        
+        <p className="text-muted-foreground text-base leading-relaxed">
+          {feature.description}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
           </div>
         </section>
 
@@ -340,7 +352,7 @@ const WoodenTripod = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                   <p>
-                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                    With ClickPlick delivering and setting up The Vintage Wooden Box, you can relax while we handle all the technical details.
                   </p>
                   <p>
                     From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
@@ -415,14 +427,14 @@ const WoodenTripod = () => {
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
             {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
+              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199) 
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
             </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
-                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
                    {/* Decorative elements from the image */}
                    <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
@@ -437,8 +449,8 @@ const WoodenTripod = () => {
                       <span className="text-3xl font-black text-cyan-500">£49</span>
                    </div>
                 </div>
-                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
-                  More About Our Audio Telephone Guest Book
+                <Link to="/audio-guest-book" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
+                  More About Our Audio Telephone Guest Book Hire
                 </Link>
               </div>
             </div>
@@ -458,11 +470,53 @@ const WoodenTripod = () => {
                 "We had a rustic barn wedding and the Wooden Tripod booth was absolutely perfect! It looked like it belonged there – our guests thought it was part of the venue décor. The photos were gorgeous and the compact size meant it fit perfectly in our cosy reception barn."
               </blockquote>
               <p className="font-semibold text-foreground">Lucy & Tom</p>
-              <p className="text-muted-foreground text-sm">Barn Wedding, Cotswolds</p>
+              {/* <p className="text-muted-foreground text-sm">Barn Wedding, Cotswolds</p> */}
             </div>
           </div>
         </section>
+<div className="section-container py-12">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
+        
+        <div className="relative flex flex-col md:flex-row items-center gap-8">
+          {/* Icon Part */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+            </div>
+          </div>
 
+          {/* Content Part */}
+          <div className="flex-grow text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                Professional Standard
+              </span>
+              <Info className="w-4 h-4 text-slate-400" />
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+            </h3>
+            
+            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+              This is a standard requirement for most premium venues across the UK, ensuring 
+              complete peace of mind for you and your guests.
+            </p>
+          </div>
+
+          {/* Badge Part */}
+          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+            <div className="flex items-center gap-2 text-green-600 font-bold">
+              <CheckCircle2 className="w-5 h-5" />
+              <span>Venue Approved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -474,10 +528,10 @@ const WoodenTripod = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                { q: 'Is the wood sustainably sourced?', a: 'Yes! We\'re committed to environmental responsibility. All our wooden tripods are crafted from sustainably sourced timber, and we work with local craftspeople to minimise our carbon footprint.' },
+                // { q: 'Is the wood sustainably sourced?', a: 'Yes! We\'re committed to environmental responsibility. All our wooden tripods are crafted from sustainably sourced timber, and we work with local craftspeople to minimise our carbon footprint.' },
                 { q: 'Can it be used outdoors?', a: 'Yes, the Wooden Tripod works beautifully at outdoor events, though it should be positioned under cover (marquee, gazebo, etc.) to protect from rain. It looks stunning in garden and woodland settings.' },
-                { q: 'How does the open design work for photos?', a: 'The open design actually creates a more relaxed photo experience. Guests can approach naturally, and the wide-angle lens captures groups of up to 6 people. It encourages spontaneous, natural poses.' },
-                { q: 'What props come with it?', a: 'We provide a rustic-themed prop collection including vintage frames, floral crowns, wooden signs, and nature-inspired accessories that complement the booth\'s aesthetic.' },
+                { q: 'How does the open design work for photos?', a: 'The open design actually creates a more relaxed photo experience. Guests can approach naturally, and the wide-angle lens captures groups of up to 12 people. It encourages spontaneous, natural poses.' },
+                // { q: 'What props come with it?', a: 'We provide a rustic-themed prop collection including vintage frames, floral crowns, wooden signs, and nature-inspired accessories that complement the booth\'s aesthetic.' },
                 { q: 'Will it match my venue décor?', a: 'The natural wood finish and minimal design mean it complements most décor styles. It\'s particularly suited to rustic, boho, vintage, and natural themes, but also works well in contemporary spaces that use natural materials.' },
               ].map((faq, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 shadow-card">

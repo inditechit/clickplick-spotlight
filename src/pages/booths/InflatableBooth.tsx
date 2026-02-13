@@ -3,7 +3,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Tent, Lightbulb, Lock, Music, Star, Heart, Briefcase, GraduationCap, PartyPopper, Zap, Palette, Users } from 'lucide-react';
-
+import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 const features = [
   { icon: Tent, title: 'Enclosed Design', description: 'Full privacy curtain creates an intimate, classic photo booth experience for your guests' },
   { icon: Lightbulb, title: 'LED Lighting', description: 'Colour-changing LED lights create an exciting atmosphere and can match your event theme' },
@@ -27,9 +27,9 @@ const includes = [
 ];
 
 const specifications = [
-  { label: 'Footprint', value: '2.0m x 2.0m' },
+  { label: 'Footprint', value: '2.5m x 2.5m' },
   // { label: 'Height', value: '2.4m' },
-  { label: 'Guest Capacity', value: '15-20 guests' },
+  { label: 'Guest Capacity', value: '10-15 guests' },
   { label: 'Setup Time', value: '90 minutes' },
   { label: 'Power Required', value: 'Standard socket' },
 ];
@@ -330,7 +330,7 @@ const InflatableBooth = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                   <p>
-                    With ClickPlick delivering and setting up the slimline selfie pod, you can relax while we handle all the technical details.
+                    With ClickPlick delivering and setting up The Inflatable Photo-booth, you can relax while we handle all the technical details.
                   </p>
                   <p>
                     From ensuring perfect positioning to seamless operation, we'll take care of everything so you can enjoy a stress-free event.
@@ -404,14 +404,14 @@ const InflatableBooth = () => {
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
             {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Audio Telephone Guest Book for £49</span> (normally £199) 
+              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199) 
               or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
               or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
             </p> */}
 
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
-                <h3 className="text-2xl font-bold text-slate-800 mb-6">Audio Telephone Guest Book</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
                    {/* Decorative elements from the image */}
                    <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
@@ -426,8 +426,8 @@ const InflatableBooth = () => {
                       <span className="text-3xl font-black text-cyan-500">£49</span>
                    </div>
                 </div>
-                <Link to="#" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
-                  More About Our Audio Telephone Guest Book
+                <Link to="/audio-guest-book"  className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
+                  More About Our Audio Telephone Guest Book Hire
                 </Link>
               </div>
             </div>
@@ -447,11 +447,53 @@ const InflatableBooth = () => {
                 "The inflatable booth was absolutely perfect for our festival-themed 30th birthday! It looked amazing as the sun went down with all the LED lights glowing. We had groups of 8-10 friends piling in for photos – the pictures are hilarious and everyone loved it!"
               </blockquote>
               <p className="font-semibold text-foreground">Chris & Friends</p>
-              <p className="text-muted-foreground text-sm">30th Birthday Festival Party, Sheffield</p>
+              {/* <p className="text-muted-foreground text-sm">30th Birthday Festival Party, Sheffield</p> */}
             </div>
           </div>
         </section>
+<div className="section-container py-12">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+        {/* Background Decorative Element */}
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
+        
+        <div className="relative flex flex-col md:flex-row items-center gap-8">
+          {/* Icon Part */}
+          <div className="flex-shrink-0">
+            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+            </div>
+          </div>
 
+          {/* Content Part */}
+          <div className="flex-grow text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                Professional Standard
+              </span>
+              <Info className="w-4 h-4 text-slate-400" />
+            </div>
+            
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+            </h3>
+            
+            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+              This is a standard requirement for most premium venues across the UK, ensuring 
+              complete peace of mind for you and your guests.
+            </p>
+          </div>
+
+          {/* Badge Part */}
+          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+            <div className="flex items-center gap-2 text-green-600 font-bold">
+              <CheckCircle2 className="w-5 h-5" />
+              <span>Venue Approved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -463,9 +505,9 @@ const InflatableBooth = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                { q: 'How much space do I need for this booth?', a: 'The booth itself is 2.4m x 2.4m and requires a ceiling height of 2.6m (or outdoor space). We recommend a total area of 4m x 4m to allow for the inflation equipment and guest flow.' },
+                { q: 'How much space do I need for this booth?', a: 'The booth itself is 2.4m x 2.4m and requires a ceiling height of 2.6m (or outdoor space). We recommend a total area of 2.5m x 2.5m to allow for the inflation equipment and guest flow.' },
                 { q: 'Is it suitable for indoor venues?', a: 'Yes! The booth works brilliantly indoors provided you have the ceiling height and adequate ventilation. It\'s popular at large halls, marquees, sports centres, and industrial-style venues.' },
-                { q: 'What happens if it rains during an outdoor event?', a: 'The booth can handle light drizzle, but for the safety of guests and equipment, we may need to pause operation during heavy rain. We always bring protective covers and will work with you to maximise availability.' },
+                // { q: 'What happens if it rains during an outdoor event?', a: 'The booth can handle light drizzle, but for the safety of guests and equipment, we may need to pause operation during heavy rain. We always bring protective covers and will work with you to maximise availability.' },
                 { q: 'How many people can fit inside at once?', a: 'The spacious interior can accommodate up to 10 people comfortably, making it perfect for group shots. Solo photos and couples work great too – you\'ll have plenty of space to strike poses!' },
                 { q: 'Can the LED colours be customised?', a: 'Absolutely! We can set the LEDs to match your event colours or have them cycle through different shades. Popular choices include event theme colours, school colours, or a party-style rainbow cycle.' },
               ].map((faq, index) => (

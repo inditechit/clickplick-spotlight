@@ -1,79 +1,68 @@
-import { Camera, Printer, Share2, Palette, Users, Shield } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
-const features = [
-  {
-    icon: Camera,
-    title: 'DSLR Quality Photos',
-    description: 'Professional-grade cameras capture stunning, high-resolution images every time.',
-  },
-  {
-    icon: Printer,
-    title: 'Unlimited Prints',
-    description: 'Every guest gets unlimited instant prints to take home as keepsakes.',
-  },
-  {
-    icon: Share2,
-    title: 'Instant Digital Sharing',
-    description: 'Share photos instantly via email, text, or social media directly from the booth.',
-  },
-  {
-    icon: Palette,
-    title: 'Custom Branding',
-    description: 'Personalized overlays and templates to match your event theme perfectly.',
-  },
-  {
-    icon: Users,
-    title: 'Professional Attendant',
-    description: 'A friendly booth attendant ensures smooth operation throughout your event.',
-  },
-  {
-    icon: Shield,
-    title: 'Green Screen',
-    description: 'Transport guests anywhere with our professional green screen backgrounds.',
-  },
+const services = [
+  { name: 'PHOTOBOOTH ATTENDANT', img: '/icon/1.png' },
+  { name: 'INSTANT PRINTS', img: '/icon/2.png' },
+  { name: 'GUEST BOOK PHOTO ALBUM', img: '/icon/3.png' },
+  { name: 'FUN PROPS', img: '/icon/4.png' },
+  { name: 'PERSONALIZED TEXT AND LOGO', img: '/icon/5.png' },
+  { name: 'INSURANCE', img: '/icon/6.png' }, // Is par special style aayega
+  { name: 'Filters & Photo Effects', img: '/icon/7.webp' },
+  { name: 'Green Screen', img: '/icon/8.webp' },
+  { name: 'Choice Of Photo Layout', img: '/icon/9.webp' },
+  { name: 'GIF Enabled', img: '/icon/10.webp' },
+  { name: 'Branded Prints', img: '/icon/11.webp' },
+  { name: 'Email Enabled', img: '/icon/12.webp' },
+  { name: 'USB With Digital Copies', img: '/icon/13.webp' },
+  { name: 'Social Media Uploads', img: '/icon/14.webp' },
+  { name: 'Online Gallery', img: '/icon/15.webp' },
+  { name: 'DSLR Camera', img: '/icon/16.webp' },
+  { name: 'Delivery & Set Up', img: '/icon/17.webp' },
+  { name: 'Price Match Guarantee', img: '/icon/18.webp' },
 ];
 
 export function FeaturesSection() {
   return (
-    <section className="py-20 md:py-28 bg-background relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-      
+    <section className="py-16 md:py-20 bg-white relative overflow-hidden">
       <div className="section-container relative">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
-            Why Choose Us
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-6">
-            Everything You Need For{' '}
-            <span className="gradient-text">Perfect Photos</span>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            Our <span className="text-primary">Services</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Our photo booths come packed with premium features to ensure your guests have an unforgettable experience.
-          </p>
+          <div className="w-16 h-1 bg-primary/20 mx-auto rounded-full" />
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={feature.title}
-              className="group p-8 rounded-2xl bg-card border border-border card-hover"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="w-14 h-14 rounded-xl bg-gradient-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-7 h-7 text-white" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-4 gap-y-10">
+          {services.map((service, index) => {
+            // Check if this is the Insurance item
+            const isInsurance = service.name === 'INSURANCE';
+
+            return (
+              <div 
+                key={index} 
+                className="group flex flex-col items-center text-center transition-all duration-300"
+              >
+                {/* Icon Container */}
+                <div 
+                  className=" flex items-center justify-center mb-3 transition-transform duration-500 group-hover:scale-110"
+                  style={isInsurance ? { 
+                    background: '#27aae1', 
+                    borderRadius: '47px' 
+                  } : {}}
+                >
+                  <img 
+                    src={service.img} 
+                    alt={service.name}
+                    className={`w-14 h-14 md:w-14 md:h-14 object-contain ${isInsurance ? 'brightness-0 invert' : ''}`}
+                  />
+                </div>
+                
+                <h3 className="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight px-1 max-w-[110px]">
+                  {service.name}
+                </h3>
               </div>
-              <h3 className="text-xl font-heading font-bold text-foreground mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
