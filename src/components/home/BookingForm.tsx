@@ -4,7 +4,21 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Calendar, Clock, MapPin, User, Mail, Phone, Send } from 'lucide-react';
 import { toast } from 'sonner';
-
+// Add this at the top of BookingForm.tsx
+declare global {
+  interface Window {
+    gtag: (
+      command: 'event', 
+      action: string, 
+      params: { 
+        send_to: string; 
+        value?: number; 
+        currency?: string;
+        [key: string]: any;
+      }
+    ) => void;
+  }
+}
 export function BookingForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -59,6 +73,18 @@ export function BookingForm() {
         description: 'We\'ll get back to you within 24 hours. Your brochure is downloading.',
       });
 
+
+      if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'conversion', { 
+        'send_to': 'AW-16532736774/CMhJCNyo27YbEIaWtss9', 
+        'value': 1.0, 
+        'currency': 'GBP' 
+      });
+      console.log("Google Ads Conversion Sent");
+    } else {
+      console.warn("Google Ads tag not found (AdBlocker might be active)");
+    }
+
       // --- PDF DOWNLOAD LOGIC START ---
       const pdfUrl = "/pdf/final%20clickplick.pdf";
       const link = document.createElement("a");
@@ -70,9 +96,9 @@ export function BookingForm() {
       document.body.removeChild(link);
       // --- PDF DOWNLOAD LOGIC END ---
 
-      setTimeout(() => {
-        window.location.href = "/thankyou.php";
-      }, 1000);
+      // setTimeout(() => {
+      //   window.location.href = "/thankyou.php";
+      // }, 1000);
       
       // Reset form
       setFormData({
