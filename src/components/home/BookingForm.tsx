@@ -96,9 +96,9 @@ export function BookingForm() {
       document.body.removeChild(link);
       // --- PDF DOWNLOAD LOGIC END ---
 
-      // setTimeout(() => {
-      //   window.location.href = "/thankyou.php";
-      // }, 1000);
+      setTimeout(() => {
+        window.location.href = "/thankyou.php";
+      }, 1000);
       
       // Reset form
       setFormData({
