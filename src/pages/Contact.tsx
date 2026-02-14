@@ -5,8 +5,24 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar } from 'lucide-react';
 import { toast } from 'sonner';
+
+// Add global declaration for Google Ads
+declare global {
+  interface Window {
+    gtag: (
+      command: 'event', 
+      action: string, 
+      params: { 
+        send_to: string; 
+        value?: number; 
+        currency?: string;
+        [key: string]: any;
+      }
+    ) => void;
+  }
+}
 
 const contactInfo = [
   {
@@ -40,6 +56,9 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
+    eventDate: '',
+    eventTime: '',
+    postcode: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -54,16 +73,26 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    // 1. Map frontend state to API expected format
+    const apiPayload = {
+      name: formData.name,
+      email: formData.email,
+      phone_number: formData.phone,
+      event_date: formData.eventDate,
+      event_time: formData.eventTime,
+      event_postcode: formData.postcode,
+      message: formData.message, // Sending message as well, in case backend accepts it
+    };
     
     try {
-      // API integration: POST to your contact endpoint
-      // Adjust the URL if your backend is hosted elsewhere
-      const response = await fetch('https://api.clickplick.co.uk/api/leads/contact', {
+      // 2. Send Data to Backend
+      const response = await fetch('https://api.clickplick.co.uk/api/leads/leads', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(apiPayload),
       });
 
       const result = await response.json();
@@ -71,15 +100,52 @@ const Contact = () => {
       if (!response.ok) {
         throw new Error(result.message || 'Failed to send message');
       }
+
+      // 3. Handle Success
+      toast.success('Request submitted!', {
+        description: 'We\'ll get back to you within 24 hours. Your brochure is downloading.',
+      });
+
+      // --- GOOGLE ADS CONVERSION START ---
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'conversion', { 
+          'send_to': 'AW-16532736774/CMhJCNyo27YbEIaWtss9', 
+          'value': 1.0, 
+          'currency': 'GBP' 
+        });
+        console.log("Google Ads Conversion Sent");
+      } else {
+        console.warn("Google Ads tag not found (AdBlocker might be active)");
+      }
+      // --- GOOGLE ADS CONVERSION END ---
+
+      // --- PDF DOWNLOAD LOGIC START ---
+      const pdfUrl = "/pdf/final%20clickplick.pdf";
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      link.download = "ClickPlick_Brochure.pdf";
+      link.target = "_blank"; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      // --- PDF DOWNLOAD LOGIC END ---
+
+      // Redirect to Thank You page
       setTimeout(() => {
         window.location.href = "/thankyou.php";
       }, 1000);
-      toast.success('Message sent!', {
-        description: 'We\'ll get back to you as soon as possible.',
-      });
       
-      // Reset form on success
-      setFormData({ name: '', email: '', phone: '', message: '' });
+      // Reset form
+      setFormData({ 
+        name: '', 
+        email: '', 
+        phone: '', 
+        eventDate: '',
+        eventTime: '',
+        postcode: '',
+        message: '' 
+      });
+
     } catch (err) {
       console.error('Contact form error:', err);
       toast.error('Submission failed', {
@@ -175,13 +241,14 @@ const Contact = () => {
               <div className="lg:col-span-2">
                 <div className="bg-card rounded-2xl shadow-elevated p-8 md:p-10 border border-border">
                   <h2 className="text-2xl font-heading font-bold text-foreground mb-2">
-                    Send Us a Message
+                    Send Us a Message / Get a Quote
                   </h2>
                   <p className="text-muted-foreground mb-8">
                     Fill out the form below and we'll get back to you within 24 hours.
                   </p>
                   
                   <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Name & Email */}
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="name">Your Name</Label>
@@ -210,21 +277,65 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+44 7931-983-588"
-                        className="h-12"
-                      />
+                    {/* Phone & Postcode */}
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+44 7931-983-588"
+                          className="h-12"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="postcode">Event Postcode</Label>
+                        <Input
+                          id="postcode"
+                          name="postcode"
+                          value={formData.postcode}
+                          onChange={handleChange}
+                          placeholder="SW1A 1AA"
+                          className="h-12"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Date & Time */}
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="eventDate">Event Date</Label>
+                        <Input
+                          id="eventDate"
+                          name="eventDate"
+                          type="date"
+                          value={formData.eventDate}
+                          onChange={handleChange}
+                          className="h-12"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="eventTime">Event Time</Label>
+                        <Input
+                          id="eventTime"
+                          name="eventTime"
+                          type="time"
+                          value={formData.eventTime}
+                          onChange={handleChange}
+                          className="h-12"
+                          required
+                        />
+                      </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Your Message</Label>
+                      <Label htmlFor="message">Your Message (Optional)</Label>
                       <Textarea
                         id="message"
                         name="message"
@@ -232,7 +343,6 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="Tell us about your event..."
                         rows={5}
-                        required
                       />
                     </div>
 
@@ -246,7 +356,7 @@ const Contact = () => {
                       {isSubmitting ? 'Sending...' : (
                         <>
                           <Send className="w-5 h-5 mr-2" />
-                          Send Message
+                          Get Quote & Brochure
                         </>
                       )}
                     </Button>

@@ -4,47 +4,33 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Calendar, Clock, MapPin, User, Mail, Phone, Send, PartyPopper } from 'lucide-react';
 import { toast } from 'sonner';
 
-const eventTypes = [
-  'Wedding',
-  'Birthday Party',
-  'Corporate Event',
-  'University Event',
-  'Graduation',
-  'Christmas Party',
-  'Prom',
-  'Other',
-];
-
-const boothTypes = [
-  'LCD Screen Slimline Pod',
-  'Magic Mirror',
-  'Retro Box',
-  'Enchanted Mirror X Selfie',
-  'Inflatable Enclosed Booth',
-  'Wooden Vintage Tripod',
-  'Not Sure - Need Advice',
-];
+// Add global declaration for Google Ads
+declare global {
+  interface Window {
+    gtag: (
+      command: 'event', 
+      action: string, 
+      params: { 
+        send_to: string; 
+        value?: number; 
+        currency?: string;
+        [key: string]: any;
+      }
+    ) => void;
+  }
+}
 
 const BookNow = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    eventType: '',
-    boothType: '',
     eventDate: '',
     eventTime: '',
-    location: '',
+    location: '', // Maps to event_postcode
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -55,34 +41,88 @@ const BookNow = () => {
     });
   };
 
-  const handleSelectChange = (name: string, value: string) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success('Booking request submitted!', {
-      description: 'We\'ll send you a personalized quote within 24 hours.',
-    });
-    
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      eventType: '',
-      boothType: '',
-      eventDate: '',
-      eventTime: '',
-      location: '',
-    });
-    setIsSubmitting(false);
+
+    // 1. Map frontend state to API expected format
+    const apiPayload = {
+      name: formData.name,
+      email: formData.email,
+      phone_number: formData.phone,
+      event_date: formData.eventDate,
+      event_time: formData.eventTime,
+      event_postcode: formData.location
+    };
+
+    try {
+      // 2. Send Data to Backend
+      const response = await fetch('https://api.clickplick.co.uk/api/leads/leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(apiPayload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+      
+      // 3. Handle Success
+      toast.success('Quote request submitted!', {
+        description: 'We\'ll get back to you within 24 hours. Your brochure is downloading.',
+      });
+
+      // --- GOOGLE ADS TRACKING ---
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'conversion', { 
+          'send_to': 'AW-16532736774/CMhJCNyo27YbEIaWtss9', 
+          'value': 1.0, 
+          'currency': 'GBP' 
+        });
+        console.log("Google Ads Conversion Sent");
+      } else {
+        console.warn("Google Ads tag not found (AdBlocker might be active)");
+      }
+
+      // --- PDF DOWNLOAD LOGIC START ---
+      const pdfUrl = "/pdf/final%20clickplick.pdf";
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      link.download = "ClickPlick_Brochure.pdf"; 
+      link.target = "_blank"; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      // --- PDF DOWNLOAD LOGIC END ---
+
+      // Redirect to Thank You page
+      setTimeout(() => {
+        window.location.href = "/thankyou.php";
+      }, 1000);
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        eventDate: '',
+        eventTime: '',
+        location: '',
+      });
+
+    } catch (error) {
+      // 4. Handle Error
+      console.error('Submission Error:', error);
+      toast.error('Submission failed', {
+        description: 'Please check your connection or try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -180,41 +220,9 @@ const BookNow = () => {
                     <h3 className="text-lg font-heading font-bold text-foreground mb-4">
                       Event Details
                     </h3>
+                    
+                    {/* Date and Time */}
                     <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label>Event Type</Label>
-                        <Select 
-                          value={formData.eventType}
-                          onValueChange={(value) => handleSelectChange('eventType', value)}
-                        >
-                          <SelectTrigger className="h-12">
-                            <SelectValue placeholder="Select event type" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-card">
-                            {eventTypes.map((type) => (
-                              <SelectItem key={type} value={type}>{type}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Preferred Booth</Label>
-                        <Select 
-                          value={formData.boothType}
-                          onValueChange={(value) => handleSelectChange('boothType', value)}
-                        >
-                          <SelectTrigger className="h-12">
-                            <SelectValue placeholder="Select booth type" />
-                          </SelectTrigger>
-                          <SelectContent className="bg-card">
-                            {boothTypes.map((type) => (
-                              <SelectItem key={type} value={type}>{type}</SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                    <div className="grid md:grid-cols-2 gap-6 mt-6">
                       <div className="space-y-2">
                         <Label htmlFor="eventDate">Event Date</Label>
                         <div className="relative">
@@ -246,6 +254,8 @@ const BookNow = () => {
                         </div>
                       </div>
                     </div>
+
+                    {/* Location */}
                     <div className="mt-6 space-y-2">
                       <Label htmlFor="location">Event Location / Postcode</Label>
                       <div className="relative">
@@ -271,7 +281,7 @@ const BookNow = () => {
                     className="w-full"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Submitting...' : (
+                    {isSubmitting ? 'Sending...' : (
                       <>
                         <Send className="w-5 h-5" />
                         Get My Free Quote

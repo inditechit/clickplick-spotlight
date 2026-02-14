@@ -45,7 +45,8 @@ const App = () => (
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-now" element={<BookNow />} />
-            
+            <Route path="/contact.php" element={<Contact />} />
+
             {/* Booth Routes */}
             <Route path="/hire-photobooth" element={<HirePhotobooth />} />
             <Route path="/hire-photobooth/lcd-slimline-pod" element={<LcdSlimlinePod />} />
