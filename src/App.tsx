@@ -28,6 +28,7 @@ import InflatableBooth from "./pages/booths/InflatableBooth";
 import WoodenTripod from "./pages/booths/WoodenTripod";
 import ScrollToTop from "./components/ScrollToTop";
 import AudioGuestBook from './pages/AudioGuestBook';
+import ThankYou from "./pages/Thankyou";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -66,6 +67,8 @@ const App = () => (
             <Route path="/service2.php" element={<MagicMirror />} />
             <Route path="/service3.php" element={<RetroBox />} />
             <Route path="/service4.php" element={<EnchantedMirror />} />
+            <Route path="/thankyou.php" element={<ThankYou />} />
+            <Route path="/thankyou" element={<ThankYou />} />
             
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/faqs" element={<FAQs />} />

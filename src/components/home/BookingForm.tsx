@@ -60,7 +60,7 @@ export function BookingForm() {
       });
 
       // --- PDF DOWNLOAD LOGIC START ---
-      const pdfUrl = "https://orig.clickplick.co.uk/final%20clickplick.pdf";
+      const pdfUrl = "/pdf/final%20clickplick.pdf";
       const link = document.createElement("a");
       link.href = pdfUrl;
       link.download = "ClickPlick_Brochure.pdf"; // Suggest a filename
@@ -69,6 +69,10 @@ export function BookingForm() {
       link.click();
       document.body.removeChild(link);
       // --- PDF DOWNLOAD LOGIC END ---
+
+      setTimeout(() => {
+        window.location.href = "/thankyou.php";
+      }, 1000);
       
       // Reset form
       setFormData({
@@ -114,7 +118,7 @@ export function BookingForm() {
             </p>
 
             {/* Benefits List */}
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               {[
                 'Free setup and collection',
                 'Professional booth attendant included',
@@ -128,7 +132,7 @@ export function BookingForm() {
                   <span className="text-foreground">{benefit}</span>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Form */}

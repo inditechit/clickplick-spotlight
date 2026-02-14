@@ -71,7 +71,9 @@ const Contact = () => {
       if (!response.ok) {
         throw new Error(result.message || 'Failed to send message');
       }
-
+      setTimeout(() => {
+        window.location.href = "/thankyou.php";
+      }, 1000);
       toast.success('Message sent!', {
         description: 'We\'ll get back to you as soon as possible.',
       });
