@@ -31,7 +31,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden mb-20">
       
       {/* Background Decoration (Subtle) */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
