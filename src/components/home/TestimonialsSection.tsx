@@ -60,7 +60,7 @@ export function TestimonialsSection() {
   };
 
   return (
-    <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden mb-20">
       {/* Background Decoration */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[40rem] h-[40rem] bg-purple-500/20 rounded-full blur-3xl" />
