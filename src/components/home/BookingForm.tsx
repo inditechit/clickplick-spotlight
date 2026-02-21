@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Calendar, Clock, MapPin, User, Mail, Phone, Send } from 'lucide-react';
+import { Calendar, Clock, MapPin, User, Mail, Phone, Send, Users, Camera, PartyPopper } from 'lucide-react';
 import { toast } from 'sonner';
+
 // Add this at the top of BookingForm.tsx
 declare global {
   interface Window {
@@ -19,6 +20,7 @@ declare global {
     ) => void;
   }
 }
+
 export function BookingForm() {
   const [formData, setFormData] = useState({
     name: '',
@@ -27,10 +29,13 @@ export function BookingForm() {
     eventDate: '',
     eventTime: '',
     postcode: '',
+    guests: '',
+    boothChoice: '',
+    eventType: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -48,7 +53,10 @@ export function BookingForm() {
       phone_number: formData.phone,
       event_date: formData.eventDate,
       event_time: formData.eventTime,
-      event_postcode: formData.postcode
+      event_postcode: formData.postcode,
+      no_of_guests: formData.guests,
+      choice_of_photobooth: formData.boothChoice,
+      event_type: formData.eventType
     };
 
     try {
@@ -75,15 +83,15 @@ export function BookingForm() {
 
 
       if (typeof window.gtag !== 'undefined') {
-      window.gtag('event', 'conversion', { 
-        'send_to': 'AW-16532736774/CMhJCNyo27YbEIaWtss9', 
-        'value': 1.0, 
-        'currency': 'GBP' 
-      });
-      console.log("Google Ads Conversion Sent");
-    } else {
-      console.warn("Google Ads tag not found (AdBlocker might be active)");
-    }
+        window.gtag('event', 'conversion', { 
+          'send_to': 'AW-16532736774/CMhJCNyo27YbEIaWtss9', 
+          'value': 1.0, 
+          'currency': 'GBP' 
+        });
+        console.log("Google Ads Conversion Sent");
+      } else {
+        console.warn("Google Ads tag not found (AdBlocker might be active)");
+      }
 
       // --- PDF DOWNLOAD LOGIC START ---
       const pdfUrl = "/pdf/final%20clickplick.pdf";
@@ -108,6 +116,9 @@ export function BookingForm() {
         eventDate: '',
         eventTime: '',
         postcode: '',
+        guests: '',
+        boothChoice: '',
+        eventType: '',
       });
 
     } catch (error) {
@@ -142,23 +153,6 @@ export function BookingForm() {
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
               Ready to make your event unforgettable? Fill out the form to get your <strong>Free Quote</strong> and instantly download our exclusive brochure.
             </p>
-
-            {/* Benefits List */}
-            {/* <div className="space-y-4">
-              {[
-                'Free setup and collection',
-                'Professional booth attendant included',
-                'Unlimited prints for all guests',
-                'Custom branding available',
-              ].map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center">
-                    <div className="w-2 h-2 rounded-full bg-accent" />
-                  </div>
-                  <span className="text-foreground">{benefit}</span>
-                </div>
-              ))}
-            </div> */}
           </div>
 
           {/* Form */}
@@ -261,22 +255,95 @@ export function BookingForm() {
                 </div>
               </div>
 
-              {/* Postcode */}
-              <div className="space-y-2">
-                <Label htmlFor="postcode" className="text-foreground font-medium">
-                  Event Postcode
-                </Label>
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                  <Input
-                    id="postcode"
-                    name="postcode"
-                    value={formData.postcode}
-                    onChange={handleChange}
-                    placeholder="SW1A 1AA"
-                    className="pl-11 h-12"
-                    required
-                  />
+              {/* Postcode & Guests Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="postcode" className="text-foreground font-medium">
+                    Event Postcode
+                  </Label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Input
+                      id="postcode"
+                      name="postcode"
+                      value={formData.postcode}
+                      onChange={handleChange}
+                      placeholder="SW1A 1AA"
+                      className="pl-11 h-12"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="guests" className="text-foreground font-medium">
+                    No. of Guests
+                  </Label>
+                  <div className="relative">
+                    <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Input
+                      id="guests"
+                      name="guests"
+                      type="number"
+                      min="1"
+                      value={formData.guests}
+                      onChange={handleChange}
+                      placeholder="100"
+                      className="pl-11 h-12"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Event Type & Booth Choice Row */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="eventType" className="text-foreground font-medium">
+                    Type of Event
+                  </Label>
+                  <div className="relative">
+                    <PartyPopper className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <select
+                      id="eventType"
+                      name="eventType"
+                      value={formData.eventType}
+                      onChange={handleChange}
+                      className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-11"
+                      required
+                    >
+                      <option value="" disabled>Select event</option>
+                      <option value="wedding">Wedding</option>
+                      <option value="birthday">Birthday</option>
+                      <option value="university">University</option>
+                      <option value="corporate">Corporate</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="boothChoice" className="text-foreground font-medium">
+                    Choice of Photobooth
+                  </Label>
+                  <div className="relative">
+                    <Camera className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <select
+                      id="boothChoice"
+                      name="boothChoice"
+                      value={formData.boothChoice}
+                      onChange={handleChange}
+                      className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-11"
+                      required
+                    >
+                      <option value="" disabled>Select booth</option>
+                            <option value="LCD Screen Slimline Pod">LCD Screen Slimline Pod</option>
+                            <option value="Magic Mirror">Magic Mirror</option>
+                            <option value="Retro Box">Retro Box</option>
+                            <option value="Enchanted Mirror X Selfie">Enchanted Mirror X Selfie</option>
+                            <option value="Inflatable Enclosed Booth">Inflatable Enclosed Booth</option>
+                            <option value="Wooden Vintage Tripod">Wooden Vintage Tripod</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 

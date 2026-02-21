@@ -4,7 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Calendar, Clock, MapPin, User, Mail, Phone, Send, PartyPopper } from 'lucide-react';
+import { Calendar, Clock, MapPin, User, Mail, Phone, Send, PartyPopper, Users, Camera } from 'lucide-react';
 import { toast } from 'sonner';
 
 // Add global declaration for Google Ads
@@ -31,10 +31,13 @@ const BookNow = () => {
     eventDate: '',
     eventTime: '',
     location: '', // Maps to event_postcode
+    guests: '',
+    boothChoice: '',
+    eventType: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -52,7 +55,10 @@ const BookNow = () => {
       phone_number: formData.phone,
       event_date: formData.eventDate,
       event_time: formData.eventTime,
-      event_postcode: formData.location
+      event_postcode: formData.location,
+      no_of_guests: formData.guests,
+      choice_of_photobooth: formData.boothChoice,
+      event_type: formData.eventType
     };
 
     try {
@@ -112,6 +118,9 @@ const BookNow = () => {
         eventDate: '',
         eventTime: '',
         location: '',
+        guests: '',
+        boothChoice: '',
+        eventType: '',
       });
 
     } catch (error) {
@@ -255,20 +264,86 @@ const BookNow = () => {
                       </div>
                     </div>
 
-                    {/* Location */}
-                    <div className="mt-6 space-y-2">
-                      <Label htmlFor="location">Event Location / Postcode</Label>
-                      <div className="relative">
-                        <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-                        <Input
-                          id="location"
-                          name="location"
-                          value={formData.location}
-                          onChange={handleChange}
-                          placeholder="e.g., SW1A 1AA or Venue Name, London"
-                          className="pl-11 h-12"
-                          required
-                        />
+                    {/* Location and Guests */}
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="location">Event Location / Postcode</Label>
+                        <div className="relative">
+                          <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                          <Input
+                            id="location"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleChange}
+                            placeholder="e.g., SW1A 1AA or Venue"
+                            className="pl-11 h-12"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="guests">No. of Guests</Label>
+                        <div className="relative">
+                          <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                          <Input
+                            id="guests"
+                            name="guests"
+                            type="number"
+                            min="1"
+                            value={formData.guests}
+                            onChange={handleChange}
+                            placeholder="100"
+                            className="pl-11 h-12"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Event Type and Booth Choice */}
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="eventType">Type of Event</Label>
+                        <div className="relative">
+                          <PartyPopper className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                          <select
+                            id="eventType"
+                            name="eventType"
+                            value={formData.eventType}
+                            onChange={handleChange}
+                            className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-11"
+                            required
+                          >
+                            <option value="" disabled>Select event</option>
+                            <option value="wedding">Wedding</option>
+                            <option value="birthday">Birthday</option>
+                            <option value="university">University</option>
+                            <option value="corporate">Corporate</option>
+                            <option value="other">Other</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="boothChoice">Choice of Photobooth</Label>
+                        <div className="relative">
+                          <Camera className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                          <select
+                            id="boothChoice"
+                            name="boothChoice"
+                            value={formData.boothChoice}
+                            onChange={handleChange}
+                            className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 pl-11"
+                            required
+                          >
+                            <option value="" disabled>Select booth</option>
+                            <option value="LCD Screen Slimline Pod">LCD Screen Slimline Pod</option>
+                            <option value="Magic Mirror">Magic Mirror</option>
+                            <option value="Retro Box">Retro Box</option>
+                            <option value="Enchanted Mirror X Selfie">Enchanted Mirror X Selfie</option>
+                            <option value="Inflatable Enclosed Booth">Inflatable Enclosed Booth</option>
+                            <option value="Wooden Vintage Tripod">Wooden Vintage Tripod</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -283,7 +358,7 @@ const BookNow = () => {
                   >
                     {isSubmitting ? 'Sending...' : (
                       <>
-                        <Send className="w-5 h-5" />
+                        <Send className="w-5 h-5 mr-2" />
                         Get My Free Quote
                       </>
                     )}

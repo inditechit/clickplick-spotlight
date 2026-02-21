@@ -83,18 +83,18 @@ export function TestimonialsSection() {
           {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-gold text-white backdrop-blur-md transition-all border border-white/10"
+            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/50 hover:bg-gold text-white backdrop-blur-md transition-all border border-white/10"
             aria-label="Previous"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-3 h-3" />
           </button>
           
           <button
             onClick={nextSlide}
-            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/50 hover:bg-gold text-white backdrop-blur-md transition-all border border-white/10"
+            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/50 hover:bg-gold text-white backdrop-blur-md transition-all border border-white/10"
             aria-label="Next"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-3 h-3" />
           </button>
 
           {/* Slider Viewport */}
@@ -108,7 +108,7 @@ export function TestimonialsSection() {
               {reviewImages.map((src, index) => (
                 <div key={index} className="flex-shrink-0 w-full md:w-1/3 px-3">
                   <div className="relative overflow-hidden rounded-xl border border-white/10 bg-black/20 shadow-2xl">
-                    <div className="aspect-[4/3] md:aspect-video w-full relative">
+                    <div className="aspect-[20/7] w-full relative">
                       <img
                         src={src}
                         alt={`Review ${index + 1}`}

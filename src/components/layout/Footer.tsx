@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, CreditCard } from 'lucide-react';
 
 const quickLinks = [
   { name: 'Who we are', href: '/about' },
@@ -33,7 +33,6 @@ const locations = [
 
 export function Footer() {
   return (
-    
     <footer className="bg-primary text-primary-foreground">
       {/* Main Footer */}
       <div className="section-container py-16">
@@ -145,7 +144,6 @@ export function Footer() {
             <ul className="space-y-2">
               {locations.map((loc) => (
                 <li key={loc}>
-                  {/* Using 'a' tag here since .php usually implies a specific server-side page/SEO link */}
                   <a 
                     href={`https://orig.clickplick.co.uk/photo-booth-hire-in-${loc.toLowerCase().replace(' ', '-')}.php`} 
                     className="text-white/60 hover:text-white text-sm transition-colors block"
@@ -160,12 +158,33 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bottom Copyright Bar */}
+      {/* Bottom Copyright & Payment Bar */}
       <div className="border-t border-white/10">
-        <div className="section-container py-6 text-center">
+        <div className="section-container py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-sm">
             Copyright © {new Date().getFullYear()} ClickPlick
           </p>
+          
+          {/* Payment Methods */}
+          <div className="flex items-center gap-3">
+            <span className="text-white/40 text-sm mr-2 hidden sm:inline-block">Secure payments by</span>
+            
+            {/* Apple Pay Badge */}
+            <div className="bg-white px-3 py-1.5 rounded-md flex items-center justify-center shadow-sm">
+              <span className="text-black font-bold text-xs tracking-tighter"> Pay</span>
+            </div>
+            
+            {/* Klarna Badge */}
+            <div className="bg-[#FFB3C7] px-3 py-1.5 rounded-md flex items-center justify-center shadow-sm">
+              <span className="text-black font-bold text-xs">Klarna.</span>
+            </div>
+            
+            {/* Credit Card Badge */}
+            <div className="bg-slate-800 px-3 py-1.5 rounded-md flex items-center justify-center gap-1.5 border border-slate-700 shadow-sm">
+              <CreditCard className="w-4 h-4 text-white" />
+              <span className="text-white font-medium text-xs">Card</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

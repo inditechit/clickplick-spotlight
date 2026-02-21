@@ -3,9 +3,8 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Phone, Mail, MapPin, Clock, Send, MessageCircle, Calendar } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import { toast } from 'sonner';
 
 // Add global declaration for Google Ads
@@ -59,11 +58,13 @@ const Contact = () => {
     eventDate: '',
     eventTime: '',
     postcode: '',
-    message: '',
+    guests: '',
+    boothChoice: '',
+    eventType: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -82,7 +83,9 @@ const Contact = () => {
       event_date: formData.eventDate,
       event_time: formData.eventTime,
       event_postcode: formData.postcode,
-      message: formData.message, // Sending message as well, in case backend accepts it
+      no_of_guests: formData.guests,
+      choice_of_photobooth: formData.boothChoice,
+      event_type: formData.eventType
     };
     
     try {
@@ -143,7 +146,9 @@ const Contact = () => {
         eventDate: '',
         eventTime: '',
         postcode: '',
-        message: '' 
+        guests: '',
+        boothChoice: '',
+        eventType: '' 
       });
 
     } catch (err) {
@@ -334,16 +339,61 @@ const Contact = () => {
                       </div>
                     </div>
 
+                    {/* Guests & Event Type */}
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="guests">No. of Guests</Label>
+                        <Input
+                          id="guests"
+                          name="guests"
+                          type="number"
+                          min="1"
+                          value={formData.guests}
+                          onChange={handleChange}
+                          placeholder="100"
+                          className="h-12"
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="eventType">Type of Event</Label>
+                        <select
+                          id="eventType"
+                          name="eventType"
+                          value={formData.eventType}
+                          onChange={handleChange}
+                          className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                          required
+                        >
+                          <option value="" disabled>Select event</option>
+                          <option value="wedding">Wedding</option>
+                          <option value="birthday">Birthday</option>
+                          <option value="university">University</option>
+                          <option value="corporate">Corporate</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Booth Choice */}
                     <div className="space-y-2">
-                      <Label htmlFor="message">Your Message (Optional)</Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                      <Label htmlFor="boothChoice">Choice of Photobooth</Label>
+                      <select
+                        id="boothChoice"
+                        name="boothChoice"
+                        value={formData.boothChoice}
                         onChange={handleChange}
-                        placeholder="Tell us about your event..."
-                        rows={5}
-                      />
+                        className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                        required
+                      >
+                        <option value="" disabled>Select booth</option>
+                            <option value="LCD Screen Slimline Pod">LCD Screen Slimline Pod</option>
+                            <option value="Magic Mirror">Magic Mirror</option>
+                            <option value="Retro Box">Retro Box</option>
+                            <option value="Enchanted Mirror X Selfie">Enchanted Mirror X Selfie</option>
+                            <option value="Inflatable Enclosed Booth">Inflatable Enclosed Booth</option>
+                            <option value="Wooden Vintage Tripod">Wooden Vintage Tripod</option>
+                      </select>
                     </div>
 
                     <Button 
