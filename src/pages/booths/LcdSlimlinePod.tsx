@@ -160,9 +160,9 @@ const LcdSlimlinePod = () => {
               </div>
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-elevated">
                 <img
-                  src="/light/1.png"
+                  src="/images/lcd.jpeg"
                   alt="LCD Screen Slimline Pod"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </div>

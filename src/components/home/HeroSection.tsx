@@ -89,7 +89,7 @@ export function HeroSection() {
         <div className="animate-marquee whitespace-nowrap flex">
           {[...Array(10)].map((_, i) => (
             <span key={i} className="mx-8 text-primary-foreground font-semibold text-lg">
-              4 Hours For The Price Of 3
+              Get an extra 10% off when you book for an event from Monday-Thursday
             </span>
           ))}
         </div>
