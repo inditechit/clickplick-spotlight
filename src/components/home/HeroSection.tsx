@@ -111,7 +111,7 @@ export function HeroSection() {
       {/* Left Side: Image Content */}
       <div className="w-full md:w-1/2">
         <img 
-          src="http://localhost:8080/imgg7.jpg" 
+          src="/imgg7.jpg" 
           alt="ClickPlick Magic Mirror" 
           className="w-full h-full object-cover min-h-[400px]"
         />
