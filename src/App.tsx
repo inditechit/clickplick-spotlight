@@ -77,7 +77,7 @@ const App = () => (
             
             {/* Blog Routes - Fixed Conflict */}
             <Route path="/blog" element={<Blog />} />          {/* Listing Page */}
-            <Route path="/blog/:slug" element={<BlogPost />} /> {/* Detail Page */}
+            <Route path="/:slug" element={<BlogPost />} /> {/* Detail Page */}
 
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />

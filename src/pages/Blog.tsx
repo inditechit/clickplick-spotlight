@@ -169,7 +169,7 @@ const Blog = () => {
                         className="group bg-card rounded-2xl overflow-hidden border border-border card-hover flex flex-col h-full"
                       >
                         {/* Link to Detail Page using SLUG */}
-                        <Link to={`/blog/${post.slug}`} className="flex flex-col h-full">
+                        <Link to={`/${post.slug}.php`} className="flex flex-col h-full">
                           <div className="relative h-52 overflow-hidden shrink-0 bg-muted">
                             <img
                               src={getImageUrl(post)}

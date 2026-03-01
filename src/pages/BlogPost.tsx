@@ -52,9 +52,10 @@ const BlogPost = () => {
         window.scrollTo(0, 0);
 
         if (!slug) return;
+        const key = slug.replace('.php', ''); // Handle .php suffix if present
 
         // 1. Fetch Single Post
-        const response = await fetch(`${API_BASE_URL}/${slug}`);
+        const response = await fetch(`${API_BASE_URL}/${key}`);
         if (!response.ok) throw new Error("Post not found");
         
         const data = await response.json();
