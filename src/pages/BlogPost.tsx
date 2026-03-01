@@ -286,7 +286,7 @@ const BlogPost = () => {
               <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 {relatedPosts.map((relatedPost) => (
                   <Link 
-                    to={`/blog/${relatedPost.slug}`}
+                    to={`/${relatedPost.slug}.php`}
                     key={relatedPost.id}
                     className="group bg-card rounded-2xl overflow-hidden border border-border card-hover flex flex-col h-full"
                   >
