@@ -6,12 +6,15 @@ import { Check, ArrowLeft, Camera, Smartphone, Printer, Sparkles, Users, Clock, 
 import React, { useState, useEffect } from "react";
 import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 
+const API_BASE_URL = "https://api.clickplick.co.uk"; // Your Backend URL
+
 const features = [
   { icon: Camera, title: 'Adjustable height', description: 'The head of the LCD pod can be adjusted for any height groups in seconds, making it the ideal photo-pod for kids & adults' },
   { icon: Smartphone, title: 'Digital Sharing', description: 'Instant share to social media via email, AirDrop, or QR code' },
   { icon: Printer, title: 'Instant Prints', description: 'Unlimited high-quality 2x6 strip prints on premium photo paper' },
   { icon: Sparkles, title: 'Custom Overlays', description: 'Personalized designs with your names, date, logo, and event branding' },
 ];
+
 const sliderImages = [
   "/slider/12.jpg",
   "/slider/11.jpg",
@@ -41,6 +44,7 @@ const circleImages = [
   "/slider/circle/2.avif",
   "/slider/circle/1.avif",
 ];
+
 const includes = [
   'Professional HD camera',
   'Touchscreen interface',
@@ -70,6 +74,7 @@ const idealEvents = [
   { icon: Briefcase, name: 'Corporate Events' },
   { icon: GraduationCap, name: 'Graduations' },
 ];
+
 const reviews = [
   { name: "Chloe", time: "Jan 26, 2026", text: "I booked a photo booth for my wedding at very short notice (less than three weeks!), and the whole experience was fantastic. I spoke with Raj via WhatsApp and he was incredibly attentive, answering all of my questions promptly. " },
   { name: "Callum", time: "Jan 20, 2026", text: "A great service! Speedy set up, very helpful staff, and excellent photos with lots of fun props!" },
@@ -78,6 +83,7 @@ const reviews = [
   { name: "Kate Eeerah", time: "Jan 11, 2026", text: "Their photo booth was great and everyone at my cousin’s birthday party made the most of it. It made her 18th birthday memorable." },
   { name: "KushvanthSandeepReddy Satti", time: "Dec 17, 2025", text: "Booked for my sister birthday. Raj sir and Maddy ma’am were very cooperative. They made sure best service was provided from the time of enquiry to the end of the event. " },
 ];
+
 const images = [
   '/combo/a.jpeg', '/combo/b.jpeg', '/combo/c.jpeg', '/combo/d.jpeg',
   '/combo/e.jpeg', '/combo/h.jpeg', '/combo/j.jpeg', '/combo/k.jpeg'
@@ -85,6 +91,16 @@ const images = [
 
 const LcdSlimlinePod = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // State for Gallery Images
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+
+  // Helper to ensure full image URL
+  const getImageUrl = (path) => {
+    if (!path) return '';
+    return path.startsWith('http') ? path : `${API_BASE_URL}${path}`;
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -92,6 +108,36 @@ const LcdSlimlinePod = () => {
     }, 4000);
     return () => clearInterval(interval);
   }, []);
+
+  // Fetch Gallery Images on Mount
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        setIsLoadingGallery(true);
+        const response = await fetch(`${API_BASE_URL}/api/gallery`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch gallery');
+        }
+        
+        const data = await response.json();
+        
+        // Filter for "LCD Screen Slimline Pod" type and take exactly 6 images
+        const filteredImages = data
+          .filter(img => img.type === 'LCD Screen Slimline Pod' || img.type === 'LcdSlimlinePod')
+          .slice(0, 6);
+          
+        setGalleryImages(filteredImages);
+      } catch (error) {
+        console.error("Gallery fetch error:", error);
+      } finally {
+        setIsLoadingGallery(false);
+      }
+    };
+
+    fetchGallery();
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -126,8 +172,6 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
-
-
 
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
@@ -168,10 +212,10 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
+
+        {/* Flawless Instant Background Removal */}
         <section className="max-w-7xl mx-auto px-6 py-20 bg-gradient-to-b from-gray-50 to-gray-100 rounded-3xl shadow-lg">
-          {/* Row: Text + Main Image */}
           <div className="md:flex md:items-center md:gap-16">
-            {/* Left: Text */}
             <div className="md:w-1/2 mb-10 md:mb-0">
               <p className="uppercase text-sm font-semibold text-gray-500 mb-3 tracking-widest">
                 PERSONALISE
@@ -186,7 +230,6 @@ const LcdSlimlinePod = () => {
               </p>
             </div>
 
-            {/* Right: Main Image */}
             <div className="md:w-1/2 flex justify-center">
               <div className="w-full max-w-md rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] transform hover:scale-105 transition-transform duration-500 bg-white p-2">
                 <img
@@ -199,7 +242,6 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
 
-          {/* Row: Thumbnails */}
           <div className="flex flex-wrap justify-center gap-5 mt-10">
             {circleImages.map((img, i) => (
               <button
@@ -221,13 +263,11 @@ const LcdSlimlinePod = () => {
             ))}
           </div>
         </section>
+
+        {/* Print Layout Carousel */}
         <section className="py-8 bg-white">
           <div className="max-w-5xl mx-auto px-4">
-
-            {/* Compact Glass Container */}
             <div className="relative bg-slate-50/50 rounded-3xl border border-slate-100 overflow-hidden py-6 px-2 shadow-sm">
-
-              {/* Minimal Header */}
               <div className="flex items-center justify-between px-6 mb-6">
                 <div>
                   <h2 className="text-xl font-bold text-slate-800 tracking-tight">
@@ -240,15 +280,12 @@ const LcdSlimlinePod = () => {
                 </div>
               </div>
 
-              {/* Slider Area */}
               <div className="relative flex overflow-hidden">
-                {/* Smooth Infinite Loop */}
                 <div className="flex animate-slow-slide group hover:paused">
                   {[...images, ...images].map((src, index) => (
                     <div
                       key={index}
                       className="flex-none mx-2 transition-transform duration-500 hover:scale-105"
-                      // Ultra-compact size: 100px width
                       style={{ width: '100px', height: '300px' }}
                     >
                       <div className="w-full h-full rounded-md overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-slate-200">
@@ -262,14 +299,12 @@ const LcdSlimlinePod = () => {
                   ))}
                 </div>
 
-                {/* Edge Fades for a cleaner look */}
                 <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
                 <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
               </div>
             </div>
           </div>
 
-          {/* Optimized CSS */}
           <style dangerouslySetInnerHTML={{
             __html: `
         @keyframes slow-slide {
@@ -284,6 +319,7 @@ const LcdSlimlinePod = () => {
         }
       `}} />
         </section>
+
         {/* How It Works */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -311,11 +347,11 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
+
+        {/* Instant personalised Prints */}
         <section className="py-20 bg-white overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-
-              {/* Left Content Section */}
               <div className="order-2 lg:order-1">
                 <span className="text-gray-400 uppercase tracking-widest text-[10px] font-bold mb-3 block">
                   Personalise
@@ -324,43 +360,27 @@ const LcdSlimlinePod = () => {
                   Instant personalised Prints
                 </h2>
                 <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-lg">
-                  Pick from our beautiful ready-made templates or share your own branding, and we’ll take care of the rest. Either way, you and your guests will enjoy instant, personalized printouts.            </p>
+                  Pick from our beautiful ready-made templates or share your own branding, and we’ll take care of the rest. Either way, you and your guests will enjoy instant, personalized printouts.            
+                </p>
 
-                {/* Feature Cards Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
-                      <Check className="w-5 h-5 text-blue-500" />
+                  {[
+                    "Choose from 8 templates",
+                    "Add your logo or branding",
+                    "Personalise with text",
+                    "Fully customisable"
+                  ].map((text) => (
+                    <div key={text} className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
+                      <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                        <Check className="w-5 h-5 text-blue-500" />
+                      </div>
+                      <span className="font-semibold text-slate-700 text-xs">{text}</span>
                     </div>
-                    <span className="font-semibold text-slate-700 text-xs">Choose from 8 templates</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
-                      <Check className="w-5 h-5 text-blue-500" />
-                    </div>
-                    <span className="font-semibold text-slate-700 text-xs">Add your logo or branding</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
-                      <Check className="w-5 h-5 text-blue-500" />
-                    </div>
-                    <span className="font-semibold text-slate-700 text-xs">Personalise with text</span>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-white border border-blue-50 shadow-sm">
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100">
-                      <Check className="w-5 h-5 text-blue-500" />
-                    </div>
-                    <span className="font-semibold text-slate-700 text-xs">Fully customisable</span>
-                  </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Right Images Section (Smaller Size) */}
               <div className="order-1 lg:order-2 relative h-[400px] flex items-center justify-center">
-                {/* White Template Print - a.jpeg */}
                 <div className="absolute z-20 transform -rotate-12 -translate-x-8 shadow-xl rounded-sm overflow-hidden border-4 border-white w-32 md:w-40 transition-transform hover:-rotate-3 duration-500">
                   <img
                     src="/slider/b.jpeg"
@@ -368,8 +388,6 @@ const LcdSlimlinePod = () => {
                     className="w-full h-auto object-cover"
                   />
                 </div>
-
-                {/* Black Template Print - b.jpeg */}
                 <div className="absolute z-10 transform rotate-6 translate-x-8 shadow-xl rounded-sm overflow-hidden border-4 border-gray-900 bg-gray-900 w-32 md:w-40 transition-transform hover:rotate-12 duration-500">
                   <img
                     src="/slider/a.jpeg"
@@ -377,130 +395,114 @@ const LcdSlimlinePod = () => {
                     className="w-full h-auto object-cover"
                   />
                 </div>
-
-                {/* Center soft glow */}
                 <div className="absolute w-48 h-48 bg-blue-50 rounded-full blur-[80px] opacity-40 z-0"></div>
               </div>
-
             </div>
           </div>
         </section>
+
         {/* What's Included */}
-       <section className="py-16 md:py-20 bg-background">
-  <div className="section-container">
-    <div className="grid lg:grid-cols-2 gap-12 items-start">
-      
-      {/* --- IMAGE SECTION: Fixed for 600x1800 (Full View) --- */}
-      <div className="grid grid-cols-12 gap-4 lg:sticky lg:top-24">
-        
-        {/* Thumbnails (Side pe choti images) */}
-        <div className="col-span-3 space-y-3 overflow-y-auto max-h-[700px] scrollbar-hide">
-          {[8, 7, 6, 5, 4, 3, 2, 1].map((i) => (
-            <div key={i} className="aspect-[1/3] rounded-md overflow-hidden bg-slate-100 border border-slate-200">
-              <img
-                src={`/light/led/${i}.jpg`}
-                alt={`View ${i}`}
-                className="w-full h-full object-contain" // object-contain se puri image dikhegi
-              />
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              <div className="grid grid-cols-12 gap-4 lg:sticky lg:top-24">
+                <div className="col-span-3 space-y-3 overflow-y-auto max-h-[700px] scrollbar-hide">
+                  {[8, 7, 6, 5, 4, 3, 2, 1].map((i) => (
+                    <div key={i} className="aspect-[1/3] rounded-md overflow-hidden bg-slate-100 border border-slate-200">
+                      <img
+                        src={`/light/led/${i}.jpg`}
+                        alt={`View ${i}`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="col-span-9">
+                  <div className="bg-slate-50 rounded-2xl border-2 border-slate-100 shadow-xl overflow-hidden flex items-center justify-center" 
+                      style={{ height: '700px' }}>
+                    <img
+                      src="/light/led/8.jpg"
+                      alt="LCD Slimline Pod Main"
+                      className="max-w-full max-h-full object-contain p-2" 
+                    />
+                  </div>
+                  <p className="text-center text-xs text-muted-foreground mt-2">Full Slimline View</p>
+                </div>
+              </div>
+
+              <div>
+                <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+                  ✨ Ultra Slim LED Design
+                </div>
+
+                <h2 className="text-4xl font-heading font-bold text-foreground mb-6 uppercase tracking-tight">
+                  Services Included
+                </h2>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-10">
+                  {[
+                    "GUEST BOOK PHOTO ALBUM",
+                    "UNLIMITED PRINTS",
+                    "ANIMATED GIFS",
+                    "DIGITAL BACKDROP",
+                    "PARTY PROPS",
+                    "ADD TEXT TO PRINTS",
+                    "BRANDING TO PRINTS",
+                    "EMAIL/AIRDROP SHARING",
+                    "PHOTO FILTERS",
+                    "INSTALLATION & COLLECTION",
+                    "BOOMERANGS",
+                    "VIDEO MESSAGES",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-3 border-b border-slate-50 pb-2">
+                      <Check className="w-5 h-5 text-green-500 shrink-0" />
+                      <span className="text-foreground font-medium text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl">
+                  <h3 className="text-2xl font-heading font-bold mb-4 text-primary">
+                    Exclusive Add-Ons
+                  </h3>
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "CUSTOMIZED GUEST BOOK PHOTO ALBUM",
+                      "PROFESSIONAL PHOTOBOOTH ATTENDANT",
+                      "LUXURY BACKDROP OPTIONS",
+                      "CUSTOMIZED PHOTO FRAMES",
+                      "LCD SCREEN BRANDING",
+                    ].map((addon) => (
+                      <li key={addon} className="flex items-center gap-2 text-slate-300 text-sm">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                        {addon}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button className="w-full bg-white text-black hover:bg-slate-200 rounded-full h-12" asChild>
+                      <Link to="/book-now">Book Now</Link>
+                    </Button>
+                    <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 rounded-full h-12" asChild>
+                      <Link to="/contact">Get a Quote</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-
-        {/* Main Image (Badi wali) */}
-        <div className="col-span-9">
-          <div className="bg-slate-50 rounded-2xl border-2 border-slate-100 shadow-xl overflow-hidden flex items-center justify-center" 
-               style={{ height: '700px' }}> {/* Height ko control kiya hai */}
-            <img
-              src="/light/led/8.jpg"
-              alt="LCD Slimline Pod Main"
-              className="max-w-full max-h-full object-contain p-2" // Isse image kabhi nahi kategi
-            />
           </div>
-          <p className="text-center text-xs text-muted-foreground mt-2">Full Slimline View</p>
-        </div>
-      </div>
+        </section>
 
-      {/* --- DETAILS SECTION --- */}
-      <div>
-        <div className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
-          ✨ Ultra Slim LED Design
-        </div>
-
-        <h2 className="text-4xl font-heading font-bold text-foreground mb-6 uppercase tracking-tight">
-          Services Included
-        </h2>
-
-        {/* Services List */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-10">
-          {[
-            "GUEST BOOK PHOTO ALBUM",
-            "UNLIMITED PRINTS",
-            "ANIMATED GIFS",
-            "DIGITAL BACKDROP",
-            "PARTY PROPS",
-            "ADD TEXT TO PRINTS",
-            "BRANDING TO PRINTS",
-            "EMAIL/AIRDROP SHARING",
-            "PHOTO FILTERS",
-            "INSTALLATION & COLLECTION",
-            "BOOMERANGS",
-            "VIDEO MESSAGES",
-          ].map((item) => (
-            <div key={item} className="flex items-center gap-3 border-b border-slate-50 pb-2">
-              <Check className="w-5 h-5 text-green-500 shrink-0" />
-              <span className="text-foreground font-medium text-sm">{item}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Add-ons Card */}
-        <div className="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl">
-          <h3 className="text-2xl font-heading font-bold mb-4 text-primary">
-            Exclusive Add-Ons
-          </h3>
-          <ul className="space-y-3 mb-8">
-            {[
-              "CUSTOMIZED GUEST BOOK PHOTO ALBUM",
-              "PROFESSIONAL PHOTOBOOTH ATTENDANT",
-              "LUXURY BACKDROP OPTIONS",
-              "CUSTOMIZED PHOTO FRAMES",
-              "LCD SCREEN BRANDING",
-            ].map((addon) => (
-              <li key={addon} className="flex items-center gap-2 text-slate-300 text-sm">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                {addon}
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="w-full bg-white text-black hover:bg-slate-200 rounded-full h-12" asChild>
-              <Link to="/book-now">Book Now</Link>
-            </Button>
-            <Button variant="outline" className="w-full border-white/20 text-white hover:bg-white/10 rounded-full h-12" asChild>
-              <Link to="/contact">Get a Quote</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+        {/* Reviews */}
         <section className="relative bg-white py-24 px-6 overflow-hidden">
-          {/* Niche ki side halka color gradient */}
           <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-blue-50 to-transparent z-0"></div>
-
           <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
             <h2 className="text-4xl font-bold text-gray-800 mb-3">What people say</h2>
-            {/* <p className="text-gray-500 text-sm max-w-md mx-auto">
-              See what others think about the slimline selfie pod
-            </p> */}
           </div>
 
           <div className="max-w-7xl mx-auto relative z-10">
-            {/* Flex container for the single row */}
             <div className="flex flex-nowrap lg:grid lg:grid-cols-6 gap-4 items-center">
               {reviews.map((rev, i) => (
                 <div
@@ -509,7 +511,6 @@ const LcdSlimlinePod = () => {
                 ${i % 2 === 0 ? 'translate-y-6' : '-translate-y-6'} 
                 min-w-[200px] flex flex-col`}
                 >
-                  {/* Header: Trustpilot Logo & Name */}
                   <div className="flex items-center gap-2 mb-3">
                     <div className="bg-[#00b67a] p-1 rounded-sm">
                       <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -519,7 +520,6 @@ const LcdSlimlinePod = () => {
                     <span className="font-bold text-gray-800 text-xs tracking-tight">{rev.name}</span>
                   </div>
 
-                  {/* Trustpilot Stars */}
                   <div className="flex gap-0.5 mb-2">
                     {[...Array(5)].map((_, idx) => (
                       <div key={idx} className="bg-[#00b67a] w-4 h-4 flex items-center justify-center rounded-sm">
@@ -531,7 +531,6 @@ const LcdSlimlinePod = () => {
                   </div>
 
                   <p className="text-[10px] text-gray-400 mb-3 font-medium tracking-wide uppercase">{rev.time}</p>
-
                   <p className="text-gray-600 text-xs leading-relaxed italic">
                     "{rev.text}"
                   </p>
@@ -540,6 +539,7 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
+
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -563,11 +563,10 @@ const LcdSlimlinePod = () => {
           </div>
         </section>
 
-         {/* --- NEW SECTION ADDED FROM SCREENSHOT --- */}
+        {/* Effortless Setup */}
         <section className="py-16 md:py-20 bg-slate-50">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Side: Text from Screenshot */}
               <div>
                 <span className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-2 block">
                   Effortless Setup
@@ -589,10 +588,9 @@ const LcdSlimlinePod = () => {
                 </div>
               </div>
 
-              {/* Right Side: Image instead of Specs (as requested) */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-square">
                 <img
-                  src="/light/led/1.jpg" // Reusing an existing image path as placeholder
+                  src="/light/led/1.jpg" 
                   alt="Booth Setup"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
@@ -600,13 +598,11 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
-        {/* --- END NEW SECTION --- */}
 
         {/* Specifications & Ideal Events */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12">
-              {/* Specifications */}
               <div>
                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
                   Technical Specifications
@@ -621,7 +617,6 @@ const LcdSlimlinePod = () => {
                 </div>
               </div>
 
-              {/* Ideal Events */}
               <div>
                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
                   Perfect For
@@ -647,24 +642,66 @@ const LcdSlimlinePod = () => {
           </div>
         </section>
 
+        {/* --- NEW: Dynamic Gallery Section --- */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
+                Event Gallery
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                See It In Action
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                A glimpse of the unforgettable moments captured by our booths.
+              </p>
+            </div>
+
+            {isLoadingGallery ? (
+              <div className="flex justify-center items-center min-h-[300px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            ) : galleryImages.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                {galleryImages.map((img, index) => (
+                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
+                    <img
+                      src={getImageUrl(img.image_url)} 
+                      alt={`Gallery Image ${index + 1}`}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
+                Gallery images coming soon.
+              </p>
+            )}
+            
+            <div className="text-center mt-10">
+              <Button variant="outline" asChild>
+                <Link to="/gallery">View Full Gallery</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+        {/* --- END: Dynamic Gallery Section --- */}
+
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
-            {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199) 
-              or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200) 
-              or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
-            </p> */}
-
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
                 <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
-                   {/* Decorative elements from the image */}
                    <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
                    <div className="absolute bottom-0 right-0 w-8 h-8 bg-pink-500 clip-triangle rotate-135 transform translate-x-4 translate-y-4"></div>
                    
                    <img 
-                    src="/services/audiobook.jpeg" // Ensure you have a relevant image here
+                    src="/services/audiobook.jpeg" 
                     alt="Audio Guest Book" 
                     className="w-full h-full object-cover rounded-xl"
                    />
@@ -681,7 +718,7 @@ const LcdSlimlinePod = () => {
           </div>
         </section>
 
-        {/* Testimonial */}
+        {/* Final Testimonial */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
             <div className="max-w-3xl mx-auto text-center">
@@ -694,53 +731,49 @@ const LcdSlimlinePod = () => {
                 "The LCD Slimline Pod was the highlight of our wedding! Our guests absolutely loved it, and the photos came out beautifully. The attendant was so friendly and professional. Highly recommend ClickPlick!"
               </blockquote>
               <p className="font-semibold text-foreground">Sarah & James</p>
-              {/* <p className="text-muted-foreground text-sm">Wedding at The Grand Hotel, Manchester</p> */}
             </div>
           </div>
         </section>
-<div className="section-container py-12">
-      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
-        {/* Background Decorative Element */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
-        
-        <div className="relative flex flex-col md:flex-row items-center gap-8">
-          {/* Icon Part */}
-          <div className="flex-shrink-0">
-            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
-              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
-            </div>
-          </div>
 
-          {/* Content Part */}
-          <div className="flex-grow text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
-                Professional Standard
-              </span>
-              <Info className="w-4 h-4 text-slate-400" />
-            </div>
+        <div className="section-container py-12">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
             
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
-              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
-            </h3>
-            
-            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
-              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
-              This is a standard requirement for most premium venues across the UK, ensuring 
-              complete peace of mind for you and your guests.
-            </p>
-          </div>
+            <div className="relative flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+                  <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+                </div>
+              </div>
 
-          {/* Badge Part */}
-          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
-            <div className="flex items-center gap-2 text-green-600 font-bold">
-              <CheckCircle2 className="w-5 h-5" />
-              <span>Venue Approved</span>
+              <div className="flex-grow text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+                  <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                    Professional Standard
+                  </span>
+                  <Info className="w-4 h-4 text-slate-400" />
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+                  Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+                </h3>
+                
+                <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+                  We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+                  This is a standard requirement for most premium venues across the UK, ensuring 
+                  complete peace of mind for you and your guests.
+                </p>
+              </div>
+
+              <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+                <div className="flex items-center gap-2 text-green-600 font-bold">
+                  <CheckCircle2 className="w-5 h-5" />
+                  <span>Venue Approved</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-background">
@@ -753,7 +786,6 @@ const LcdSlimlinePod = () => {
             </p>
             <div className="max-w-3xl mx-auto space-y-6">
               {[
-                // { q: 'How much space does the booth need?', a: 'The LCD Slimline Pod requires a minimum floor space of 2.5m x 2.5m (8ft x 8ft) to allow enough room for guests and queuing. The booth itself is compact and stands in just 2ft X 2ft.' },
                 { q: 'Can we customise the photo templates?', a: 'Standard and some customized unlimited prints are included in the package. Bespoke photo templates can be created for each event at an additional charge.' },
                 { q: 'How many people can fit in a photo?', a: 'The open design allows for up to 15 guests in a single photo, making it perfect for group shots. Solo and couple photos work beautifully too!' },
                 { q: 'Do you provide props?', a: 'Yes! Every hire includes a box of quality props including glasses, hats, signs, and more. We can also source themed props for your specific event.' },

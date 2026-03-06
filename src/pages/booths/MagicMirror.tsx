@@ -1,9 +1,13 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Mic, Sparkles, Pen, Video, Users, Star, Heart, Briefcase, GraduationCap, PartyPopper, Wand2, MessageSquare } from 'lucide-react';
 import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
+
+const API_BASE_URL = "https://api.clickplick.co.uk"; // Your Backend URL
+
 const features = [
   { icon: Mic, title: 'Voice Guidance', description: 'Interactive voice prompts guide guests through the entire experience, making it easy and fun for everyone' },
   { icon: Sparkles, title: 'Stunning Animations', description: 'Beautiful visual effects and animations displayed on the mirror surface create a truly magical atmosphere' },
@@ -33,14 +37,15 @@ const specifications = [
   { label: 'Setup Time', value: '90 minutes' },
   { label: 'Power Required', value: 'Standard socket' },
 ];
+
 const photos = [
   { src: "/light/magic/1.jpeg", angle: "-deg-6", label: "Pose & Smile" },
   { src: "/light/magic/2.jpeg", angle: "rotate-3", label: "Voice Guided" },
   { src: "/light/magic/3.jpg", angle: "-rotate-12", label: "Instant Print" },
   { src: "/light/magic/4.jpeg", angle: "rotate-6", label: "Digital Share" },
   { src: "/light/magic.jpg", angle: "-rotate-2", label: "Signature Art" },
-
 ];
+
 const items = [
   { src: "/light/magic/1.jpeg", size: "w-48 h-48", pos: "top-0 left-5", delay: "0s" },
   { src: "/light/magic/2.jpeg", size: "w-64 h-64", pos: "top-10 right-10", delay: "1.5s" },
@@ -53,6 +58,7 @@ const items = [
   { src: "/light/magic/4.jpeg", size: "w-60 h-60", pos: "bottom-20 right-1/3", delay: "0.5s" },
   { src: "/light/magic.jpg", size: "w-32 h-32", pos: "top-20 left-1/4", delay: "1.8s" },
 ];
+
 const idealEvents = [
   { icon: Heart, name: 'Weddings' },
   { icon: PartyPopper, name: 'Celebrations' },
@@ -61,6 +67,45 @@ const idealEvents = [
 ];
 
 const MagicMirror = () => {
+  // State for Gallery Images
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+
+  // Helper to ensure full image URL
+  const getImageUrl = (path) => {
+    if (!path) return '';
+    return path.startsWith('http') ? path : `${API_BASE_URL}${path}`;
+  };
+
+  // Fetch Gallery Images on Mount
+  useEffect(() => {
+    const fetchGallery = async () => {
+      try {
+        setIsLoadingGallery(true);
+        const response = await fetch(`${API_BASE_URL}/api/gallery`);
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch gallery');
+        }
+        
+        const data = await response.json();
+        
+        // Filter for "MagicMirror" or "The Magic Mirror" type and take exactly 6 images
+        const filteredImages = data
+          .filter(img => img.type === 'MagicMirror' || img.type === 'The Magic Mirror')
+          .slice(0, 6);
+          
+        setGalleryImages(filteredImages);
+      } catch (error) {
+        console.error("Gallery fetch error:", error);
+      } finally {
+        setIsLoadingGallery(false);
+      }
+    };
+
+    fetchGallery();
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -118,7 +163,6 @@ const MagicMirror = () => {
           </div>
         </section>
 
-
         {/* Detailed Description */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
@@ -152,7 +196,6 @@ const MagicMirror = () => {
             </div>
           </div>
         </section>
-
 
         {/* The Magic Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
@@ -260,6 +303,7 @@ const MagicMirror = () => {
             </div>
           </div>
         </section>
+
         <section className="py-24 bg-slate-50 overflow-hidden relative">
           <div className="section-container">
             <div className="text-center mb-16">
@@ -315,6 +359,7 @@ const MagicMirror = () => {
           <div className="absolute top-1/4 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-ping"></div>
           <div className="absolute bottom-1/4 right-10 w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
         </section>
+
         <section className="py-24 bg-[#050505] overflow-hidden relative min-h-[800px] flex items-center">
           {/* Background Neon Glows */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
@@ -361,7 +406,8 @@ const MagicMirror = () => {
             </div>
           </div>
 
-          <style jsx>{`
+          <style dangerouslySetInnerHTML={{
+            __html: `
         @keyframes float {
           0% { transform: translateY(0px) translateX(0px); }
           33% { transform: translateY(-20px) translateX(10px); }
@@ -371,8 +417,9 @@ const MagicMirror = () => {
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
-      `}</style>
+      `}} />
         </section>
+
         {/* Features Grid */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -396,11 +443,10 @@ const MagicMirror = () => {
           </div>
         </section>
 
-        {/* --- NEW SECTION ADDED FROM SCREENSHOT --- */}
+        {/* Effortless Setup */}
         <section className="py-16 md:py-20 bg-slate-50">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Side: Text from Screenshot */}
               <div>
                 <span className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-2 block">
                   Effortless Setup
@@ -422,10 +468,9 @@ const MagicMirror = () => {
                 </div>
               </div>
 
-              {/* Right Side: Image instead of Specs (as requested) */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-square">
                 <img
-                  src="/light/magic/2.jpeg" // Reusing an existing image path as placeholder
+                  src="/light/magic/2.jpeg" 
                   alt="Booth Setup"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
@@ -433,13 +478,11 @@ const MagicMirror = () => {
             </div>
           </div>
         </section>
-        {/* --- END NEW SECTION --- */}
 
         {/* Specifications & Ideal Events */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12">
-              {/* Specifications */}
               <div>
                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
                   Technical Specifications
@@ -454,7 +497,6 @@ const MagicMirror = () => {
                 </div>
               </div>
 
-              {/* Ideal Events */}
               <div>
                 <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
                   Perfect For
@@ -479,9 +521,9 @@ const MagicMirror = () => {
             </div>
           </div>
         </section>
+
         {/* Unique Interactive Experience Section */}
         <section className="py-24 bg-[#0a0a0b] relative overflow-hidden text-white">
-          {/* Magic Glow Effects */}
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/20 rounded-full blur-[120px] animate-pulse"></div>
 
@@ -496,7 +538,6 @@ const MagicMirror = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-              {/* Connecting Line (Desktop Only) */}
               <div className="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -translate-y-1/2"></div>
 
               {[
@@ -542,8 +583,6 @@ const MagicMirror = () => {
                       {item.desc}
                     </p>
                   </div>
-
-                  {/* Decorative Dot on the line */}
                   <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-purple-500 rounded-full blur-sm group-hover:scale-150 transition-transform"></div>
                 </div>
               ))}
@@ -551,24 +590,66 @@ const MagicMirror = () => {
           </div>
         </section>
 
+        {/* --- NEW: Dynamic Gallery Section --- */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
+                Event Gallery
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                See It In Action
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                A glimpse of the unforgettable moments captured by our booths.
+              </p>
+            </div>
+
+            {isLoadingGallery ? (
+              <div className="flex justify-center items-center min-h-[300px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            ) : galleryImages.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                {galleryImages.map((img, index) => (
+                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
+                    <img
+                      src={getImageUrl(img.image_url)} 
+                      alt={`Gallery Image ${index + 1}`}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
+                Gallery images coming soon.
+              </p>
+            )}
+            
+            <div className="text-center mt-10">
+              <Button variant="outline" asChild>
+                <Link to="/gallery">View Full Gallery</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+        {/* --- END: Dynamic Gallery Section --- */}
+
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
-            {/* <p className="text-slate-600 text-lg mb-12 max-w-3xl mx-auto">
-              Why not add our brand new <span className="font-bold">Add an Audio Telephone Guest Book for £49</span> (normally £199)
-              or some giant 4ft light up <span className="font-bold">"LOVE" letters for £100</span> (normally £200)
-              or <span className="font-bold">"MR & MRS" letters for £200</span> (normally £300)
-            </p> */}
-
             <div className="max-w-md mx-auto relative group">
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
                 <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
-                  {/* Decorative elements from the image */}
                   <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
                   <div className="absolute bottom-0 right-0 w-8 h-8 bg-pink-500 clip-triangle rotate-135 transform translate-x-4 translate-y-4"></div>
 
                   <img
-                    src="/services/audiobook.jpeg" // Ensure you have a relevant image here
+                    src="/services/audiobook.jpeg" 
                     alt="Audio Guest Book"
                     className="w-full h-full object-cover rounded-xl"
                   />
@@ -597,53 +678,50 @@ const MagicMirror = () => {
                 "The Magic Mirror was absolutely incredible! Our guests couldn't stop talking about it. The voice guidance made it so easy for everyone, and the signature feature was a beautiful touch. The video messages from our guests made us cry!"
               </blockquote>
               <p className="font-semibold text-foreground">Emma & David</p>
-              {/* <p className="text-muted-foreground text-sm">Wedding at Thornton Manor, Wirral</p> */}
             </div>
           </div>
         </section>
-<div className="section-container py-12">
-      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
-        {/* Background Decorative Element */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
-        
-        <div className="relative flex flex-col md:flex-row items-center gap-8">
-          {/* Icon Part */}
-          <div className="flex-shrink-0">
-            <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
-              <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
-            </div>
-          </div>
 
-          {/* Content Part */}
-          <div className="flex-grow text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
-              <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
-                Professional Standard
-              </span>
-              <Info className="w-4 h-4 text-slate-400" />
-            </div>
+        <div className="section-container py-12">
+          <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
+            <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
             
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
-              Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
-            </h3>
-            
-            <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
-              We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
-              This is a standard requirement for most premium venues across the UK, ensuring 
-              complete peace of mind for you and your guests.
-            </p>
-          </div>
+            <div className="relative flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
+                  <ShieldCheck className="w-10 h-10 text-[#27aae1]" />
+                </div>
+              </div>
 
-          {/* Badge Part */}
-          <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
-            <div className="flex items-center gap-2 text-green-600 font-bold">
-              <CheckCircle2 className="w-5 h-5" />
-              <span>Venue Approved</span>
+              <div className="flex-grow text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-3">
+                  <span className="px-3 py-1 bg-[#27aae1] text-white text-[10px] font-bold uppercase tracking-widest rounded-full">
+                    Professional Standard
+                  </span>
+                  <Info className="w-4 h-4 text-slate-400" />
+                </div>
+                
+                <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
+                  Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
+                </h3>
+                
+                <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
+                  We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
+                  This is a standard requirement for most premium venues across the UK, ensuring 
+                  complete peace of mind for you and your guests.
+                </p>
+              </div>
+
+              <div className="hidden lg:block bg-white/80 backdrop-blur-sm border border-white p-4 rounded-2xl shadow-sm rotate-3">
+                <div className="flex items-center gap-2 text-green-600 font-bold">
+                  <CheckCircle2 className="w-5 h-5" />
+                  <span>Venue Approved</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
@@ -659,7 +737,6 @@ const MagicMirror = () => {
                 { q: 'Can guests record video messages?', a: 'Yes! Guests can record personal video messages up to 30 seconds long. These are compiled and delivered to you after the event on a USB drive or via cloud link.' },
                 { q: 'Is it suitable for outdoor events?', a: 'The Magic Mirror is designed for indoor use. For outdoor events, we can set it up under a marquee or covered area to protect the equipment from the elements.' },
                 { q: 'What animations are available?', a: 'The Magic Mirror Photo Booth turns your pictures into Animated GIFs Automatically. These can be transferred via Air drop/Email directly to your phone.' },
-                // { q: 'How loud is the voice guidance?', a: 'The volume is fully adjustable and we set it appropriately for your venue. For quieter ceremonies, we can reduce the volume or switch to on-screen text prompts.' },
               ].map((faq, index) => (
                 <div key={index} className="bg-card rounded-xl p-6 shadow-card">
                   <h3 className="font-heading font-bold text-foreground mb-2">{faq.q}</h3>
