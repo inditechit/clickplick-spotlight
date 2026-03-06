@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Phone, Sparkles } from 'lucide-react';
+
 const heroSlides = [
   {
     image: "/main/hero1.png",
@@ -34,7 +34,7 @@ export function HeroSection() {
 
   return (
     <section className="relative pt-20">
-      {/* Hero Slider - HEIGHT INCREASED BELOW */}
+      {/* Hero Slider */}
       <div className="relative w-full h-[600px] md:h-[700px] lg:h-[850px] overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
@@ -84,14 +84,16 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Promo Banner - Scrolling text */}
-      <div className="bg-primary overflow-hidden py-3">
-        <div className="animate-marquee whitespace-nowrap flex">
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="mx-8 text-primary-foreground font-semibold text-lg">
-              Get an extra 10% off when you book for an event on Monday-Thursday
-            </span>
-          ))}
+      {/* NEW: Static, Elegant Promo Banner */}
+      <div className="bg-gradient-to-r from-primary/95 via-primary to-primary/95 py-4 px-4 shadow-inner">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 text-center">
+          <span className="flex items-center justify-center bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-sm shadow-sm">
+            <Sparkles className="w-4 h-4 mr-1.5 text-yellow-300" /> 
+            Special Offer
+          </span>
+          <p className="text-primary-foreground font-medium text-base sm:text-lg">
+            Get an extra <span className="font-bold text-white text-xl mx-1">10% OFF</span> when you book for an event on <span className="underline decoration-white/40 underline-offset-4 font-semibold text-white">Monday–Thursday</span>
+          </p>
         </div>
       </div>
 
@@ -106,53 +108,51 @@ export function HeroSection() {
           </Button>
         </div>
       </div>
+
       <div className="w-full flex flex-col md:flex-row items-stretch overflow-hidden">
-      
-      {/* Left Side: Image Content */}
-      <div className="w-full md:w-1/2">
-        <img 
-          src="/imgg7.jpg" 
-          alt="ClickPlick Magic Mirror" 
-          className="w-full h-full object-cover min-h-[400px]"
-        />
-      </div>
-
-      {/* Right Side: Pink Content Section */}
-      <div className="w-full md:w-1/2 bg-[#FFB5C2] p-8 md:p-16 flex flex-col justify-center text-white">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8">
-          Why Us?
-        </h2>
-        
-        <div className="space-y-6 text-lg leading-relaxed font-medium">
-          <p>
-            At ClickPlick, we believe memories are more than just photos – they're the threads that hold families, friends, and celebrations together. What began as a small family passion has grown into a business that we nurture with the same care, creativity, and warmth we bring to our own gatherings. Every booth, every print, and every smile carries a piece of that story.
-          </p>
-          <p>
-            We bring you the most exclusive photo-booths equipped with intuitive touch screens and the latest technology to capture and instantly print your moments. With Canon DSLR cameras, iPad HD lenses, and professional-grade printers, your memories aren't just pictures – they're timeless keepsakes.
-          </p>
-          <p>
-            From personalized photo-prints and guest albums to customized selfie-frames and screen designs, we make sure every detail reflects your celebration.
-          </p>
-          <p className="font-semibold">
-            At ClickPlick, your joy fuels our journey — because your smile is, and always will be, our family's greatest happiness.
-          </p>
+        {/* Left Side: Image Content */}
+        <div className="w-full md:w-1/2">
+          <img 
+            src="/imgg7.jpg" 
+            alt="ClickPlick Magic Mirror" 
+            className="w-full h-full object-cover min-h-[400px]"
+          />
         </div>
 
-        {/* Buttons with Space at Bottom */}
-        <div className="mt-10 mb-10 flex flex-wrap items-center gap-8">
-          <button className="bg-white text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-gray-100 transition-colors">
-            Know More <ArrowRight className="w-5 h-5" />
-          </button>
+        {/* Right Side: Pink Content Section */}
+        <div className="w-full md:w-1/2 bg-[#FFB5C2] p-8 md:p-16 flex flex-col justify-center text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Why Us?
+          </h2>
           
-          <a href="tel:+447931983588" className="flex items-center gap-2 font-bold text-white hover:opacity-80 transition-opacity">
-            <Phone className="w-5 h-5" />
-            Call Us
-          </a>
+          <div className="space-y-6 text-lg leading-relaxed font-medium">
+            <p>
+              At ClickPlick, we believe memories are more than just photos – they're the threads that hold families, friends, and celebrations together. What began as a small family passion has grown into a business that we nurture with the same care, creativity, and warmth we bring to our own gatherings. Every booth, every print, and every smile carries a piece of that story.
+            </p>
+            <p>
+              We bring you the most exclusive photo-booths equipped with intuitive touch screens and the latest technology to capture and instantly print your moments. With Canon DSLR cameras, iPad HD lenses, and professional-grade printers, your memories aren't just pictures – they're timeless keepsakes.
+            </p>
+            <p>
+              From personalized photo-prints and guest albums to customized selfie-frames and screen designs, we make sure every detail reflects your celebration.
+            </p>
+            <p className="font-semibold">
+              At ClickPlick, your joy fuels our journey — because your smile is, and always will be, our family's greatest happiness.
+            </p>
+          </div>
+
+          {/* Buttons with Space at Bottom */}
+          <div className="mt-10 mb-10 flex flex-wrap items-center gap-8">
+            <button className="bg-white text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:bg-gray-100 transition-colors">
+              Know More <ArrowRight className="w-5 h-5" />
+            </button>
+            
+            <a href="tel:+447931983588" className="flex items-center gap-2 font-bold text-white hover:opacity-80 transition-opacity">
+              <Phone className="w-5 h-5" />
+              Call Us
+            </a>
+          </div>
         </div>
       </div>
-
-    </div>
     </section>
-    
   );
 }
