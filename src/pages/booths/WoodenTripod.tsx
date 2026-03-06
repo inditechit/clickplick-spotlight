@@ -5,6 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, TreePine, Camera, Gift, Minimize, Star, Heart, Briefcase, GraduationCap, PartyPopper, Leaf, Gem, Hammer } from 'lucide-react';
 import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
+import { Phone, QrCode, BookImage, Printer, Key, Image as ImageIcon, Sparkles, ArrowRight } from 'lucide-react';
 
 const API_BASE_URL = "https://api.clickplick.co.uk"; // Your Backend URL
 
@@ -303,6 +304,128 @@ const WoodenTripod = () => {
                   <Button variant="outline" size="lg" asChild>
                     <Link to="/contact">Get a Quote</Link>
                   </Button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Optional Add-Ons Section */}
+        <section className="py-24 bg-slate-50 relative overflow-hidden">
+          {/* Decorative background elements */}
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 -left-24 w-72 h-72 bg-pink-100/50 rounded-full blur-3xl"></div>
+
+          <div className="section-container relative z-10">
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-bold uppercase tracking-widest mb-4">
+                <Sparkles className="w-3.5 h-3.5" /> Enhance Your Experience
+              </span>
+              <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-4">
+                Popular Add-Ons
+              </h2>
+              <p className="text-slate-500 max-w-2xl mx-auto text-lg">
+                Level up your event with our exclusive extras and premium keepsakes.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              
+              {/* 1. Audio Guest Book (Featured) */}
+              <div className="bg-white rounded-3xl p-8 shadow-xl shadow-blue-900/5 border border-blue-100 relative group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div className="absolute -top-3 right-6 bg-gradient-to-r from-pink-500 to-rose-400 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">
+                  SAVE £150
+                </div>
+                <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 border border-blue-100 group-hover:scale-110 transition-transform">
+                  <Phone className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Audio Guest Book</h3>
+                <p className="text-slate-500 text-sm mb-6 flex-grow">
+                  Let guests leave heartfelt or hilarious voice messages on a vintage telephone. A timeless audio keepsake.
+                </p>
+                <div className="flex items-end justify-between mt-auto pt-4 border-t border-slate-100">
+                  <div>
+                    <span className="text-xs text-slate-400 line-through block mb-0.5">£199</span>
+                    <span className="text-2xl font-black text-slate-900">£49</span>
+                  </div>
+                  <Link to="/audio-guest-book" className="text-blue-600 font-semibold text-sm flex items-center gap-1 hover:text-blue-700 transition-colors">
+                    View Details <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* 2. Guest QR Code */}
+              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 relative group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div className="absolute -top-3 right-6 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm animate-pulse">
+                  NEW
+                </div>
+                <div className="w-14 h-14 bg-slate-50 text-slate-700 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 group-hover:scale-110 transition-transform">
+                  <QrCode className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Guest QR Code</h3>
+                <p className="text-slate-500 text-sm mb-6 flex-grow">
+                  A custom QR code displayed at your event so guests can instantly access and download the live digital gallery to their phones.
+                </p>
+                <div className="mt-auto pt-4 border-t border-slate-100">
+                  <span className="text-2xl font-black text-slate-900">£65</span>
+                </div>
+              </div>
+
+              {/* 3. Customized Guest Album */}
+              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div className="w-14 h-14 bg-slate-50 text-slate-700 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 group-hover:scale-110 transition-transform">
+                  <BookImage className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Customized Guest Album</h3>
+                <p className="text-slate-500 text-sm mb-6 flex-grow">
+                  A beautiful, premium personalized photo album where guests can stick their extra photo strips and write a special message.
+                </p>
+                <div className="mt-auto pt-4 border-t border-slate-100">
+                  <span className="text-2xl font-black text-slate-900">£60</span>
+                </div>
+              </div>
+
+              {/* 4. Customized Print Outs */}
+              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div className="w-14 h-14 bg-slate-50 text-slate-700 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 group-hover:scale-110 transition-transform">
+                  <Printer className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Customized Print Outs</h3>
+                <p className="text-slate-500 text-sm mb-6 flex-grow">
+                  Bespoke print designs featuring your names, dates, specific color themes, or corporate branding seamlessly integrated.
+                </p>
+                <div className="mt-auto pt-4 border-t border-slate-100">
+                  <span className="text-2xl font-black text-slate-900">£30</span>
+                </div>
+              </div>
+
+              {/* 5. Photo Key Chains */}
+              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div className="w-14 h-14 bg-slate-50 text-slate-700 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 group-hover:scale-110 transition-transform">
+                  <Key className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Photo Key Chains</h3>
+                <p className="text-slate-500 text-sm mb-6 flex-grow">
+                  Turn your guests' favorite photo memories into lovely acrylic keychains they can carry with them everywhere.
+                </p>
+                <div className="mt-auto pt-4 border-t border-slate-100">
+                  <span className="text-2xl font-black text-slate-900">£1.75 <span className="text-sm font-medium text-slate-400">each</span></span>
+                </div>
+              </div>
+
+              {/* 6. Photo Fridge Magnets */}
+              <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <div className="w-14 h-14 bg-slate-50 text-slate-700 rounded-2xl flex items-center justify-center mb-6 border border-slate-100 group-hover:scale-110 transition-transform">
+                  <ImageIcon className="w-7 h-7" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Photo Fridge Magnets</h3>
+                <p className="text-slate-500 text-sm mb-6 flex-grow">
+                  High-quality magnetic sleeves for your photo prints so your guests can stick their fun memories straight onto their fridge.
+                </p>
+                <div className="mt-auto pt-4 border-t border-slate-100">
+                  <span className="text-2xl font-black text-slate-900">£1.75 <span className="text-sm font-medium text-slate-400">each</span></span>
                 </div>
               </div>
 
