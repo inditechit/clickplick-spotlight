@@ -351,10 +351,10 @@ const InflatableBooth = () => {
                 </div>
                 <h3 className="text-xl font-bold text-slate-800 mb-2">Guest QR Code</h3>
                 <p className="text-slate-500 text-sm mb-6 flex-grow">
-                  A custom QR code displayed at your event so guests can instantly access and download the live digital gallery to their phones.
+                  Guests can upload the photos and videos they take during the event straight to a shared album in real time, so the host can later look back and enjoy all the fun, candid moments captured by everyone throughout the celebration.
                 </p>
                 <div className="mt-auto pt-4 border-t border-slate-100">
-                  <span className="text-2xl font-black text-slate-900">£65</span>
+                  {/* <span className="text-2xl font-black text-slate-900">£65</span> */}
                 </div>
               </div>
 
@@ -368,7 +368,7 @@ const InflatableBooth = () => {
                   A beautiful, premium personalized photo album where guests can stick their extra photo strips and write a special message.
                 </p>
                 <div className="mt-auto pt-4 border-t border-slate-100">
-                  <span className="text-2xl font-black text-slate-900">£60</span>
+                  {/* <span className="text-2xl font-black text-slate-900">£60</span> */}
                 </div>
               </div>
 
@@ -382,7 +382,7 @@ const InflatableBooth = () => {
                   Bespoke print designs featuring your names, dates, specific color themes, or corporate branding seamlessly integrated.
                 </p>
                 <div className="mt-auto pt-4 border-t border-slate-100">
-                  <span className="text-2xl font-black text-slate-900">£30</span>
+                  {/* <span className="text-2xl font-black text-slate-900">£30</span> */}
                 </div>
               </div>
 
@@ -396,7 +396,7 @@ const InflatableBooth = () => {
                   Turn your guests' favorite photo memories into lovely acrylic keychains they can carry with them everywhere.
                 </p>
                 <div className="mt-auto pt-4 border-t border-slate-100">
-                  <span className="text-2xl font-black text-slate-900">£1.75 <span className="text-sm font-medium text-slate-400">each</span></span>
+                  {/* <span className="text-2xl font-black text-slate-900">£1.75 <span className="text-sm font-medium text-slate-400">each</span></span> */}
                 </div>
               </div>
 
@@ -410,7 +410,7 @@ const InflatableBooth = () => {
                   High-quality magnetic sleeves for your photo prints so your guests can stick their fun memories straight onto their fridge.
                 </p>
                 <div className="mt-auto pt-4 border-t border-slate-100">
-                  <span className="text-2xl font-black text-slate-900">£1.75 <span className="text-sm font-medium text-slate-400">each</span></span>
+                  {/* <span className="text-2xl font-black text-slate-900">£1.75 <span className="text-sm font-medium text-slate-400">each</span></span> */}
                 </div>
               </div>
 
@@ -539,9 +539,6 @@ const InflatableBooth = () => {
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
                 See It In Action
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                A glimpse of the unforgettable moments captured by our booths.
-              </p>
             </div>
 
             {isLoadingGallery ? (
