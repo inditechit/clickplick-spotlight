@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, CreditCard } from 'l
 const quickLinks = [
   { name: 'Who we are', href: '/about' },
   { name: 'Contact us', href: '/contact' },
-  { name: 'Careers', href: 'https://orig.clickplick.co.uk/careers.php' },
+  { name: 'Careers', href: 'https://clickplick.co.uk/careers.php' },
   { name: 'Blog', href: '/blog' },
 ];
 
@@ -145,7 +145,7 @@ export function Footer() {
               {locations.map((loc) => (
                 <li key={loc}>
                   <a 
-                    href={`https://orig.clickplick.co.uk/photo-booth-hire-in-${loc.toLowerCase().replace(' ', '-')}.php`} 
+                    href={`https://clickplick.co.uk/photo-booth-hire-in-${loc.toLowerCase().replace(' ', '-')}.php`} 
                     className="text-white/60 hover:text-white text-sm transition-colors block"
                   >
                     {loc}
