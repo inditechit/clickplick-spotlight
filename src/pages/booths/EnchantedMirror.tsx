@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Smile, Video, Image, Layers, Star, Heart, Briefcase, GraduationCap, PartyPopper, Crown, Gem, Wand2 } from 'lucide-react';
 import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 import { Phone, QrCode, BookImage, Printer, Key, Image as ImageIcon, Sparkles, ArrowRight } from 'lucide-react';
+import { AnimatedBookingForm } from '@/components/AnimatedBookingForm';
+// Import your new animated booking form
 
 const API_BASE_URL = "https://api.clickplick.co.uk"; // Your Backend URL
 
@@ -86,6 +88,15 @@ const EnchantedMirror = () => {
     fetchGallery();
   }, []);
 
+  // Function to smoothly scroll to the booking form
+  const scrollToBooking = (e) => {
+    e.preventDefault();
+    const formElement = document.getElementById('booking-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -111,8 +122,8 @@ const EnchantedMirror = () => {
               Our premium mirror booth combining elegant design with cutting-edge technology. Voice guidance, stunning visual effects, and a luxurious finish that elevates any celebration.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button variant="secondary" size="lg" asChild>
-                <Link to="/book-now">Book This Booth</Link>
+              <Button variant="secondary" size="lg" onClick={scrollToBooking}>
+                Book This Booth
               </Button>
               <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10" asChild>
                 <Link to="/contact">Get a Quote</Link>
@@ -287,8 +298,8 @@ const EnchantedMirror = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
-                  <Button size="lg" asChild>
-                    <Link to="/book-now">Book This Booth</Link>
+                  <Button size="lg" onClick={scrollToBooking}>
+                    Book This Booth
                   </Button>
                   <Button variant="outline" size="lg" asChild>
                     <Link to="/contact">Get a Quote</Link>
@@ -664,6 +675,9 @@ const EnchantedMirror = () => {
           </div>
         </div>
 
+        {/* --- ADDED BOOKING FORM HERE --- */}
+        <AnimatedBookingForm />
+
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -699,8 +713,9 @@ const EnchantedMirror = () => {
               Elevate your event with our premium Enchanted Mirror X Selfie. Book today for an unforgettable experience.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button variant="secondary" size="lg" asChild>
-                <Link to="/book-now">Book Now</Link>
+              {/* Note: I changed this button to scroll to our new form */}
+              <Button variant="secondary" size="lg" onClick={scrollToBooking}>
+                Book Now
               </Button>
               <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10" asChild>
                 <Link to="/contact">Contact Us</Link>

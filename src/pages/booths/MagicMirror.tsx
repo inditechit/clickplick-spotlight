@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Check, ArrowLeft, Mic, Pen, Video, Users, Star, Heart, Briefcase, GraduationCap, PartyPopper, Wand2, MessageSquare } from 'lucide-react';
 import { ShieldCheck, Info, CheckCircle2 } from 'lucide-react';
 import { Phone, QrCode, BookImage, Printer, Key, Image as ImageIcon, Sparkles, ArrowRight } from 'lucide-react';
+import { AnimatedBookingForm } from '@/components/AnimatedBookingForm';
 
 const API_BASE_URL = "https://api.clickplick.co.uk"; // Your Backend URL
 
@@ -842,6 +843,7 @@ const MagicMirror = () => {
           </div>
         </div>
 
+<AnimatedBookingForm />
         {/* FAQ Section */}
         <section className="py-16 md:py-20 bg-background">
           <div className="section-container">
