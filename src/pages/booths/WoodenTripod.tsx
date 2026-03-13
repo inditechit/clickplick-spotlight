@@ -267,6 +267,7 @@ const WoodenTripod = () => {
                     "INSTANTLY DOWNLOAD TO PHONE",
                     "SEND EMAILS",
                     "WHITE OR BLACK BACKDROP",
+                    "PROFESSIONAL GRADE CAMERA",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">

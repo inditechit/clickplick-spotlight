@@ -448,6 +448,7 @@ const LcdSlimlinePod = () => {
                     "ANIMATED GIFS",
                     "DIGITAL BACKDROP",
                     "PARTY PROPS",
+                    "DIGITAL LINK TO GALLERY",
                     "ADD TEXT TO PRINTS",
                     "BRANDING TO PRINTS",
                     "EMAIL/AIRDROP SHARING",
