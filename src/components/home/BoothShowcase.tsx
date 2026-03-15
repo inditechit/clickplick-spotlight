@@ -81,7 +81,7 @@ export function BoothShowcase() {
               )}
               
               {/* Image */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative h-74 overflow-hidden">
                 <img
                   src={booth.image}
                   alt={booth.name}

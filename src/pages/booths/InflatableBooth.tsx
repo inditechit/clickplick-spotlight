@@ -256,7 +256,8 @@ const InflatableBooth = () => {
                     "USB WITH DIGITAL COPIES",
                     "CHOICE OF PHOTO LAYOUT",
                     "INSTANTLY DOWNLOAD TO PHONE",
-                    "SEND EMAILS"
+                    "SEND EMAILS",
+                    "PROFESSIONAL GRADE CAMERA",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">

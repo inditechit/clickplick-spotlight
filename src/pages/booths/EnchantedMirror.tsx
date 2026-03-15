@@ -269,7 +269,8 @@ const EnchantedMirror = () => {
                     "WIDE RANGE OF PROPS",
                     "CHOICE OF PHOTO LAYOUT (2x6 OR 4x6)",
                     "PERSONALIZED TEXT OR LOGO",
-                    "TALL STANDING BANNER SIGNALING TOWARDS PHOTO BOOTH"
+                    "TALL STANDING BANNER SIGNALING TOWARDS PHOTO BOOTH",
+                    "PROFESSIONAL GRADE CAMERA",
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
