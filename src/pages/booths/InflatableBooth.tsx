@@ -31,6 +31,11 @@ const includes = [
   'Green screen option',
   'Online gallery access',
 ];
+  const images = [
+  '/chosePrint/a.jpeg', '/chosePrint/b.jpeg', '/chosePrint/c.jpeg', '/chosePrint/d.jpeg',
+  '/chosePrint/e.jpeg','/chosePrint/a.jpeg', '/chosePrint/b.jpeg', '/chosePrint/c.jpeg', '/chosePrint/d.jpeg',
+  '/chosePrint/e.jpeg'
+];
 
 const specifications = [
   { label: 'Footprint', value: '2.5m x 2.5m' },
@@ -179,7 +184,61 @@ const InflatableBooth = () => {
           </div>
         </section>
 
+  {/* Print Layout Carousel */}
+        <section className="py-8 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="relative bg-slate-50/50 rounded-3xl border border-slate-100 overflow-hidden py-6 px-2 shadow-sm">
+              <div className="flex items-center justify-between px-6 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-800 tracking-tight">
+                    Choose Your  <span className="text-blue-500">Print Layout</span>
+                  </h2>
+                  <p className="text-[10px] text-slate-400 uppercase tracking-[2px]">Select a stunning template and customize it to perfectly fit your event.</p>
+                </div>
+                <div className="hidden sm:block text-[10px] font-medium py-1 px-3 bg-white rounded-full border border-slate-200 text-slate-500 shadow-sm">
+                  ClickPlick
+                </div>
+              </div>
 
+              <div className="relative flex overflow-hidden">
+                <div className="flex animate-slow-slide group hover:paused">
+                  {[...images, ...images].map((src, index) => (
+                    <div
+                      key={index}
+                      className="flex-none mx-2 transition-transform duration-500 hover:scale-105"
+                      style={{ width: '100px', height: '300px' }}
+                    >
+                      <div className="w-full h-full rounded-md overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-slate-200">
+                        <img
+                          src={src}
+                          alt={`Combo ${index}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+
+          <style dangerouslySetInnerHTML={{
+            __html: `
+        @keyframes slow-slide {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-slow-slide {
+          animation: slow-slide 20s linear infinite;
+        }
+        .paused {
+          animation-play-state: paused;
+        }
+      `}} />
+        </section>
         {/* The Party Experience */}
         <section className="py-16 md:py-20 bg-secondary/30">
           <div className="section-container">
@@ -294,6 +353,52 @@ const InflatableBooth = () => {
                   </Button>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Dynamic Gallery Section */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
+                Event Gallery
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                See It In Action
+              </h2>
+            </div>
+
+            {isLoadingGallery ? (
+              <div className="flex justify-center items-center min-h-[300px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            ) : galleryImages.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                {galleryImages.map((img, index) => (
+                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
+                    <img
+                      src={getImageUrl(img.image_url)} 
+                      alt={`Gallery Image ${index + 1}`}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
+                Gallery images coming soon.
+              </p>
+            )}
+            
+            <div className="text-center mt-10">
+              <Button variant="outline" asChild>
+                <Link to="/gallery">View Full Gallery</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -531,51 +636,7 @@ const InflatableBooth = () => {
           </div>
         </section>
 
-        {/* Dynamic Gallery Section */}
-        <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="text-center mb-12">
-              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
-                Event Gallery
-              </span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-                See It In Action
-              </h2>
-            </div>
-
-            {isLoadingGallery ? (
-              <div className="flex justify-center items-center min-h-[300px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-              </div>
-            ) : galleryImages.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-                {galleryImages.map((img, index) => (
-                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
-                    <img
-                      src={getImageUrl(img.image_url)} 
-                      alt={`Gallery Image ${index + 1}`}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    />
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
-                Gallery images coming soon.
-              </p>
-            )}
-            
-            <div className="text-center mt-10">
-              <Button variant="outline" asChild>
-                <Link to="/gallery">View Full Gallery</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
+        
 
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">

@@ -449,7 +449,6 @@ const LcdSlimlinePod = () => {
                     "ANIMATED GIFS",
                     "DIGITAL BACKDROP",
                     "PARTY PROPS",
-                    "DIGITAL LINK TO GALLERY",
                     "ADD TEXT TO PRINTS",
                     "BRANDING TO PRINTS",
                     "EMAIL/AIRDROP SHARING",
@@ -497,6 +496,52 @@ const LcdSlimlinePod = () => {
             </div>
           </div>
         </section>
+
+        {/* --- NEW: Dynamic Gallery Section --- */}
+        <section className="py-16 md:py-20 bg-secondary/30">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
+                Event Gallery
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                See It In Action
+              </h2>
+            </div>
+
+            {isLoadingGallery ? (
+              <div className="flex justify-center items-center min-h-[300px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            ) : galleryImages.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                {galleryImages.map((img, index) => (
+                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
+                    <img
+                      src={getImageUrl(img.image_url)} 
+                      alt={`Gallery Image ${index + 1}`}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
+                Gallery images coming soon.
+              </p>
+            )}
+            
+            <div className="text-center mt-10">
+              <Button variant="outline" asChild>
+                <Link to="/gallery">View Full Gallery</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+        {/* --- END: Dynamic Gallery Section --- */}
 
         {/* Optional Add-Ons Section */}
         <section className="py-24 bg-slate-50 relative overflow-hidden">
@@ -767,51 +812,7 @@ const LcdSlimlinePod = () => {
           </div>
         </section>
 
-        {/* --- NEW: Dynamic Gallery Section --- */}
-        <section className="py-16 md:py-20 bg-secondary/30">
-          <div className="section-container">
-            <div className="text-center mb-12">
-              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
-                Event Gallery
-              </span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-                See It In Action
-              </h2>
-            </div>
-
-            {isLoadingGallery ? (
-              <div className="flex justify-center items-center min-h-[300px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-              </div>
-            ) : galleryImages.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-                {galleryImages.map((img, index) => (
-                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
-                    <img
-                      src={getImageUrl(img.image_url)} 
-                      alt={`Gallery Image ${index + 1}`}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
-                Gallery images coming soon.
-              </p>
-            )}
-            
-            <div className="text-center mt-10">
-              <Button variant="outline" asChild>
-                <Link to="/gallery">View Full Gallery</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-        {/* --- END: Dynamic Gallery Section --- */}
+        
 
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">

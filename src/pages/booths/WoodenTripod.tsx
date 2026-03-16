@@ -32,6 +32,12 @@ const includes = [
   'Online gallery access',
 ];
 
+const images = [
+  '/chosePrint/a.jpeg', '/chosePrint/b.jpeg', '/chosePrint/c.jpeg', '/chosePrint/d.jpeg',
+  '/chosePrint/e.jpeg', '/chosePrint/a.jpeg', '/chosePrint/b.jpeg', '/chosePrint/c.jpeg', '/chosePrint/d.jpeg',
+  '/chosePrint/e.jpeg'
+];
+
 const specifications = [
   { label: 'Footprint', value: '2FT x 2FT' },
   // { label: 'Height', value: '1.8m' },
@@ -64,23 +70,23 @@ const WoodenTripod = () => {
       try {
         setIsLoadingGallery(true);
         const response = await fetch(`${API_BASE_URL}/api/gallery`);
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch gallery');
         }
-        
+
         const data = await response.json();
-        
+
         // Filter for "Wooden Tripod" type and take exactly 6 images
         const filteredImages = data
-          .filter(img => 
-            img.type === 'Wooden Tripod' || 
-            img.type === 'WoodenTripod' || 
+          .filter(img =>
+            img.type === 'Wooden Tripod' ||
+            img.type === 'WoodenTripod' ||
             img.type === 'The Wooden Vintage Tripod' ||
             img.type === 'Tripod'
           )
           .slice(0, 6);
-          
+
         setGalleryImages(filteredImages);
       } catch (error) {
         console.error("Gallery fetch error:", error);
@@ -185,6 +191,62 @@ const WoodenTripod = () => {
 
             </div>
           </div>
+        </section>
+
+        {/* Print Layout Carousel */}
+        <section className="py-8 bg-white">
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="relative bg-slate-50/50 rounded-3xl border border-slate-100 overflow-hidden py-6 px-2 shadow-sm">
+              <div className="flex items-center justify-between px-6 mb-6">
+                <div>
+                  <h2 className="text-xl font-bold text-slate-800 tracking-tight">
+                    Choose Your  <span className="text-blue-500">Print Layout</span>
+                  </h2>
+                  <p className="text-[10px] text-slate-400 uppercase tracking-[2px]">Select a stunning template and customize it to perfectly fit your event.</p>
+                </div>
+                <div className="hidden sm:block text-[10px] font-medium py-1 px-3 bg-white rounded-full border border-slate-200 text-slate-500 shadow-sm">
+                  ClickPlick
+                </div>
+              </div>
+
+              <div className="relative flex overflow-hidden">
+                <div className="flex animate-slow-slide group hover:paused">
+                  {[...images, ...images].map((src, index) => (
+                    <div
+                      key={index}
+                      className="flex-none mx-2 transition-transform duration-500 hover:scale-105"
+                      style={{ width: '100px', height: '300px' }}
+                    >
+                      <div className="w-full h-full rounded-md overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-slate-200">
+                        <img
+                          src={src}
+                          alt={`Combo ${index}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-slate-50 to-transparent z-10 pointer-events-none"></div>
+                <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-slate-50 to-transparent z-10 pointer-events-none"></div>
+              </div>
+            </div>
+          </div>
+
+          <style dangerouslySetInnerHTML={{
+            __html: `
+        @keyframes slow-slide {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .animate-slow-slide {
+          animation: slow-slide 20s linear infinite;
+        }
+        .paused {
+          animation-play-state: paused;
+        }
+      `}} />
         </section>
 
 
@@ -313,6 +375,53 @@ const WoodenTripod = () => {
           </div>
         </section>
 
+        {/* --- NEW: Dynamic Gallery Section --- */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="section-container">
+            <div className="text-center mb-12">
+              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
+                Event Gallery
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                See It In Action
+              </h2>
+            </div>
+
+            {isLoadingGallery ? (
+              <div className="flex justify-center items-center min-h-[300px]">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+              </div>
+            ) : galleryImages.length > 0 ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                {galleryImages.map((img, index) => (
+                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
+                    <img
+                      src={getImageUrl(img.image_url)}
+                      alt={`Gallery Image ${index + 1}`}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
+                Gallery images coming soon.
+              </p>
+            )}
+
+            <div className="text-center mt-10">
+              <Button variant="outline" asChild>
+                <Link to="/gallery">View Full Gallery</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+        {/* --- END: Dynamic Gallery Section --- */}
+
+
         {/* Optional Add-Ons Section */}
         <section className="py-24 bg-slate-50 relative overflow-hidden">
           {/* Decorative background elements */}
@@ -334,7 +443,7 @@ const WoodenTripod = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              
+
               {/* 1. Audio Guest Book (Featured) */}
               <div className="bg-white rounded-3xl p-8 shadow-xl shadow-blue-900/5 border border-blue-100 relative group hover:-translate-y-1 transition-transform duration-300 flex flex-col">
                 <div className="absolute -top-3 right-6 bg-gradient-to-r from-pink-500 to-rose-400 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-sm">
@@ -445,32 +554,32 @@ const WoodenTripod = () => {
             <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
               Natural beauty combined with professional performance
             </p>
-           <div className="max-w-6xl mx-auto"> 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8"> 
-              {features.map((feature) => (
-                <div 
-                  key={feature.title} 
-                  className="bg-card rounded-2xl p-8 shadow-card text-center border border-slate-50 hover:shadow-xl transition-all duration-300 group"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-8 h-8 text-primary" />
+            <div className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {features.map((feature) => (
+                  <div
+                    key={feature.title}
+                    className="bg-card rounded-2xl p-8 shadow-card text-center border border-slate-50 hover:shadow-xl transition-all duration-300 group"
+                  >
+                    <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <feature.icon className="w-8 h-8 text-primary" />
+                    </div>
+
+                    <h3 className="font-heading font-bold text-xl text-foreground mb-3 uppercase tracking-tight">
+                      {feature.title}
+                    </h3>
+
+                    <p className="text-muted-foreground text-base leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
-                  
-                  <h3 className="font-heading font-bold text-xl text-foreground mb-3 uppercase tracking-tight">
-                    {feature.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground text-base leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
           </div>
         </section>
 
-         {/* --- NEW SECTION ADDED FROM SCREENSHOT --- */}
+        {/* --- NEW SECTION ADDED FROM SCREENSHOT --- */}
         <section className="py-16 md:py-20 bg-slate-50">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -499,7 +608,7 @@ const WoodenTripod = () => {
               {/* Right Side: Image instead of Specs (as requested) */}
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video md:aspect-square">
                 <img
-                  src="/light/wo/4.webp" 
+                  src="/light/wo/4.webp"
                   alt="Booth Setup"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
@@ -557,51 +666,7 @@ const WoodenTripod = () => {
           </div>
         </section>
 
-        {/* --- NEW: Dynamic Gallery Section --- */}
-        <section className="py-16 md:py-20 bg-background">
-          <div className="section-container">
-            <div className="text-center mb-12">
-              <span className="text-sm font-bold tracking-widest text-primary uppercase mb-2 block">
-                Event Gallery
-              </span>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-                See It In Action
-              </h2>
-            </div>
 
-            {isLoadingGallery ? (
-              <div className="flex justify-center items-center min-h-[300px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-              </div>
-            ) : galleryImages.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-                {galleryImages.map((img, index) => (
-                  <div key={img.id || index} className="aspect-square rounded-2xl overflow-hidden group relative shadow-md bg-slate-100 cursor-pointer">
-                    <img
-                      src={getImageUrl(img.image_url)} 
-                      alt={`Gallery Image ${index + 1}`}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Heart className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 delay-75" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-center text-muted-foreground bg-slate-50 p-8 rounded-xl">
-                Gallery images coming soon.
-              </p>
-            )}
-            
-            <div className="text-center mt-10">
-              <Button variant="outline" asChild>
-                <Link to="/gallery">View Full Gallery</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-        {/* --- END: Dynamic Gallery Section --- */}
 
         <section className="py-20 bg-slate-50">
           <div className="section-container text-center">
@@ -609,17 +674,17 @@ const WoodenTripod = () => {
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 overflow-hidden">
                 <h3 className="text-2xl font-bold text-slate-800 mb-6">Add an Audio Telephone Guest Book</h3>
                 <div className="relative aspect-square rounded-2xl overflow-hidden mb-6 border-2 border-dashed border-pink-200 p-2">
-                   <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
-                   <div className="absolute bottom-0 right-0 w-8 h-8 bg-pink-500 clip-triangle rotate-135 transform translate-x-4 translate-y-4"></div>
-                   
-                   <img 
-                    src="/services/audiobook.jpeg" 
-                    alt="Audio Guest Book" 
+                  <div className="absolute top-0 left-0 w-8 h-8 bg-cyan-400 clip-triangle -rotate-45 transform -translate-x-4 -translate-y-4"></div>
+                  <div className="absolute bottom-0 right-0 w-8 h-8 bg-pink-500 clip-triangle rotate-135 transform translate-x-4 translate-y-4"></div>
+
+                  <img
+                    src="/services/audiobook.jpeg"
+                    alt="Audio Guest Book"
                     className="w-full h-full object-cover rounded-xl"
-                   />
-                   <div className="absolute bottom-6 right-6 bg-white shadow-xl rounded-xl px-6 py-3 border border-slate-100">
-                      <span className="text-3xl font-black text-cyan-500">£49</span>
-                   </div>
+                  />
+                  <div className="absolute bottom-6 right-6 bg-white shadow-xl rounded-xl px-6 py-3 border border-slate-100">
+                    <span className="text-3xl font-black text-cyan-500">£49</span>
+                  </div>
                 </div>
                 <Link to="/audio-guest-book" className="text-blue-500 font-semibold underline hover:text-blue-700 transition-colors">
                   More About Our Audio Telephone Guest Book Hire
@@ -649,7 +714,7 @@ const WoodenTripod = () => {
         <div className="section-container py-12">
           <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-slate-50 to-blue-50 border border-blue-100 p-8 md:p-12 shadow-sm">
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-64 h-64 bg-[#27aae1]/5 rounded-full blur-3xl" />
-            
+
             <div className="relative flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-white rounded-3xl shadow-soft flex items-center justify-center border border-blue-50">
@@ -664,14 +729,14 @@ const WoodenTripod = () => {
                   </span>
                   <Info className="w-4 h-4 text-slate-400" />
                 </div>
-                
+
                 <h3 className="text-2xl md:text-3xl font-heading font-bold text-slate-800 mb-4">
                   Rest Assured, We Are <span className="text-[#27aae1]">Fully Insured</span>
                 </h3>
-                
+
                 <p className="text-slate-600 text-lg leading-relaxed max-w-3xl">
-                  We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>. 
-                  This is a standard requirement for most premium venues across the UK, ensuring 
+                  We carry <strong className="text-slate-900">£10 Million Public Liability Insurance</strong>.
+                  This is a standard requirement for most premium venues across the UK, ensuring
                   complete peace of mind for you and your guests.
                 </p>
               </div>
