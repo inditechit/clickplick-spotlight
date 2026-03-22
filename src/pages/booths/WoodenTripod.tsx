@@ -210,20 +210,18 @@ const WoodenTripod = () => {
               </div>
 
               <div className="relative flex overflow-hidden">
-                <div className="flex animate-slow-slide group hover:paused">
+                <div className="flex animate-slow-slide group hover:paused items-center">
                   {[...images, ...images].map((src, index) => (
                     <div
                       key={index}
-                      className="flex-none mx-2 transition-transform duration-500 hover:scale-105"
-                      style={{ width: '100px', height: '300px' }}
+                      className="flex-none mx-3 transition-transform duration-500 hover:scale-105"
+                      style={{ height: '300px' }}
                     >
-                      <div className="w-full h-full rounded-md overflow-hidden shadow-sm border-[3px] border-white ring-1 ring-slate-200">
-                        <img
-                          src={src}
-                          alt={`Combo ${index}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
+                      <img
+                        src={src}
+                        alt={`Print Layout ${index}`}
+                        className="h-full w-auto object-contain rounded-md shadow-sm border border-slate-200"
+                      />
                     </div>
                   ))}
                 </div>
