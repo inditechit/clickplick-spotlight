@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { LeadPopup } from './LeadPopup';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -52,6 +53,7 @@ export function Header() {
         isScrolled ? 'py-3' : 'py-4'
       )}
     >
+      <LeadPopup />
       <div className="section-container">
         <nav className="flex items-center justify-between">
           {/* Logo */}
