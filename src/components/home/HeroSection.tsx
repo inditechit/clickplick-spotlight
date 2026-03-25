@@ -92,7 +92,7 @@ export function HeroSection() {
             Special Offer
           </span>
           <p className="text-primary-foreground font-medium text-base sm:text-lg">
-            Get an extra <span className="font-bold text-white text-xl mx-1">10% OFF</span> when you book for an event on <span className="underline decoration-white/40 underline-offset-4 font-semibold text-white">Monday–Thursday</span>
+            Get an extra <span className="font-bold text-white text-xl mx-1">5% OFF</span> when you book for an event on <span className="underline decoration-white/40 underline-offset-4 font-semibold text-white">Monday–Thursday</span>
           </p>
         </div>
       </div>
