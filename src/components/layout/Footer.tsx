@@ -60,14 +60,21 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Direct Contact Info */}
-            <div className="space-y-2 text-sm text-white/70">
-              <a href="tel:+447931983588" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-4 h-4" /> +44 7931-983-588
-              </a>
-              <a href="mailto:info@clickplick.co.uk" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-4 h-4" /> info@clickplick.co.uk
-              </a>
+            {/* Direct Contact Info & Legal Name */}
+            <div className="space-y-3 text-sm text-white/70">
+              <div className="space-y-1 mb-4">
+                <p className="text-white font-semibold">VR Lucky Entertainment Private Limited</p>
+                <p className="text-xs">Company registration no. - 15441215</p>
+              </div>
+              
+              <div className="space-y-2">
+                <a href="tel:+447931983588" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Phone className="w-4 h-4" /> +44 7931-983-588
+                </a>
+                <a href="mailto:info@clickplick.co.uk" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Mail className="w-4 h-4" /> info@clickplick.co.uk
+                </a>
+              </div>
             </div>
 
             {/* Social Icons */}

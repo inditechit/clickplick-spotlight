@@ -9,6 +9,7 @@ import { BookingForm } from '@/components/home/BookingForm';
 import { InstagramSection } from '@/components/home/InstagramSection';
 import InstagramFeed from '@/components/home/Instagram';
 import ElfsightInstagramWidget from '@/components/home/ElfsightInstagramWidget';
+import { CorporatePromoSection } from '@/components/home/CorporatePromoSection';
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
         <HeroSection />
         <ClientLogos />
         <BoothShowcase />
+        <CorporatePromoSection />
         <FeaturesSection />
         <TestimonialsSection />
         <ElfsightInstagramWidget />

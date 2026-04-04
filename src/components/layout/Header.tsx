@@ -18,6 +18,7 @@ const navigation = [
       { name: 'Enchanted Mirror X Selfie', href: '/hire-photobooth/enchanted-mirror' },
       { name: 'Inflatable Enclosed Booth', href: '/hire-photobooth/inflatable-booth' },
       { name: 'Wooden Vintage Tripod', href: '/hire-photobooth/wooden-tripod' },
+      { name: 'AI Photobooth', href: '/hire-photobooth/AI-Photobooth' },
     ],
   },
   // { name: 'Events', href: '/events' },

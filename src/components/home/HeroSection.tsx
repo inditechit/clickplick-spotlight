@@ -47,6 +47,7 @@ export function HeroSection() {
               src={slide.image}
               alt={slide.alt}
               className="w-full h-full object-cover"
+              fetchPriority="high"
             />
           </div>
         ))}
@@ -68,7 +69,7 @@ export function HeroSection() {
         </button>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        <div className="absolute bottom-16 md:bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {heroSlides.map((_, index) => (
             <button
               key={index}
@@ -84,26 +85,46 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* NEW: Static, Elegant Promo Banner */}
-      <div className="bg-gradient-to-r from-primary/95 via-primary to-primary/95 py-4 px-4 shadow-inner">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 text-center">
-          <span className="flex items-center justify-center bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-sm shadow-sm">
-            <Sparkles className="w-4 h-4 mr-1.5 text-yellow-300" /> 
-            Special Offer
-          </span>
-          <p className="text-primary-foreground font-medium text-base sm:text-lg">
-            Get an extra <span className="font-bold text-white text-xl mx-1">5% OFF</span> when you book for an event on <span className="underline decoration-white/40 underline-offset-4 font-semibold text-white">Monday–Thursday</span>
-          </p>
+      {/* MAGICAL FLOATING PROMO BANNER (Refined) */}
+      <div className="relative z-20 px-4 w-full max-w-[95%] md:max-w-5xl mx-auto -mt-8 md:-mt-12 mb-8 md:mb-10">
+        <div className="relative overflow-hidden rounded-2xl shadow-[0_15px_40px_-10px_rgba(236,72,153,0.4)] bg-gradient-to-r from-[#27aae2] to-[#ec4899] border border-white/20">
+          
+          {/* Glassmorphism Inner Container - Slimmer padding */}
+          <div className="relative bg-black/15 backdrop-blur-md py-4 md:py-5 px-6 md:px-8 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 divide-y md:divide-y-0 md:divide-x-2 divide-white/20">
+            
+            {/* Offer 1: 5% Off */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full md:w-1/2 pt-2 md:pt-0 group">
+              <div className="flex items-center justify-center bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-md shadow-sm whitespace-nowrap border border-white/30 transition-transform duration-300 group-hover:scale-105">
+                <Sparkles className="w-4 h-4 mr-1.5 text-yellow-300 animate-pulse" /> 
+                Special Offer
+              </div>
+              <p className="text-white/95 font-medium text-base sm:text-lg md:text-left drop-shadow-sm leading-relaxed">
+                Get an extra <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500 text-xl mx-0.5 drop-shadow-md">5% OFF</span> bookings for <span className="underline decoration-white/60 decoration-2 underline-offset-4 font-bold text-white">Mon–Thu</span>
+              </p>
+            </div>
+
+            {/* Offer 2: 5 Hours for 3 */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center w-full md:w-1/2 pt-4 md:pt-0 group">
+              <div className="flex items-center justify-center bg-white/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest backdrop-blur-md shadow-sm whitespace-nowrap border border-white/30 transition-transform duration-300 group-hover:scale-105">
+                <Sparkles className="w-4 h-4 mr-1.5 text-yellow-300 animate-pulse" /> 
+                Limited Time
+              </div>
+              <p className="text-white/95 font-medium text-base sm:text-lg md:text-left drop-shadow-sm leading-relaxed">
+                Book <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-500 text-xl mx-0.5 drop-shadow-md">4 Hours</span> for the price of 3!
+              </p>
+            </div>
+
+          </div>
         </div>
       </div>
 
       {/* CTA Buttons */}
-      <div className="bg-background py-8 md:py-12">
-        <div className="section-container flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="default" size="lg" asChild className="min-w-[160px]">
+      <div className="bg-background pb-12 md:pb-16 pt-2">
+        <div className="section-container flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <Button variant="default" size="lg" asChild className="min-w-[200px] text-lg h-14 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
             <Link to="/book-now">Book Now</Link>
           </Button>
-          <Button variant="accent" size="lg" asChild className="min-w-[160px]">
+          <Button variant="accent" size="lg" asChild className="min-w-[200px] text-lg h-14 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-[#ec4899] hover:bg-[#db2777]">
             <Link to="/contact">Contact Us</Link>
           </Button>
         </div>

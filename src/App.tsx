@@ -29,6 +29,8 @@ import WoodenTripod from "./pages/booths/WoodenTripod";
 import ScrollToTop from "./components/ScrollToTop";
 import AudioGuestBook from './pages/AudioGuestBook';
 import ThankYou from "./pages/Thankyou";
+import AIBooth from "./pages/booths/Aibooth";
+import { CorporatePage } from "./pages/booths/CoporatePhotoBooths";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -51,6 +53,8 @@ const App = () => (
             <Route path="/hire-photobooth" element={<HirePhotobooth />} />
             <Route path="/hire-photobooth/lcd-slimline-pod" element={<LcdSlimlinePod />} />
             <Route path="/hire-photobooth/magic-mirror" element={<MagicMirror />} />
+            <Route path="/hire-photobooth/AI-Photobooth" element={<AIBooth />} />
+            <Route path="/hire-photobooth/Corporate-Photobooth" element={<CorporatePage />} />
             <Route path="/hire-photobooth/retro-box" element={<RetroBox />} />
             <Route path="/hire-photobooth/enchanted-mirror" element={<EnchantedMirror />} />
             <Route path="/hire-photobooth/inflatable-booth" element={<InflatableBooth />} />
