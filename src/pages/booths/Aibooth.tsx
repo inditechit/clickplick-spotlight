@@ -28,44 +28,53 @@ const aiThemes = [
   { 
     title: 'AI Superhero Generator', 
     desc: "Superhero styles perfect for kids' parties and Bar/Bat Mitzvahs.", 
-    image: '/services/ai-superhero.jpg' 
+    image: '/services/ai-superhero.webp' 
   },
   { 
     title: 'AI Time Machine', 
     desc: 'Historical eras from Ancient Egypt to Roaring Twenties.', 
-    image: '/services/ai-time-machine.jpg' 
+    image: '/services/ai-time-machine.webp' 
   },
   { 
     title: 'AI Travel Destinations', 
     desc: 'Dream locations - Paris, Safari, Venice, Tokyo, and more.', 
-    image: '/services/ai-travel.jpg' 
+    image: '/services/ai-travel.webp' 
   },
   { 
     title: 'AI Art Portraits', 
     desc: 'Art styles from Renaissance to Pop Art to Anime.', 
-    image: '/services/ai-art.jpg' 
+    image: '/services/ai-art.webp' 
   },
   { 
     title: 'AI Seasonal Magic', 
     desc: "Halloween, Christmas, Valentine's, Summer - match any season.", 
-    image: '/services/ai-seasonal.jpg' 
+    image: '/services/ai-seasonal.webp' 
   },
   { 
     title: 'AI Career Day', 
     desc: 'Professions - astronaut, chef, doctor, athlete.', 
-    image: '/services/ai-career.jpg' 
+    image: '/services/ai-career.webp' 
   },
   { 
     title: 'AI Trading Cards', 
     desc: 'Turn guests into collectible trading cards with stats.', 
-    image: '/services/ai-trading-cards.jpg' 
+    image: '/services/ai-trading-cards.webp' 
   },
   { 
     title: 'AI Fantasy Adventure', 
     desc: 'Wizards, dragons, elves, pirates, and mythical creatures.', 
-    image: '/services/ai-fantasy.jpg' 
+    image: '/services/ai-fantasy.webp' 
   },
 ];
+
+const aiimages =[
+  '/services/ai-slide-1.webp',
+  '/services/ai-slide-2.webp',
+  '/services/ai-slide-3.webp',
+  '/services/ai-slide-4.webp',
+  '/services/ai-slide-5.webp',
+  '/services/ai-slide-6.webp',
+]
 
 const AIBooth = () => {
   const [galleryImages, setGalleryImages] = useState([]);
@@ -141,11 +150,11 @@ const AIBooth = () => {
                 <div className="absolute -inset-4 bg-blue-500/10 rounded-[3rem] blur-2xl" />
                 <div className="relative grid grid-cols-2 gap-4">
                   <div className="space-y-4">
-                    <img src="/services/headshot-1.jpg" alt="AI Headshot 1" className="rounded-2xl shadow-lg border-4 border-white w-full" />
-                    <img src="/services/headshot-3.jpg" alt="AI Headshot 3" className="rounded-2xl shadow-lg border-4 border-white w-full" />
+                    <img src="/services/Headshot1.webp" alt="AI Headshot 1" className="rounded-2xl shadow-lg border-4 border-white w-full" />
+                    <img src="/services/Headshot5.webp" alt="AI Headshot 3" className="rounded-2xl shadow-lg border-4 border-white w-full" />
                   </div>
                   <div className="pt-8">
-                    <img src="/services/headshot-2.jpg" alt="AI Headshot 2" className="rounded-2xl shadow-lg border-4 border-white w-full" />
+                    <img src="/services/Headshot3.webp" alt="AI Headshot 2" className="rounded-2xl shadow-lg border-4 border-white w-full" />
                   </div>
                 </div>
               </div>
@@ -240,10 +249,10 @@ const AIBooth = () => {
               modules={[EffectCoverflow, Autoplay]}
               className="max-w-6xl"
             >
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <SwiperSlide key={i} className="w-[300px] md:w-[400px]">
+              {aiimages.map((img, index) => (
+                <SwiperSlide key={index} className="w-[300px] md:w-[400px]">
                   <div className="bg-slate-100 rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl">
-                    <img src={`/services/ai-slide-${i}.jpg`} alt="AI Output" className="w-full h-full object-cover aspect-[3/4]" />
+                    <img src={img} alt="AI Output" className="w-full h-full object-cover aspect-[3/4]" />
                   </div>
                 </SwiperSlide>
               ))}

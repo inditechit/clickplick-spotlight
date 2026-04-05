@@ -49,7 +49,7 @@ const booths = [
     id: 'AI-Photobooth',
     name: 'AI Photobooth',
     description: 'Transform guests into digital art with real-time AI generation and custom prompts.',
-    image: '/imgg7.jpg', 
+    image: '/aicreated.webp', 
     popular: true,
   },
   {
