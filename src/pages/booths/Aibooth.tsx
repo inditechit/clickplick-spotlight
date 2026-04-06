@@ -215,7 +215,7 @@ const AIBooth = () => {
               </div>
               <div className="order-1 lg:order-2 relative">
                 <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white/10">
-                  <img src="/services/hero-transformation.jpg" alt="Superhero Transformation" className="w-full h-full object-cover" />
+                  <img src="/services/ai-superhero.webp" alt="Superhero Transformation" className="w-full h-full object-cover" />
                 </div>
                 <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-600 text-white rounded-full flex items-center justify-center font-black text-center leading-none text-xl p-4 shadow-xl rotate-12">
                   BE THE HERO
