@@ -150,7 +150,7 @@ useEffect(() => {
 
           <div className="absolute inset-0 opacity-90">
           <img 
-            src="/main/ai_banner.png" 
+            src="/main/ai_banner.webp" 
             alt="AI Photo Booth" 
             className="w-full h-full object-cover"
           />
