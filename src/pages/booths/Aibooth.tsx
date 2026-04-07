@@ -20,6 +20,10 @@ import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
+import useEmblaCarousel from "embla-carousel-react";
+
+
+
 
 const API_BASE_URL = "https://api.clickplick.co.uk";
 
@@ -79,6 +83,34 @@ const aiimages =[
 const AIBooth = () => {
   const [galleryImages, setGalleryImages] = useState([]);
   const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+  loop: true,
+  align: "center",
+});
+
+useEffect(() => {
+  if (!emblaApi) return;
+
+  let autoplay;
+
+  const startAutoplay = () => {
+    autoplay = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 2500);
+  };
+
+  const stopAutoplay = () => {
+    if (autoplay) clearInterval(autoplay);
+  };
+
+  startAutoplay();
+
+  emblaApi.on("pointerDown", stopAutoplay);
+  emblaApi.on("pointerUp", startAutoplay);
+
+  return () => stopAutoplay();
+}, [emblaApi]);
 
   useEffect(() => {
     const fetchGallery = async () => {
@@ -233,7 +265,7 @@ const AIBooth = () => {
           </div>
           
           <div className="px-4">
-            <Swiper
+            {/* <Swiper
               effect={'coverflow'}
               grabCursor={true}
               centeredSlides={true}
@@ -256,7 +288,26 @@ const AIBooth = () => {
                   </div>
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </Swiper> */}
+
+             <div className="max-w-6xl mx-auto overflow-hidden" ref={emblaRef}>
+    <div className="flex items-center">
+      {aiimages.map((img, index) => (
+        <div
+          key={index}
+          className="flex-[0_0_auto] w-[300px] md:w-[400px] px-3 transition-transform duration-500"
+        >
+          <div className="bg-slate-100 rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl transform hover:scale-105">
+            <img
+              src={img}
+              alt="AI Output"
+              className="w-full h-full object-cover aspect-[3/4]"
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
           </div>
         </section>
 
