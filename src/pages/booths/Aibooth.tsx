@@ -19,8 +19,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/autoplay';
+import 'swiper/css/effect-coverflow'; 
 // import useEmblaCarousel from "embla-carousel-react";
 
 
