@@ -11,34 +11,28 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },  
-  plugins: [
-    react(), 
-    mode === "development" && componentTagger()
-  ].filter(Boolean),
+  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // --- ADD THIS BLOCK ---
+  // --- CRITICAL FIXES FOR SWIPER BUILD ---
   optimizeDeps: {
     include: ['swiper', 'swiper/react'],
   },
+  ssr: {
+    noExternal: ['swiper'], // Forces Vite to bundle Swiper instead of looking for it externally
+  },
   build: {
     rollupOptions: {
-      // This ensures Swiper is bundled into your application
-      external: [],
+      external: [], // Ensure swiper is not treated as an external module
     },
     commonjsOptions: {
       transformMixedEsModules: true,
     },
   },
 }));
-
-
-
-
-
 
 
 
