@@ -20,7 +20,8 @@ import { Autoplay, Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-coverflow';
-import useEmblaCarousel from "embla-carousel-react";
+import 'swiper/css/autoplay';
+// import useEmblaCarousel from "embla-carousel-react";
 
 
 
@@ -84,33 +85,33 @@ const AIBooth = () => {
   const [galleryImages, setGalleryImages] = useState([]);
   const [isLoadingGallery, setIsLoadingGallery] = useState(true);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-  loop: true,
-  align: "center",
-});
+//   const [emblaRef, emblaApi] = useEmblaCarousel({
+//   loop: true,
+//   align: "center",
+// });
 
-useEffect(() => {
-  if (!emblaApi) return;
+// useEffect(() => {
+//   if (!emblaApi) return;
 
-  let autoplay;
+//   let autoplay;
 
-  const startAutoplay = () => {
-    autoplay = setInterval(() => {
-      emblaApi.scrollNext();
-    }, 2500);
-  };
+//   const startAutoplay = () => {
+//     autoplay = setInterval(() => {
+//       emblaApi.scrollNext();
+//     }, 2500);
+//   };
 
-  const stopAutoplay = () => {
-    if (autoplay) clearInterval(autoplay);
-  };
+//   const stopAutoplay = () => {
+//     if (autoplay) clearInterval(autoplay);
+//   };
 
-  startAutoplay();
+//   startAutoplay();
 
-  emblaApi.on("pointerDown", stopAutoplay);
-  emblaApi.on("pointerUp", startAutoplay);
+//   emblaApi.on("pointerDown", stopAutoplay);
+//   emblaApi.on("pointerUp", startAutoplay);
 
-  return () => stopAutoplay();
-}, [emblaApi]);
+//   return () => stopAutoplay();
+// }, [emblaApi]);
 
   useEffect(() => {
     const fetchGallery = async () => {
@@ -265,32 +266,41 @@ useEffect(() => {
           </div>
           
           <div className="px-4">
-            {/* <Swiper
-              effect={'coverflow'}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={'auto'}
-              coverflowEffect={{
-                rotate: 5,
-                stretch: 0,
-                depth: 100,
-                modifier: 2,
-                slideShadows: true,
-              }}
-              autoplay={{ delay: 2500, disableOnInteraction: false }}
-              modules={[EffectCoverflow, Autoplay]}
-              className="max-w-6xl"
-            >
-              {aiimages.map((img, index) => (
-                <SwiperSlide key={index} className="w-[300px] md:w-[400px]">
-                  <div className="bg-slate-100 rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl">
-                    <img src={img} alt="AI Output" className="w-full h-full object-cover aspect-[3/4]" />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper> */}
+           <Swiper
+  effect={'coverflow'}
+  grabCursor={true}
+  centeredSlides={true}
+  slidesPerView={'auto'}
+  loop={true} 
+  coverflowEffect={{
+    rotate: 5,
+    stretch: 0,
+    depth: 100,
+    modifier: 2,
+    slideShadows: true,
+  }}
+  autoplay={{ 
+    delay: 2500, 
+    disableOnInteraction: false 
+  }}
 
-             <div className="max-w-6xl mx-auto overflow-hidden" ref={emblaRef}>
+  modules={[EffectCoverflow, Autoplay]} 
+  className="max-w-6xl"
+>
+  {aiimages.map((img, index) => (
+    <SwiperSlide key={index} className="w-[300px] md:w-[400px]">
+      <div className="bg-slate-100 rounded-[2rem] overflow-hidden border-8 border-white shadow-2xl">
+        <img 
+          src={img} 
+          alt={`AI Output ${index}`} 
+          className="w-full h-full object-cover aspect-[3/4]" 
+        />
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
+             {/* <div className="max-w-6xl mx-auto overflow-hidden" ref={emblaRef}>
     <div className="flex items-center">
       {aiimages.map((img, index) => (
         <div
@@ -307,7 +317,7 @@ useEffect(() => {
         </div>
       ))}
     </div>
-  </div>
+  </div> */}
           </div>
         </section>
 
