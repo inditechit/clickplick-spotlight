@@ -15,14 +15,14 @@ import {
 } from 'lucide-react';
 
 // Swiper for attractive sliders
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectCoverflow } from 'swiper/modules';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Autoplay, EffectCoverflow } from 'swiper/modules';
 
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
+// import 'swiper/css';
+// import 'swiper/css/effect-coverflow';
 
 
-// import useEmblaCarousel from "embla-carousel-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 
 
@@ -86,33 +86,33 @@ const AIBooth = () => {
   const [galleryImages, setGalleryImages] = useState([]);
   const [isLoadingGallery, setIsLoadingGallery] = useState(true);
 
-//   const [emblaRef, emblaApi] = useEmblaCarousel({
-//   loop: true,
-//   align: "center",
-// });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+  loop: true,
+  align: "center",
+});
 
-// useEffect(() => {
-//   if (!emblaApi) return;
+useEffect(() => {
+  if (!emblaApi) return;
 
-//   let autoplay;
+  let autoplay;
 
-//   const startAutoplay = () => {
-//     autoplay = setInterval(() => {
-//       emblaApi.scrollNext();
-//     }, 2500);
-//   };
+  const startAutoplay = () => {
+    autoplay = setInterval(() => {
+      emblaApi.scrollNext();
+    }, 2500);
+  };
 
-//   const stopAutoplay = () => {
-//     if (autoplay) clearInterval(autoplay);
-//   };
+  const stopAutoplay = () => {
+    if (autoplay) clearInterval(autoplay);
+  };
 
-//   startAutoplay();
+  startAutoplay();
 
-//   emblaApi.on("pointerDown", stopAutoplay);
-//   emblaApi.on("pointerUp", startAutoplay);
+  emblaApi.on("pointerDown", stopAutoplay);
+  emblaApi.on("pointerUp", startAutoplay);
 
-//   return () => stopAutoplay();
-// }, [emblaApi]);
+  return () => stopAutoplay();
+}, [emblaApi]);
 
   useEffect(() => {
     const fetchGallery = async () => {
@@ -267,7 +267,7 @@ const AIBooth = () => {
           </div>
           
           <div className="px-4">
-           <Swiper
+           {/* <Swiper
   effect={'coverflow'}
   grabCursor={true}
   centeredSlides={true}
@@ -299,9 +299,9 @@ const AIBooth = () => {
       </div>
     </SwiperSlide>
   ))}
-</Swiper>
+</Swiper> */}
 
-             {/* <div className="max-w-6xl mx-auto overflow-hidden" ref={emblaRef}>
+             <div className="max-w-6xl mx-auto overflow-hidden" ref={emblaRef}>
     <div className="flex items-center">
       {aiimages.map((img, index) => (
         <div
@@ -318,7 +318,7 @@ const AIBooth = () => {
         </div>
       ))}
     </div>
-  </div> */}
+  </div>
           </div>
         </section>
 
