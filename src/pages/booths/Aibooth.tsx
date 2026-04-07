@@ -147,6 +147,15 @@ useEffect(() => {
           <div className="absolute inset-0 opacity-40">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#1e40af_0%,transparent_50%)]" />
           </div>
+
+          <div className="absolute inset-0 opacity-90">
+          <img 
+            src="/main/ai_banner.png" 
+            alt="AI Photo Booth" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
+        </div>
           
           <div className="section-container relative z-10">
             <div className="max-w-4xl">
