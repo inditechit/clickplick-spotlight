@@ -15,12 +15,37 @@ import {
   ShieldCheck,
   CalendarCheck,
   Wand2,
-  HelpCircle
+  HelpCircle,
+  ChevronLeft,
+  ChevronRight,
+  MonitorPlay
 } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback } from 'react';
 
 export function CorporatePage() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
+
+
+  // Navigation handlers
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  // Array of your 4 images to map through cleanly
+  const galleryImages = [
+    { src: "/coporate.jpeg", alt: "Brand Activation 1" },
+    { src: "/coporate9.jpeg", alt: "Brand Activation 2" },
+    { src: "/coporate3.jpeg", alt: "Brand Activation 3" },
+    { src: "/coporate4.jpeg", alt: "Brand Activation 4" },
+  ];
+
   return (
     <div className="min-h-screen bg-background pt-20">
        <Header />
@@ -73,61 +98,159 @@ export function CorporatePage() {
           </p>
         </div>
       </section>
+{/* 
+      Features Grid */}
+     
+     <section className="py-20 md:py-28 bg-slate-50">
+      {/* 1. WIDER CONTAINER: max-w-[1600px] gives 5 columns room to breathe */}
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="text-center mb-16 md:mb-20">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Smart Features for Business</h2>
+          <p className="text-slate-500 text-xl max-w-2xl mx-auto">
+            Everything you need to make your brand activation a measurable success.
+          </p>
+        </div>
 
-      {/* Features Grid */}
-      <section className="py-20 md:py-28 bg-slate-50">
-        <div className="section-container">
-          <div className="text-center mb-16 md:mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Smart Features for Business</h2>
-            <p className="text-muted-foreground text-xl max-w-2xl mx-auto">Everything you need to make your brand activation a measurable success.</p>
+        {/* 2. SMARTER BREAKPOINTS: xl:grid-cols-5 ensures it only goes 5-wide on large enough screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          
+          {/* Feature 1 */}
+          <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col">
+            <div className="w-14 h-14 bg-pink-100 text-[#ec4899] rounded-2xl flex items-center justify-center mb-6">
+              <Palette className="w-7 h-7" />
+            </div>
+            <h3 className="text-xl font-bold mb-3 text-slate-900">Fully Branded</h3>
+            <p className="text-slate-500 text-base leading-relaxed flex-1">
+              Brand the entire exterior of the photo booth, the user interface, and the instant printouts. We can also fully wrap your photobooth in your brand style.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Feature 1 */}
-            <div className="bg-white p-10 rounded-3xl shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-2 border border-slate-100">
-              <div className="w-16 h-16 bg-pink-100 text-[#ec4899] rounded-2xl flex items-center justify-center mb-8">
-                <Palette className="w-8 h-8" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Fully Branded</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Brand the entire exterior of the photo booth, the user interface, and the instant printouts. Every step has your stamp on it.
-              </p>
+          {/* Feature 2 */}
+          <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col">
+            <div className="w-14 h-14 bg-blue-100 text-[#0ea5e9] rounded-2xl flex items-center justify-center mb-6">
+              <Database className="w-7 h-7" />
             </div>
+            <h3 className="text-xl font-bold mb-3 text-slate-900">Data Collection</h3>
+            <p className="text-slate-500 text-base leading-relaxed flex-1">
+              Seamlessly collect emails, phone numbers, or survey answers from guests right at the booth. Perfect for generating ROI.
+            </p>
+          </div>
 
-            {/* Feature 2 */}
-            <div className="bg-white p-10 rounded-3xl shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-2 border border-slate-100">
-              <div className="w-16 h-16 bg-blue-100 text-[#0ea5e9] rounded-2xl flex items-center justify-center mb-8">
-                <Database className="w-8 h-8" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Data Collection</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Seamlessly collect emails, phone numbers, or survey answers from guests right at the booth. Perfect for generating ROI.
-              </p>
+          {/* Feature 3 */}
+          <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col">
+            <div className="w-14 h-14 bg-purple-100 text-[#a855f7] rounded-2xl flex items-center justify-center mb-6">
+              <Share2 className="w-7 h-7" />
             </div>
+            <h3 className="text-xl font-bold mb-3 text-slate-900">Social Sharing</h3>
+            <p className="text-slate-500 text-base leading-relaxed flex-1">
+              Increase brand awareness instantly. Guests can email or text their branded photos and GIFs directly to their phones.
+            </p>
+          </div>
 
-            {/* Feature 3 */}
-            <div className="bg-white p-10 rounded-3xl shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-2 border border-slate-100">
-              <div className="w-16 h-16 bg-purple-100 text-[#a855f7] rounded-2xl flex items-center justify-center mb-8">
-                <Share2 className="w-8 h-8" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Social Sharing</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                Increase brand awareness instantly. Guests can email or text their branded photos and GIFs directly to their phones.
-              </p>
+          {/* Feature 4 */}
+          <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col">
+            <div className="w-14 h-14 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center mb-6">
+              <Camera className="w-7 h-7" />
             </div>
+            <h3 className="text-xl font-bold mb-3 text-slate-900">Custom Backdrops</h3>
+            <p className="text-slate-500 text-base leading-relaxed flex-1">
+              From custom-printed step-and-repeat banner walls featuring your logo to advanced green screen tech, we make your background pop.
+            </p>
+          </div>
 
-            {/* Feature 4 */}
-            <div className="bg-white p-10 rounded-3xl shadow-soft hover:shadow-elevated transition-all duration-300 hover:-translate-y-2 border border-slate-100">
-              <div className="w-16 h-16 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center mb-8">
-                <Camera className="w-8 h-8" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">Custom Backdrops</h3>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                From custom-printed step-and-repeat banner walls featuring your logo to advanced green screen tech, we make your background pop.
-              </p>
+          {/* Feature 5 */}
+          <div className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col">
+            {/* Swapped to MonitorPlay icon for a better visual representation of Advertising/Screens */}
+            <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+              <MonitorPlay className="w-7 h-7" />
+            </div>
+            <h3 className="text-xl font-bold mb-3 text-slate-900">Advertising</h3>
+            <p className="text-slate-500 text-base leading-relaxed flex-1">
+              We can totally customize the screens of the Photo Booths with your Brand Logo, Advertisement or Picture Slides. Represent your Product/Brand in a Classy way.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+      {/* 2. Embla Carousel Image Gallery Section */}
+      <section className="py-20 md:py-28 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          
+          {/* Header */}
+          <div className="max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">See It In Action</h2>
+            <p className="text-slate-500 text-xl">
+              Take a look at our immersive photo booth experiences. Swipe to explore.
+            </p>
+          </div>
+
+          {/* Desktop Navigation Arrows */}
+          <div className="hidden md:flex items-center gap-4">
+            <button 
+              onClick={scrollPrev}
+              className="w-14 h-14 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 hover:text-slate-900 hover:border-slate-300 transition-all focus:outline-none focus:ring-2 focus:ring-slate-900"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={scrollNext}
+              className="w-14 h-14 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-slate-800 transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900"
+              aria-label="Next slide"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Embla Viewport */}
+        <div className="max-w-[80vw] px-4 sm:px-6 lg:px-8 mx-auto">
+          <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+            {/* Embla Container */}
+            <div className="flex -ml-4 md:-ml-8">
+             {galleryImages.map((image, index) => (
+  <div 
+    key={index} 
+    className="flex-[0_0_85%] sm:flex-[0_0_60%] md:flex-[0_0_45%] lg:flex-[0_0_35%] min-w-0 pl-4 md:pl-8"
+  >
+    <div className="group overflow-hidden rounded-3xl shadow-sm border border-slate-100 bg-slate-100 aspect-[4/5] relative">
+      
+      {/* ---> ADJUST THE BRIGHTNESS CLASS HERE <--- */}
+      <img 
+        src={image.src} 
+        alt={image.alt} 
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 pointer-events-none brightness-110"
+      />
+      {/* ------------------------------------------ */}
+      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    </div>
+  </div>
+))}
             </div>
           </div>
         </div>
+        
+        {/* Mobile Navigation Arrows (Visible only on small screens) */}
+        <div className="flex md:hidden items-center justify-center gap-6 mt-10 px-4">
+          <button 
+            onClick={scrollPrev}
+            className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-50 transition-all active:scale-95"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={scrollNext}
+            className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-white hover:bg-slate-800 transition-all shadow-md active:scale-95"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
       </section>
 
       {/* NEW: What's Included Section */}
@@ -193,7 +316,7 @@ export function CorporatePage() {
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-24">
             <div className="w-full lg:w-1/2">
               <div className="relative group rounded-3xl overflow-hidden shadow-2xl">
-                <img src="/imgg7.jpg" alt="ClickPlick AI Booth" className="w-full object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105" />
+                <img src="/aiimage.webp" alt="ClickPlick AI Booth" className="w-full object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
               </div>
             </div>
@@ -218,7 +341,7 @@ export function CorporatePage() {
           <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
             <div className="w-full lg:w-1/2">
               <div className="relative group rounded-3xl overflow-hidden shadow-2xl">
-                <img src="/main/hero3.png" alt="Corporate Magic Mirror" className="w-full object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105" />
+                <img src="/magicmirror.png" alt="Corporate Magic Mirror" className="w-full object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
               </div>
             </div>
